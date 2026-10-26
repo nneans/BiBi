@@ -3,23 +3,11 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 .ipynb_checkpoints/
+*.egg-info/
 
-# Customer review data: kept on the analysis PC only (company data, large, reproducible from the CSV export)
-1_전처리/원본/*.csv
-1_전처리/결과/processed/*.parquet
-1_전처리/결과/processed/*.csv
-1_전처리/결과/processed/canonical_products/*.parquet
-2_DB/db/backups/
-2_DB/db/uploads/
-
-# Per-product run outputs that the pipeline regenerates (units with review text, stage caches, logs)
-6_이유분석/results-*/*/units.jsonl
-6_이유분석/results-*/*/review-queue.jsonl
-6_이유분석/results-*/*/groups-*.json
-6_이유분석/results-*/run.log
-6_이유분석/results-*/tries.json
+# Run scratch: logs, restart counters, training resume state
 *.log
 *.tmp
-
-# Model weights are tracked with Git LFS (see .gitattributes); training scratch stays local
+6_이유분석/results-*/tries.json
 3_사후학습/resume/
+2_DB/db/uploads/

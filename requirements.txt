@@ -1,0 +1,36 @@
+# Versions the v3 pipeline ran with on the analysis PC (Windows 11, Python 3.11.9, RTX 4080 SUPER, 2026-10-26).
+# torch is the CUDA 12.1 build: install it first with
+#   pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu121
+# then: pip install -r requirements.txt && pip install -e .
+transformers==5.13.0
+sentence-transformers==6.1.0
+safetensors==0.8.0
+huggingface_hub==1.22.0
+kiwipiepy==0.24.0
+bertopic==0.17.4
+umap-learn==0.5.12
+pynndescent==0.6.0
+hdbscan==0.8.44
+numba==0.65.1
+llvmlite==0.47.0
+numpy==2.4.3
+scipy
+pandas==2.3.3
+pyarrow==25.0.1
+scikit-learn==1.8.0
+matplotlib==3.10.8
+plotly==6.7.0
+psutil==7.2.2
+# DB and dashboard API
+SQLAlchemy==2.0.51
+psycopg[binary]==3.3.6
+fastapi==0.143.2
+uvicorn==0.54.0
+python-multipart==0.0.32
+sentencepiece==0.2.2
+# notebook and tests
+nbformat==5.10.4
+nbconvert==7.17.1
+ipykernel==7.2.0
+pytest
+httpx

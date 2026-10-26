@@ -4,18 +4,30 @@
 access violations, stack overruns, impossible Python errors) and 0 of 24 times pinned to the E-cores
 (logical CPUs 16-31). That is the known 13th/14th-gen Intel P-core degradation, not a code bug. Until the
 CPU is fixed (BIOS microcode 0x12B+ or replacement), analysis processes pin themselves to the E-cores.
-Set BIBI_ALL_CORES=1 to skip the pinning once the hardware is fixed.
+Set BIBI_ALL_CORES=1 to skip the pinning once the hardware is fixed. Other PCs are left alone: only 13th/14th-gen
+Intel i9 parts with 8 P-cores + 16 E-cores (32 logical CPUs, P-cores first) get the mask.
 """
 import ctypes
 import os
+import re
 import sys
 
 E_CORE_MASK = 0xFFFF0000  # i9-14900KF: 8 P-cores x 2 threads = CPUs 0-15, 16 E-cores = CPUs 16-31
 
 
+def cpu_name():
+    try:
+        import winreg
+        with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r'HARDWARE\DESCRIPTION\System\CentralProcessor\0') as key:
+            return winreg.QueryValueEx(key, 'ProcessorNameString')[0]
+    except OSError:
+        return ''
+
+
 def pin_to_efficiency_cores():
-    """Call before importing numba/torch so every thread they start inherits the mask. Returns True if pinned."""
-    if sys.platform != 'win32' or os.environ.get('BIBI_ALL_CORES') == '1' or os.cpu_count() != 32:
+    """Call early; the process mask also covers threads started before it. Returns True if pinned."""
+    if (sys.platform != 'win32' or os.environ.get('BIBI_ALL_CORES') == '1' or os.cpu_count() != 32
+            or not re.search(r'i9-1[34]900', cpu_name())):
         return False
     kernel32 = ctypes.WinDLL('kernel32', use_last_error=True)
     kernel32.GetCurrentProcess.restype = ctypes.c_void_p

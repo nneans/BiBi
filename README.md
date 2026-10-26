@@ -28,25 +28,38 @@
 - 결과: [요약](6_이유분석/results-v3/summary.md) · [상품별 구체적 불만·칭찬](6_이유분석/results-v3/insights.md) · [리뷰별 판정](6_이유분석/results-v3/review-samples.md)
 - 그림: [분석 흐름](7_보고/그림/pipeline-flow.png) · [전처리 흐름](7_보고/그림/preprocess-flow.png) · [고등어 묶음 지도](6_이유분석/results-v3/300868056/topics-map-NEG.png)
 
-## 저장소에 없는 것 (분석 PC에만 있음)
+## 팀원 시작하기
 
-고객 리뷰 원본과 거기서 바로 나온 큰 파일은 올리지 않았습니다(`.gitignore`).
+이 저장소에는 **데이터와 학습된 모델까지 전부** 들어 있습니다(private, 고객 리뷰 원본 포함이므로 외부 공유 금지). 큰 파일은 Git LFS로 관리합니다(약 2GB).
 
-| 파일 | 위치 | 다시 만드는 법 |
-| --- | --- | --- |
-| 원본 리뷰 CSV | `1_전처리/원본/` | 스마트스토어에서 내보내기 |
-| 정리된 리뷰 parquet | `1_전처리/결과/processed/` | `python -m bibi_reviews.canonicalize_products` |
-| DB 백업 | `2_DB/db/backups/` | `powershell -File scripts/postgres_server.ps1 backup` |
-| 상품별 단위 결과(`units.jsonl` 등) | `6_이유분석/results-v3/<상품ID>/` | `bash 6_이유분석/run_all.sh` |
+```powershell
+git lfs install
+git clone https://github.com/nneans/BiBi.git
+cd BiBi
+git lfs pull                                    # 모델·데이터 실제 파일 받기 (clone이 자동으로 받았으면 생략 가능)
 
-모델 두 개는 **Git LFS**로 올라가 있습니다. 받은 뒤 `git lfs pull`로 실제 파일을 내려받으세요.
+pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu121    # NVIDIA GPU용 torch
+pip install -r requirements.txt
+pip install -e .                                # src/bibi_reviews 패키지
 
-| 모델 | 위치 | 크기 |
+python scripts/setup_models.py                  # 외부 모델 2개(KURE-v1, KcELECTRA 원본)를 고정 버전으로 받기
+python -m pytest tests 3_사후학습/test_stage1_core.py    # 54 passed, 2 skipped 이면 준비 완료
+```
+
+- 필요 환경: Python 3.11, NVIDIA GPU(CUDA). 분석 PC는 Windows 11 + RTX 4080 SUPER입니다.
+- 바로 볼 것: [리뷰 한 건 따라가기 노트북](7_보고/노트북/리뷰_한_건_따라가기.ipynb), [상품별 구체적 불만·칭찬](6_이유분석/results-v3/insights.md)
+- DB(PostgreSQL)는 대시보드 서버와 증분 반영에만 씁니다. 분석(6단계)은 `1_전처리/결과/processed/`의 parquet을 바로 읽어서 DB 없이도 돌아갑니다. DB가 필요하면 [2_DB](2_DB/README.md)의 백업 파일로 복원하세요.
+
+| 저장소에 들어 있는 큰 파일 (LFS) | 위치 | 크기 |
 | --- | --- | ---: |
-| 사후학습 KcELECTRA 인코더 | `3_사후학습/frozen-encoder/` | 487MB |
-| 단위 감성 분류기 v3 | `6_이유분석/models/unit-sentiment-v3/` | 489MB |
+| 원본 리뷰 CSV (64.9만 행) | `1_전처리/원본/` | 225MB |
+| 정리된 리뷰 parquet 2개 | `1_전처리/결과/processed/` | 161MB |
+| DB 백업 | `2_DB/db/backups/` | 93MB |
+| 사후학습 KcELECTRA 인코더 | `3_사후학습/frozen-encoder/` | 509MB |
+| 단위 감성 분류기 v3 | `6_이유분석/models/unit-sentiment-v3/` | 511MB |
+| 30개 상품 단위·묶음 결과 | `6_이유분석/results-v3/<상품ID>/` | 약 200MB |
 
-외부에서 받는 모델: `beomi/KcELECTRA-base-v2022`(사후학습 출발점), `nlpai-lab/KURE-v1`(임베딩). 위치는 [paths.py](src/bibi_reviews/paths.py)에 있습니다.
+외부 모델 `beomi/KcELECTRA-base-v2022`(사후학습 출발점)와 `nlpai-lab/KURE-v1`(임베딩)은 저장소에 넣지 않고 `setup_models.py`가 Hugging Face에서 받습니다. 위치와 버전은 [paths.py](src/bibi_reviews/paths.py)에 있습니다.
 
 ## 자주 쓰는 명령
 
@@ -58,6 +71,6 @@ python 6_이유분석/summarize_all.py v3                             # 요약·
 python -m pytest tests 3_사후학습/test_stage1_core.py             # 54 passed, 2 skipped (2026-10-25)
 ```
 
-**이 PC 주의:** i9-14900KF의 성능 코어가 불안정해서(2026-10-25 확인) `bibi_reviews`를 불러오면 효율 코어에만 고정됩니다([cpu.py](src/bibi_reviews/cpu.py)). 다른 PC에서는 CPU 수가 달라 자동으로 꺼지고, `BIBI_ALL_CORES=1`로 끌 수도 있습니다.
+**분석 PC 주의:** 분석 PC의 i9-14900KF는 성능 코어가 불안정해서(2026-10-25 확인) `bibi_reviews`를 불러오면 효율 코어에만 고정됩니다([cpu.py](src/bibi_reviews/cpu.py)). i9-13900/14900이 아닌 PC에서는 자동으로 꺼지고, `BIBI_ALL_CORES=1`로 끌 수도 있습니다.
 
 정리 기록: [docs/cleanup-2026-10-23.md](docs/cleanup-2026-10-23.md)
