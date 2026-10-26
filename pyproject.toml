@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bibi-reviews"
+version = "0.1.0"
+description = "Reproducible local aspect sentiment experiments"
+requires-python = ">=3.11"
+dependencies = ["numpy", "pandas", "scikit-learn", "torch", "transformers", "safetensors", "huggingface-hub"]
+
+[project.optional-dependencies]
+test = ["pytest", "httpx"]
+semantic = ["sentence-transformers==6.1.0", "kiwipiepy==0.24.0", "umap-learn", "pyarrow", "scikit-learn>=1.3"]
+backbone = ["sqlalchemy>=2,<3", "fastapi==0.143.2", "uvicorn==0.54.0", "python-multipart==0.0.32", "psycopg[binary]==3.3.6", "sentencepiece==0.2.2"]
+auto-annotation = ["jsonschema>=4,<5"]
+embedding-lab = ["datasets>=3,<5", "accelerate>=1.2", "umap-learn"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

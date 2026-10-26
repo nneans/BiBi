@@ -1,0 +1,72 @@
+{
+  "stage": "1_only_domain_adaptive_pretraining",
+  "base_model": "beomi/KcELECTRA-base-v2022",
+  "base_revision": "568fe985a10c013c8f605e3c80a199413bbe9d00",
+  "initial_model_file_sha256": "965b3161a1ccab48b8ed1de47b0b87be1fdd7e6e7a3045e1229c52d3fe4c5efa",
+  "seed": 20261022,
+  "epochs": 3,
+  "generator_bootstrap_epochs": 1,
+  "mask_probability": 0.15,
+  "mask_policy": "Bernoulli 15%, at least one uniformly chosen eligible token per review",
+  "input_unit": "complete_raw_review",
+  "truncation": false,
+  "clause_splitting": false,
+  "native_vocab_size": 54343,
+  "batches": [
+    [
+      32,
+      64
+    ],
+    [
+      64,
+      64
+    ],
+    [
+      128,
+      32
+    ],
+    [
+      256,
+      16
+    ],
+    [
+      512,
+      8
+    ]
+  ],
+  "precision": "bf16 training / fp32 evaluation",
+  "optimizer": "fused AdamW",
+  "encoder_learning_rate": 1e-05,
+  "generator_learning_rate": 0.0001,
+  "generator_bootstrap_learning_rate": 0.0003,
+  "warmup_fraction": 0.05,
+  "weight_decay": 0.01,
+  "gradient_clip_norm": 1.0,
+  "objective": "generator MLM CE + 50 * replaced-token BCE",
+  "structural_tokens_excluded_from_mask_loss_and_sampling": [
+    "[PAD]",
+    "[CLS]",
+    "[SEP]",
+    "[MASK]"
+  ],
+  "generator": {
+    "hidden_size": 256,
+    "layers": 12,
+    "attention_heads": 4,
+    "embedding_size": 768,
+    "initialization": "fresh small body; shared native pretrained token table; copied native position/type/LN embeddings",
+    "original_generator_checkpoint_available": false
+  },
+  "checkpoint_selection": "lowest fixed-corruption validation BCE among the three trained epochs",
+  "semantic_labels_used": false,
+  "ratings_used": false,
+  "product_id_supplied_to_encoder": false,
+  "data_manifest_sha256": "87e9aaff0a279e310b1c2a2832733d78be230c7355a040b30b1ec240b3b6bdc9",
+  "reference": "https://github.com/google-research/electra",
+  "adaptations": [
+    "New generator bootstrap because original KcELECTRA generator is unavailable.",
+    "Whole reviews with dynamic length buckets; no document packing.",
+    "Structural special tokens excluded; unchanged sampled originals remain real-token labels.",
+    "Epoch comparison uses one fixed warmed-generator corruption bank."
+  ]
+}

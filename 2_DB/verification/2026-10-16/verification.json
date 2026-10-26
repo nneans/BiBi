@@ -1,0 +1,31 @@
+{
+  "database": "data/backbone/reviews.sqlite3",
+  "normal_statistics": {
+    "review_count": 642172,
+    "product_count": 539,
+    "mean_rating": 4.877123262926443,
+    "rating_counts": {
+      "1": 1732,
+      "2": 1475,
+      "3": 11934,
+      "4": 43687,
+      "5": 583344
+    }
+  },
+  "all_642172_normal_text_hashes_match_canonical_source": true,
+  "all_539_product_names_and_counts_match_canonical_source": true,
+  "blind_texts_in_current_reviews": 0,
+  "latest_upload_membership_count": 649524,
+  "original_csv_reimport": {
+    "rows": 649524,
+    "new": 0,
+    "updated": 0,
+    "unchanged": 649524,
+    "stale": 0,
+    "same_timestamp_conflicts": 0,
+    "blind_rows": 7352
+  },
+  "latest_reimport_job_id": "ea205bca19a94e979e609a2973caccc2",
+  "postgresql_live_tested": false,
+  "model_predictions_production_validated": false
+}

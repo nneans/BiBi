@@ -1,0 +1,607 @@
+{
+  "note": "hidden from the judge; which embedder proposed each pair",
+  "seed": 20261024,
+  "pool": 3000,
+  "pairs": [
+    {
+      "id": 1,
+      "source": "kure-v1:near"
+    },
+    {
+      "id": 2,
+      "source": "kcelectra:near"
+    },
+    {
+      "id": 3,
+      "source": "kure-v1:mid"
+    },
+    {
+      "id": 4,
+      "source": "ko-sroberta:mid"
+    },
+    {
+      "id": 5,
+      "source": "kcelectra:mid"
+    },
+    {
+      "id": 6,
+      "source": "kcelectra:random"
+    },
+    {
+      "id": 7,
+      "source": "ko-sroberta:near"
+    },
+    {
+      "id": 8,
+      "source": "kure-v1:near"
+    },
+    {
+      "id": 9,
+      "source": "kcelectra:random"
+    },
+    {
+      "id": 10,
+      "source": "ko-sroberta:random"
+    },
+    {
+      "id": 11,
+      "source": "kcelectra:near"
+    },
+    {
+      "id": 12,
+      "source": "kcelectra:near"
+    },
+    {
+      "id": 13,
+      "source": "kure-v1:random"
+    },
+    {
+      "id": 14,
+      "source": "ko-sroberta:near"
+    },
+    {
+      "id": 15,
+      "source": "kcelectra:near"
+    },
+    {
+      "id": 16,
+      "source": "ko-sroberta:random"
+    },
+    {
+      "id": 17,
+      "source": "kcelectra:mid"
+    },
+    {
+      "id": 18,
+      "source": "kure-v1:near"
+    },
+    {
+      "id": 19,
+      "source": "kure-v1:mid"
+    },
+    {
+      "id": 20,
+      "source": "kcelectra:near"
+    },
+    {
+      "id": 21,
+      "source": "kcelectra:mid"
+    },
+    {
+      "id": 22,
+      "source": "ko-sroberta:mid"
+    },
+    {
+      "id": 23,
+      "source": "kure-v1:near"
+    },
+    {
+      "id": 24,
+      "source": "ko-sroberta:near"
+    },
+    {
+      "id": 25,
+      "source": "kure-v1:near"
+    },
+    {
+      "id": 26,
+      "source": "ko-sroberta:mid"
+    },
+    {
+      "id": 27,
+      "source": "kcelectra:random"
+    },
+    {
+      "id": 28,
+      "source": "ko-sroberta:near"
+    },
+    {
+      "id": 29,
+      "source": "ko-sroberta:near"
+    },
+    {
+      "id": 30,
+      "source": "kcelectra:near"
+    },
+    {
+      "id": 31,
+      "source": "ko-sroberta:mid"
+    },
+    {
+      "id": 32,
+      "source": "ko-sroberta:near"
+    },
+    {
+      "id": 33,
+      "source": "kcelectra:random"
+    },
+    {
+      "id": 34,
+      "source": "kure-v1:mid"
+    },
+    {
+      "id": 35,
+      "source": "kure-v1:mid"
+    },
+    {
+      "id": 36,
+      "source": "kcelectra:near"
+    },
+    {
+      "id": 37,
+      "source": "ko-sroberta:mid"
+    },
+    {
+      "id": 38,
+      "source": "kcelectra:mid"
+    },
+    {
+      "id": 39,
+      "source": "kure-v1:mid"
+    },
+    {
+      "id": 40,
+      "source": "ko-sroberta:near"
+    },
+    {
+      "id": 41,
+      "source": "ko-sroberta:random"
+    },
+    {
+      "id": 42,
+      "source": "ko-sroberta:near"
+    },
+    {
+      "id": 43,
+      "source": "kure-v1:random"
+    },
+    {
+      "id": 44,
+      "source": "kure-v1:near"
+    },
+    {
+      "id": 45,
+      "source": "kure-v1:near"
+    },
+    {
+      "id": 46,
+      "source": "kure-v1:random"
+    },
+    {
+      "id": 47,
+      "source": "kure-v1:random"
+    },
+    {
+      "id": 48,
+      "source": "kure-v1:near"
+    },
+    {
+      "id": 49,
+      "source": "kure-v1:mid"
+    },
+    {
+      "id": 50,
+      "source": "kcelectra:mid"
+    },
+    {
+      "id": 51,
+      "source": "ko-sroberta:near"
+    },
+    {
+      "id": 52,
+      "source": "ko-sroberta:near"
+    },
+    {
+      "id": 53,
+      "source": "kcelectra:near"
+    },
+    {
+      "id": 54,
+      "source": "kure-v1:random"
+    },
+    {
+      "id": 55,
+      "source": "ko-sroberta:mid"
+    },
+    {
+      "id": 56,
+      "source": "ko-sroberta:random"
+    },
+    {
+      "id": 57,
+      "source": "ko-sroberta:mid"
+    },
+    {
+      "id": 58,
+      "source": "ko-sroberta:near"
+    },
+    {
+      "id": 59,
+      "source": "kcelectra:mid"
+    },
+    {
+      "id": 60,
+      "source": "ko-sroberta:near"
+    },
+    {
+      "id": 61,
+      "source": "kure-v1:near"
+    },
+    {
+      "id": 62,
+      "source": "kcelectra:random"
+    },
+    {
+      "id": 63,
+      "source": "kcelectra:random"
+    },
+    {
+      "id": 64,
+      "source": "ko-sroberta:random"
+    },
+    {
+      "id": 65,
+      "source": "ko-sroberta:mid"
+    },
+    {
+      "id": 66,
+      "source": "ko-sroberta:random"
+    },
+    {
+      "id": 67,
+      "source": "kure-v1:near"
+    },
+    {
+      "id": 68,
+      "source": "kure-v1:near"
+    },
+    {
+      "id": 69,
+      "source": "kure-v1:mid"
+    },
+    {
+      "id": 70,
+      "source": "kure-v1:near"
+    },
+    {
+      "id": 71,
+      "source": "kure-v1:mid"
+    },
+    {
+      "id": 72,
+      "source": "kcelectra:random"
+    },
+    {
+      "id": 73,
+      "source": "kcelectra:near"
+    },
+    {
+      "id": 74,
+      "source": "kcelectra:mid"
+    },
+    {
+      "id": 75,
+      "source": "kcelectra:near"
+    },
+    {
+      "id": 76,
+      "source": "kure-v1:random"
+    },
+    {
+      "id": 77,
+      "source": "ko-sroberta:near"
+    },
+    {
+      "id": 78,
+      "source": "kure-v1:near"
+    },
+    {
+      "id": 79,
+      "source": "kcelectra:random"
+    },
+    {
+      "id": 80,
+      "source": "kcelectra:random"
+    },
+    {
+      "id": 81,
+      "source": "ko-sroberta:near"
+    },
+    {
+      "id": 82,
+      "source": "ko-sroberta:random"
+    },
+    {
+      "id": 83,
+      "source": "kcelectra:mid"
+    },
+    {
+      "id": 84,
+      "source": "kure-v1:near"
+    },
+    {
+      "id": 85,
+      "source": "kcelectra:mid"
+    },
+    {
+      "id": 86,
+      "source": "ko-sroberta:random"
+    },
+    {
+      "id": 87,
+      "source": "kcelectra:random"
+    },
+    {
+      "id": 88,
+      "source": "kcelectra:random"
+    },
+    {
+      "id": 89,
+      "source": "kure-v1:near"
+    },
+    {
+      "id": 90,
+      "source": "ko-sroberta:random"
+    },
+    {
+      "id": 91,
+      "source": "kure-v1:random"
+    },
+    {
+      "id": 92,
+      "source": "kure-v1:mid"
+    },
+    {
+      "id": 93,
+      "source": "ko-sroberta:random"
+    },
+    {
+      "id": 94,
+      "source": "kure-v1:mid"
+    },
+    {
+      "id": 95,
+      "source": "ko-sroberta:mid"
+    },
+    {
+      "id": 96,
+      "source": "kcelectra:near"
+    },
+    {
+      "id": 97,
+      "source": "kure-v1:random"
+    },
+    {
+      "id": 98,
+      "source": "ko-sroberta:near"
+    },
+    {
+      "id": 99,
+      "source": "ko-sroberta:mid"
+    },
+    {
+      "id": 100,
+      "source": "ko-sroberta:near"
+    },
+    {
+      "id": 101,
+      "source": "kcelectra:near"
+    },
+    {
+      "id": 102,
+      "source": "kure-v1:random"
+    },
+    {
+      "id": 103,
+      "source": "ko-sroberta:random"
+    },
+    {
+      "id": 104,
+      "source": "kure-v1:random"
+    },
+    {
+      "id": 105,
+      "source": "kure-v1:mid"
+    },
+    {
+      "id": 106,
+      "source": "kure-v1:near"
+    },
+    {
+      "id": 107,
+      "source": "ko-sroberta:near"
+    },
+    {
+      "id": 108,
+      "source": "ko-sroberta:mid"
+    },
+    {
+      "id": 109,
+      "source": "kure-v1:near"
+    },
+    {
+      "id": 110,
+      "source": "kcelectra:mid"
+    },
+    {
+      "id": 111,
+      "source": "kcelectra:near"
+    },
+    {
+      "id": 112,
+      "source": "kcelectra:mid"
+    },
+    {
+      "id": 113,
+      "source": "ko-sroberta:mid"
+    },
+    {
+      "id": 114,
+      "source": "ko-sroberta:random"
+    },
+    {
+      "id": 115,
+      "source": "kcelectra:mid"
+    },
+    {
+      "id": 116,
+      "source": "kcelectra:random"
+    },
+    {
+      "id": 117,
+      "source": "ko-sroberta:near"
+    },
+    {
+      "id": 118,
+      "source": "kure-v1:random"
+    },
+    {
+      "id": 119,
+      "source": "kure-v1:near"
+    },
+    {
+      "id": 120,
+      "source": "kcelectra:mid"
+    },
+    {
+      "id": 121,
+      "source": "kure-v1:random"
+    },
+    {
+      "id": 122,
+      "source": "kcelectra:near"
+    },
+    {
+      "id": 123,
+      "source": "kure-v1:random"
+    },
+    {
+      "id": 124,
+      "source": "kcelectra:random"
+    },
+    {
+      "id": 125,
+      "source": "ko-sroberta:random"
+    },
+    {
+      "id": 126,
+      "source": "kure-v1:near"
+    },
+    {
+      "id": 127,
+      "source": "kure-v1:mid"
+    },
+    {
+      "id": 128,
+      "source": "kure-v1:mid"
+    },
+    {
+      "id": 129,
+      "source": "ko-sroberta:mid"
+    },
+    {
+      "id": 130,
+      "source": "kcelectra:random"
+    },
+    {
+      "id": 131,
+      "source": "kure-v1:mid"
+    },
+    {
+      "id": 132,
+      "source": "ko-sroberta:mid"
+    },
+    {
+      "id": 133,
+      "source": "kcelectra:near"
+    },
+    {
+      "id": 134,
+      "source": "kcelectra:mid"
+    },
+    {
+      "id": 135,
+      "source": "ko-sroberta:near"
+    },
+    {
+      "id": 136,
+      "source": "kcelectra:near"
+    },
+    {
+      "id": 137,
+      "source": "ko-sroberta:near"
+    },
+    {
+      "id": 138,
+      "source": "kcelectra:mid"
+    },
+    {
+      "id": 139,
+      "source": "kcelectra:near"
+    },
+    {
+      "id": 140,
+      "source": "kure-v1:mid"
+    },
+    {
+      "id": 141,
+      "source": "kcelectra:near"
+    },
+    {
+      "id": 142,
+      "source": "kure-v1:near"
+    },
+    {
+      "id": 143,
+      "source": "ko-sroberta:mid"
+    },
+    {
+      "id": 144,
+      "source": "kcelectra:random"
+    },
+    {
+      "id": 145,
+      "source": "kcelectra:near"
+    },
+    {
+      "id": 146,
+      "source": "kure-v1:random"
+    },
+    {
+      "id": 147,
+      "source": "kure-v1:random"
+    },
+    {
+      "id": 148,
+      "source": "ko-sroberta:random"
+    },
+    {
+      "id": 149,
+      "source": "ko-sroberta:random"
+    },
+    {
+      "id": 150,
+      "source": "kcelectra:near"
+    }
+  ]
+}

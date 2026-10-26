@@ -1,0 +1,28 @@
+{
+  "png_revision": "Remove source/method footnotes; linear clipped scatter x axis",
+  "scatter_x_scale": "linear",
+  "scatter_review_count_cap": 10000,
+  "scatter_product_count": 246,
+  "scatter_above_cap_count": 11,
+  "scatter_all_products_retained": true,
+  "scatter_values_equal_minimum_of_actual_and_cap": true,
+  "source_method_footnotes_drawn": false,
+  "figures": [
+    {
+      "file": "outputs\\visualizations\\product-name-mapping-flow\\01-mapping-type-share.png",
+      "sha256": "0bc5ce4881e2222bedf5b772b99021ea499dadaa53f0492600a3dbb8bcdbf0e4"
+    },
+    {
+      "file": "outputs\\visualizations\\product-name-mapping-flow\\02-multiple-name-products-scatter.png",
+      "sha256": "6aa39c91eba3d9a522a6a357a5554352efb5f6d11176147c4a2e5f20206099ec"
+    },
+    {
+      "file": "outputs\\visualizations\\product-name-mapping-flow\\03-name-count-distribution.png",
+      "sha256": "90df580a9f2904aabd96b2056b50a965b322413fd01a2de2f44f7472373c777a"
+    },
+    {
+      "file": "outputs\\visualizations\\product-name-mapping-flow\\04-selected-product-name-share.png",
+      "sha256": "37094d29861ac42e11a1a5e862f8bda1ba9f3a3c7775e22250cdc662ff65390c"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+Metadata-Version: 2.4
+Name: bibi-reviews
+Version: 0.1.0
+Summary: Reproducible local aspect sentiment experiments
+Requires-Python: >=3.11
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: scikit-learn
+Requires-Dist: torch
+Requires-Dist: transformers
+Requires-Dist: safetensors
+Requires-Dist: huggingface-hub
+Provides-Extra: test
+Requires-Dist: pytest; extra == "test"

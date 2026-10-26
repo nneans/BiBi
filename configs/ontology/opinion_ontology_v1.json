@@ -1,0 +1,908 @@
+{
+  "ontology_version": "bibi-opinion-ontology-v1-draft",
+  "status": "draft; structure fixed for implementation, aspect/reason inventory awaits human-reviewed cases",
+  "frozen": false,
+  "created_at": "2026-10-17",
+  "base_taxonomy": {
+    "path": "configs/review_pipeline/taxonomy_v2.json",
+    "version": "bibi-review-taxonomy-v2-draft",
+    "rule": "Aspect and reason definitions (name, definition, include, exclude, confused_with, model_output) live only in the base taxonomy. This file adds hierarchy, relations, polarity display names, lexical cues, product scope and integrity rules. Codes shared with the base taxonomy must match exactly (enforced by tests)."
+  },
+  "concepts": {
+    "Product": {
+      "description": "상품. product_id로 식별(대표 상품명은 표시용)",
+      "storage": "products"
+    },
+    "Review": {
+      "description": "고객 리뷰. 원문은 review_text(정규화)이고 의견 위치는 이 텍스트 기준",
+      "storage": "reviews"
+    },
+    "Opinion": {
+      "description": "리뷰 안의 개별 의견. (평가 대상 × 속성 × 감성 × 이유 × 근거)의 한 단위",
+      "storage": "opinions(사람·AI 주석) / opinion_predictions(자체 모델)"
+    },
+    "Aspect": {
+      "description": "평가 속성. 상위 묶음(group)과 실제 의견이 연결되는 속성(aspect)으로 구성",
+      "storage": "ontology_aspects"
+    },
+    "Reason": {
+      "description": "구체적인 평가 이유. 극성 중립 개념이며 감성은 Opinion에 기록",
+      "storage": "ontology_reasons"
+    },
+    "Sentiment": {
+      "description": "의견의 감성 열거형",
+      "storage": "opinions.sentiment 열거형 코드"
+    },
+    "Evidence": {
+      "description": "의견을 지지하는 원문 구간. 리뷰 텍스트의 Unicode 위치 [start, end)",
+      "storage": "opinion_evidence"
+    },
+    "ReasonCandidate": {
+      "description": "체계에 없는 이유·속성 후보. 자동 등록하지 않고 검토 대기로 보존",
+      "storage": "reason_candidates"
+    }
+  },
+  "relations": [
+    {
+      "name": "has_review",
+      "domain": "Product",
+      "range": "Review",
+      "cardinality": "1:N",
+      "storage": "reviews.product_id FK",
+      "primary": true
+    },
+    {
+      "name": "contains",
+      "domain": "Review",
+      "range": "Opinion",
+      "cardinality": "1:N (0 허용)",
+      "storage": "opinions.review_id / opinion_predictions.text_hash",
+      "primary": true,
+      "integrity": "의견 목록이 비었다는 것과 사람이 무의견으로 완료한 것은 다르다. 예측 의견은 text_hash 단위로 저장해 동일 텍스트를 한 번만 계산한다"
+    },
+    {
+      "name": "evaluates",
+      "domain": "Opinion",
+      "range": "Product",
+      "cardinality": "N:1",
+      "storage": "opinions.target_scope + reviews.product_id",
+      "primary": true,
+      "integrity": "target_scope=current_product인 의견만 해당 상품 속성 통계에 들어간다. 타상품·일반 경험·불명확은 별도 집계"
+    },
+    {
+      "name": "has_aspect",
+      "domain": "Opinion",
+      "range": "Aspect",
+      "cardinality": "N:1",
+      "storage": "opinions.aspect",
+      "primary": true,
+      "integrity": "kind=aspect인 코드 또는 none/unknown/out_of_scope만 허용. group 코드는 집계용으로만 쓴다"
+    },
+    {
+      "name": "has_sentiment",
+      "domain": "Opinion",
+      "range": "Sentiment",
+      "cardinality": "N:1",
+      "storage": "opinions.sentiment",
+      "primary": true,
+      "integrity": "statement_type과 감성 조합 규칙(integrity_rules.sentiment_by_statement_type)을 따른다"
+    },
+    {
+      "name": "has_reason",
+      "domain": "Opinion",
+      "range": "Reason",
+      "cardinality": "0..N",
+      "storage": "opinion_reasons (junction)",
+      "primary": false,
+      "integrity": "의견당 primary 이유는 최대 1개. 확정(confirmed)은 사람 승인 의견에서만 생긴다"
+    },
+    {
+      "name": "supported_by",
+      "domain": "Opinion",
+      "range": "Evidence",
+      "cardinality": "1..N",
+      "storage": "opinion_evidence",
+      "primary": true,
+      "integrity": "evidence_text == review_text[start:end]. 여러 의견이 같은 구간을 참조할 수 있으나 근거 구간 수는 통계에 쓰지 않는다"
+    },
+    {
+      "name": "reason_belongs_to",
+      "domain": "Reason",
+      "range": "Aspect",
+      "cardinality": "N:1",
+      "storage": "ontology_reason_aspects(role=primary)",
+      "primary": true,
+      "integrity": "집계의 기본 분류. 이유 하나는 정확히 하나의 primary 속성을 가진다"
+    },
+    {
+      "name": "reason_related_aspect",
+      "domain": "Reason",
+      "range": "Aspect",
+      "cardinality": "N:N",
+      "storage": "ontology_reason_aspects(role=related)",
+      "primary": false,
+      "integrity": "의미적 연관. 집계 합계에 중복 포함하지 않고 '연관 속성' 조회에만 사용"
+    },
+    {
+      "name": "reason_related_to",
+      "domain": "Reason",
+      "range": "Reason",
+      "cardinality": "N:N",
+      "storage": "ontology_reason_relations",
+      "primary": false
+    },
+    {
+      "name": "has_sub_aspect",
+      "domain": "Aspect",
+      "range": "Aspect",
+      "cardinality": "1:N",
+      "storage": "ontology_aspects.parent_code",
+      "primary": true,
+      "integrity": "2단계 트리(group → aspect). 순환 금지"
+    }
+  ],
+  "enums": {
+    "sentiment": [
+      "positive",
+      "negative",
+      "mixed",
+      "neutral",
+      "uncertain",
+      "not_applicable"
+    ],
+    "sentiment_aliases": {
+      "ambiguous": "uncertain",
+      "unrated": "not_applicable"
+    },
+    "target_scope": [
+      "current_product",
+      "other_product",
+      "general_experience",
+      "unclear"
+    ],
+    "statement_type": [
+      "evaluation",
+      "fact",
+      "deferred",
+      "uninterpretable"
+    ],
+    "label_tier": {
+      "gold": "사람이 리뷰 전체를 확인하고 승인한 의견. 평가·확정 통계의 유일한 근거",
+      "silver": "외부 LLM·로컬 LLM·AI 정독 등 AI가 만든 후보. 학습 보조와 체계 탐색에만 사용",
+      "prediction": "자체 모델 운영 추론 결과. 대시보드에는 '모델 예측'으로 표시"
+    },
+    "opinion_status": [
+      "confirmed",
+      "unverified",
+      "review_required",
+      "stale_text",
+      "source_blinded"
+    ],
+    "reason_link_status": {
+      "confirmed": "gold 의견의 이유",
+      "candidate": "AI·모델·어휘 단서가 연결한 이유. 확정 통계와 분리"
+    },
+    "reason_link_method": [
+      "human",
+      "llm",
+      "assistant",
+      "lexicon",
+      "legacy_mapping"
+    ],
+    "evidence_kind": {
+      "exact_span": "의견 구절",
+      "sentence": "모델이 고른 근거 문장(정확한 구절 추출 아님)"
+    }
+  },
+  "aspect_groups": [
+    {
+      "code": "grp_taste",
+      "name": "맛·냄새",
+      "children": [
+        "taste"
+      ]
+    },
+    {
+      "code": "grp_texture",
+      "name": "식감",
+      "children": [
+        "texture"
+      ]
+    },
+    {
+      "code": "grp_freshness",
+      "name": "신선도",
+      "children": [
+        "freshness"
+      ]
+    },
+    {
+      "code": "grp_quality",
+      "name": "품질·상태",
+      "children": [
+        "quality"
+      ]
+    },
+    {
+      "code": "grp_amount",
+      "name": "양·함량",
+      "children": [
+        "quantity",
+        "ingredient_composition"
+      ]
+    },
+    {
+      "code": "grp_delivery",
+      "name": "배송",
+      "children": [
+        "delivery"
+      ]
+    },
+    {
+      "code": "grp_packaging",
+      "name": "포장",
+      "children": [
+        "packaging"
+      ]
+    },
+    {
+      "code": "grp_price",
+      "name": "가격·가성비",
+      "children": [
+        "price"
+      ]
+    },
+    {
+      "code": "grp_cooking",
+      "name": "조리",
+      "children": [
+        "cooking_convenience",
+        "cooking_result"
+      ]
+    },
+    {
+      "code": "grp_description",
+      "name": "상품 설명 일치",
+      "children": [
+        "description_match"
+      ]
+    },
+    {
+      "code": "grp_overall",
+      "name": "종합 반응",
+      "children": [
+        "overall_satisfaction",
+        "purchase_intent"
+      ],
+      "aggregation": "non_attribute",
+      "note": "속성 평가가 아닌 종합 만족·재구매 의향. 속성 비중 계산에서 제외하고 별도 표시"
+    }
+  ],
+  "aspect_extensions": [
+    {
+      "code": "overall_satisfaction",
+      "name": "종합 만족",
+      "status": "candidate",
+      "aggregation": "non_attribute",
+      "definition": "특정 속성을 지목하지 않은 전반적 만족·불만. 용도·상황 만족과 원료 불신·애매한 불만도 여기에 둔다(2026-10-19 정책)",
+      "include": "좋아요, 별로예요, 만족, 실망 / 맥주 안주로 좋네요, 아이들 간식으로 딱이에요(용도 만족) / 가짜 치즈 같아요, 치즈가 싸구려인가?(원료 불신·애매한 불만)",
+      "exclude": "맛있어요처럼 속성이 드러나면 해당 속성. 구매 동기만 말한 문장(\"간식으로 샀어요\")은 사실",
+      "confused_with": [
+        "taste"
+      ],
+      "model_output": false,
+      "evidence": "치즈스틱 50개 AI 정독에서 out_of_scope/overall_satisfaction 18개(긍정 8·부정 8·중립 2)"
+    },
+    {
+      "code": "purchase_intent",
+      "name": "재구매·추천 의향",
+      "status": "candidate",
+      "aggregation": "non_attribute",
+      "definition": "재구매·추천·구매 중단 의향",
+      "include": "또 살게요, 재구매, 다시는 안 사요",
+      "exclude": "구매 사실·구매 동기(fact)",
+      "confused_with": [
+        "overall_satisfaction"
+      ],
+      "model_output": false,
+      "evidence": "치즈스틱 50개 AI 정독에서 out_of_scope/purchase_intent 8개(긍정 5·부정 3)"
+    }
+  ],
+  "reason_extensions": [
+    {
+      "code": "size_uniformity",
+      "name": "크기·두께 균일성",
+      "aspect": "quantity",
+      "status": "candidate",
+      "evidence": "명태포 250 AI 초안 topic uneven_shape_size 17개"
+    },
+    {
+      "code": "packing_care",
+      "name": "포장 꼼꼼함",
+      "aspect": "packaging",
+      "status": "candidate",
+      "evidence": "명태포 250 AI 초안 topic careful_packaging 11개"
+    }
+  ],
+  "reason_semantics": {
+    "cheese_flavor": {
+      "display": {
+        "positive": "치즈 풍미·고소함",
+        "negative": "치즈 풍미 부족"
+      },
+      "related_aspects": [
+        "ingredient_composition"
+      ],
+      "related_reasons": [
+        "stretchability",
+        "cheese_ratio"
+      ],
+      "cue": "치즈"
+    },
+    "flour_flavor": {
+      "display": {
+        "positive": "밀가루 맛 적음",
+        "negative": "밀가루·반죽 맛"
+      },
+      "related_aspects": [
+        "ingredient_composition"
+      ],
+      "related_reasons": [
+        "coating_ratio"
+      ],
+      "cue": "밀가루|반죽|빵맛"
+    },
+    "saltiness": {
+      "display": {
+        "positive": "간이 알맞음",
+        "negative": "짜거나 싱거움"
+      },
+      "related_aspects": [],
+      "related_reasons": [],
+      "cue": "짜|짭|싱겁|간이|간은|간도"
+    },
+    "odor": {
+      "display": {
+        "positive": "잡내 없음",
+        "negative": "비린내·이취"
+      },
+      "related_aspects": [
+        "freshness"
+      ],
+      "related_reasons": [],
+      "cue": "냄새|비린|잡내|비리"
+    },
+    "stretchability": {
+      "display": {
+        "positive": "치즈가 잘 늘어남",
+        "negative": "치즈 늘어남 부족"
+      },
+      "related_aspects": [
+        "ingredient_composition",
+        "cooking_result"
+      ],
+      "related_reasons": [
+        "cheese_ratio",
+        "cheese_flavor"
+      ],
+      "cue": "늘어|쭉"
+    },
+    "softness_firmness": {
+      "display": {
+        "positive": "부드러움·적당한 식감",
+        "negative": "딱딱함·질김·무름"
+      },
+      "related_aspects": [
+        "quality"
+      ],
+      "related_reasons": [],
+      "cue": "딱딱|단단|말랑|부드|질기|흐물|퍽퍽"
+    },
+    "crispness": {
+      "display": {
+        "positive": "바삭함",
+        "negative": "눅눅함"
+      },
+      "related_aspects": [
+        "cooking_result"
+      ],
+      "related_reasons": [
+        "airfryer_result"
+      ],
+      "cue": "바삭|눅눅"
+    },
+    "cheese_ratio": {
+      "display": {
+        "positive": "치즈가 넉넉함",
+        "negative": "치즈가 적음"
+      },
+      "related_aspects": [
+        "quantity"
+      ],
+      "related_reasons": [
+        "coating_ratio",
+        "stretchability"
+      ],
+      "cue": "치즈.*(적|많|부족)"
+    },
+    "coating_ratio": {
+      "display": {
+        "positive": "튀김옷이 적당함",
+        "negative": "튀김옷이 두꺼움"
+      },
+      "related_aspects": [
+        "texture"
+      ],
+      "related_reasons": [
+        "cheese_ratio",
+        "flour_flavor"
+      ],
+      "cue": "튀김옷|껍질|반죽.*두꺼"
+    },
+    "whole_size": {
+      "display": {
+        "positive": "크기 만족",
+        "negative": "크기가 작음"
+      },
+      "related_aspects": [],
+      "related_reasons": [
+        "size_uniformity"
+      ],
+      "cue": "크기|사이즈|작|크고|굵"
+    },
+    "total_amount": {
+      "display": {
+        "positive": "양이 넉넉함",
+        "negative": "양이 적음"
+      },
+      "related_aspects": [
+        "price"
+      ],
+      "related_reasons": [
+        "value"
+      ],
+      "cue": "양이|양도|양은|넉넉|푸짐|중량"
+    },
+    "thickness": {
+      "display": {
+        "positive": "두께 만족",
+        "negative": "너무 두껍거나 얇음"
+      },
+      "related_aspects": [
+        "texture",
+        "quality"
+      ],
+      "related_reasons": [
+        "size_uniformity"
+      ],
+      "cue": "두께|두껍|얇"
+    },
+    "size_uniformity": {
+      "display": {
+        "positive": "크기·모양이 고름",
+        "negative": "크기·두께 불균일"
+      },
+      "related_aspects": [
+        "quality"
+      ],
+      "related_reasons": [
+        "whole_size",
+        "thickness"
+      ],
+      "cue": "불균일|들쭉날쭉|제각각|크기가 다|모양이"
+    },
+    "thawing": {
+      "display": {
+        "positive": "냉동 상태 양호",
+        "negative": "녹아서 도착"
+      },
+      "related_aspects": [
+        "packaging",
+        "delivery",
+        "freshness"
+      ],
+      "related_reasons": [
+        "insulation",
+        "water_on_thaw"
+      ],
+      "cue": "녹아|녹았|해동"
+    },
+    "bones": {
+      "display": {
+        "positive": "가시 없음",
+        "negative": "가시·뼈 잔존"
+      },
+      "related_aspects": [
+        "cooking_convenience"
+      ],
+      "related_reasons": [],
+      "cue": "가시|뼈"
+    },
+    "breakage": {
+      "display": {
+        "positive": "모양이 온전함",
+        "negative": "부서짐·부스러기"
+      },
+      "related_aspects": [
+        "packaging",
+        "delivery"
+      ],
+      "related_reasons": [
+        "leak_damage"
+      ],
+      "cue": "부서|부스러|자투리"
+    },
+    "foreign_matter": {
+      "display": {
+        "positive": "이물 없음",
+        "negative": "이물 발견"
+      },
+      "related_aspects": [
+        "freshness"
+      ],
+      "related_reasons": [],
+      "cue": "이물|머리카락|비닐"
+    },
+    "water_on_thaw": {
+      "display": {
+        "positive": "수분이 적당함",
+        "negative": "해동 시 물 과다"
+      },
+      "related_aspects": [
+        "cooking_result",
+        "quantity"
+      ],
+      "related_reasons": [
+        "thawing"
+      ],
+      "cue": "물이|물기|수분"
+    },
+    "insulation": {
+      "display": {
+        "positive": "보냉 충분",
+        "negative": "보냉 부족"
+      },
+      "related_aspects": [
+        "quality",
+        "freshness",
+        "delivery"
+      ],
+      "related_reasons": [
+        "thawing"
+      ],
+      "cue": "아이스팩|얼음|보냉|드라이"
+    },
+    "leak_damage": {
+      "display": {
+        "positive": "포장이 온전함",
+        "negative": "포장 파손·누수"
+      },
+      "related_aspects": [
+        "delivery",
+        "quality"
+      ],
+      "related_reasons": [
+        "breakage",
+        "packing_care"
+      ],
+      "cue": "터져|터졌|찢|샜|새서|누수"
+    },
+    "packing_care": {
+      "display": {
+        "positive": "꼼꼼한 포장",
+        "negative": "허술한 포장"
+      },
+      "related_aspects": [],
+      "related_reasons": [
+        "leak_damage",
+        "insulation"
+      ],
+      "cue": "꼼꼼|정성|허술|대충"
+    },
+    "delivery_speed": {
+      "display": {
+        "positive": "빠른 배송",
+        "negative": "배송 지연"
+      },
+      "related_aspects": [],
+      "related_reasons": [
+        "delivery_schedule"
+      ],
+      "cue": "빠르|빨라|빨리|늦|느리|다음날"
+    },
+    "delivery_schedule": {
+      "display": {
+        "positive": "약속일 도착",
+        "negative": "도착 일정 불일치"
+      },
+      "related_aspects": [],
+      "related_reasons": [
+        "delivery_speed"
+      ],
+      "cue": "날짜|일정|지연"
+    },
+    "value": {
+      "display": {
+        "positive": "가성비 좋음",
+        "negative": "가격 대비 아쉬움"
+      },
+      "related_aspects": [
+        "quantity"
+      ],
+      "related_reasons": [
+        "total_amount"
+      ],
+      "cue": "가성비|저렴|비싸|가격"
+    },
+    "shipping_fee": {
+      "display": {
+        "positive": "배송비 만족",
+        "negative": "배송비 부담"
+      },
+      "related_aspects": [
+        "delivery"
+      ],
+      "related_reasons": [],
+      "cue": "배송비"
+    },
+    "cooking_effort": {
+      "display": {
+        "positive": "조리 간편",
+        "negative": "조리 번거로움"
+      },
+      "related_aspects": [],
+      "related_reasons": [
+        "bones"
+      ],
+      "cue": "간편|번거|귀찮|손질"
+    },
+    "airfryer_result": {
+      "display": {
+        "positive": "에어프라이어 조리 잘 됨",
+        "negative": "에어프라이어 조리 실패"
+      },
+      "related_aspects": [
+        "texture"
+      ],
+      "related_reasons": [
+        "crispness",
+        "cooking_method_description"
+      ],
+      "cue": "에어|에프"
+    },
+    "cooking_method_description": {
+      "display": {
+        "positive": "조리 안내가 정확함",
+        "negative": "조리 안내와 다름"
+      },
+      "related_aspects": [
+        "cooking_result"
+      ],
+      "related_reasons": [
+        "airfryer_result"
+      ],
+      "cue": "설명|안내|표기"
+    },
+    "expiry_date": {
+      "display": {
+        "positive": "유통기한 넉넉함",
+        "negative": "유통기한 짧음"
+      },
+      "related_aspects": [],
+      "related_reasons": [],
+      "cue": "유통기한|제조일"
+    }
+  },
+  "legacy_mappings": {
+    "label_vocabulary_v0_2": {
+      "source": "04_AI분석/legacy_ai_drafts/focus_product_7826600725_opinions_250.csv (명태포 250 AI 초안, codex_ai_draft)",
+      "rule": "topic_candidate가 매핑되면 그 (aspect, reason)을 쓰고, 아니면 aspect 기본값을 쓴다. 매핑 불가 속성은 unknown으로 두고 reason_candidates에 원래 주제명을 보존한다",
+      "aspects": {
+        "taste": "taste",
+        "freshness": "freshness",
+        "delivery": "delivery",
+        "cooking_convenience": "cooking_convenience",
+        "quality_texture": "quality",
+        "quantity_size": "quantity",
+        "price_shipping_cost": "price",
+        "packaging_cold_chain": "packaging",
+        "description_option": "description_match"
+      },
+      "topics": {
+        "bones_remaining": [
+          "quality",
+          "bones"
+        ],
+        "too_thick": [
+          "quantity",
+          "thickness"
+        ],
+        "too_thin": [
+          "quantity",
+          "thickness"
+        ],
+        "suitable_thickness": [
+          "quantity",
+          "thickness"
+        ],
+        "uneven_shape_size": [
+          "quantity",
+          "size_uniformity"
+        ],
+        "excess_water": [
+          "quality",
+          "water_on_thaw"
+        ],
+        "frozen_condition_good": [
+          "quality",
+          "thawing"
+        ],
+        "breakage": [
+          "quality",
+          "breakage"
+        ],
+        "careful_packaging": [
+          "packaging",
+          "packing_care"
+        ],
+        "package_damage": [
+          "packaging",
+          "leak_damage"
+        ],
+        "generous_quantity": [
+          "quantity",
+          "total_amount"
+        ],
+        "suitable_size": [
+          "quantity",
+          "whole_size"
+        ],
+        "large_thick_size": [
+          "quantity",
+          "thickness"
+        ],
+        "fast_delivery": [
+          "delivery",
+          "delivery_speed"
+        ],
+        "good_price": [
+          "price",
+          "value"
+        ],
+        "good_value": [
+          "price",
+          "value"
+        ],
+        "difficult_cooking": [
+          "cooking_convenience",
+          "cooking_effort"
+        ],
+        "easy_cooking": [
+          "cooking_convenience",
+          "cooking_effort"
+        ],
+        "soft_tender_texture": [
+          "texture",
+          "softness_firmness"
+        ],
+        "soft_mushy_texture": [
+          "texture",
+          "softness_firmness"
+        ],
+        "good_taste": [
+          "taste",
+          null
+        ],
+        "poor_taste": [
+          "taste",
+          null
+        ],
+        "freshness_good": [
+          "freshness",
+          null
+        ],
+        "general_quality_good": [
+          "quality",
+          null
+        ]
+      }
+    }
+  },
+  "integrity_rules": {
+    "sentiment_by_statement_type": {
+      "evaluation": [
+        "positive",
+        "negative",
+        "mixed",
+        "neutral",
+        "uncertain"
+      ],
+      "fact": [
+        "not_applicable"
+      ],
+      "deferred": [
+        "uncertain",
+        "not_applicable"
+      ],
+      "uninterpretable": [
+        "uncertain",
+        "not_applicable"
+      ]
+    },
+    "evaluation_requires_aspect": true,
+    "special_aspects": {
+      "none": "사실 등 속성 없음",
+      "unknown": "속성 판단 불가·연결 미정",
+      "out_of_scope": "체계 밖 속성(후보 문구는 reason_candidates에 보존)"
+    },
+    "max_primary_reasons_per_opinion": 1,
+    "reason_aspect_compatibility": "이유의 primary 속성 == 의견 속성, 또는 의견 속성이 이유의 related_aspects 또는 primary 속성의 confused_with에 있어야 한다. 아니면 reason_aspect_mismatch 플래그",
+    "evidence_must_match_text": true,
+    "duplicate_opinion_key": [
+      "review_id",
+      "target_scope",
+      "statement_type",
+      "aspect",
+      "sentiment",
+      "reason_code",
+      "evidence span"
+    ],
+    "new_reasons": "정의되지 않은 이유는 reason_candidates(status=pending_review)로만 저장하고 온톨로지에 자동 등록하지 않는다"
+  },
+  "counting_rules": {
+    "review_count": "같은 리뷰가 같은 (속성, 감성[, 이유])를 여러 번 말해도 1건",
+    "opinion_count": "의견 인스턴스 수. 리뷰 수와 구분해 함께 제공",
+    "mixed": "sentiment=mixed 의견은 긍정·부정 양쪽 리뷰 수에 각각 포함하고 mixed_reviews로 따로 센다",
+    "group_rollup": "group 집계는 자식 속성 의견을 합친 고유 리뷰 수(자식 합계가 아님)",
+    "related_aspects": "related 연결은 집계에 더하지 않는다",
+    "scope": "current_product 의견만 상품 속성 통계. 나머지는 scope별 별도 수",
+    "tiers": "gold·silver·prediction은 절대 합산하지 않는다. 한 응답은 하나의 tier와 하나의 model_version만 사용",
+    "comparison_over_time": "기간 비교는 같은 ontology_version·model_version에서만"
+  },
+  "changelog": [
+    {
+      "date": "2026-10-18",
+      "change": "상품군(ProductCategory) 개념·관계·이유별 적용 상품군 제거. cheese_flavor 단서를 \"치즈\"로 축소(상품군 범위 제거로 수산물 \"고소\"에 오매칭되는 것을 방지)"
+    },
+    {
+      "date": "2026-10-19",
+      "change": "정책 2개 추가: 용도 만족→종합 만족, 원료 불신·애매한 불만→종합 불만"
+    },
+    {
+      "date": "2026-10-19",
+      "change": "정책 2개 추가: 기름 조리 필요→조리 결과 부정, 짧은 칭찬·쟁여템·추천→종합 만족"
+    }
+  ],
+  "label_policies": [
+    {
+      "id": "usage_context_to_overall",
+      "decided": "2026-10-19",
+      "by": "프로젝트 담당자",
+      "rule": "용도·상황 만족(안주·간식으로 좋다)은 overall_satisfaction positive"
+    },
+    {
+      "id": "vague_complaint_to_overall",
+      "decided": "2026-10-19",
+      "by": "프로젝트 담당자",
+      "rule": "원료 불신(가짜·천연 아님·유화제 등)과 대상이 애매한 불만은 overall_satisfaction negative. 적재 시 out_of_scope 평가 중 부정·애매 감성은 이 규칙으로 옮기고 info:policy_vague_complaint_to_overall 표시"
+    },
+    {
+      "id": "oil_frying_needed_to_cooking_result",
+      "decided": "2026-10-19",
+      "by": "프로젝트 담당자",
+      "rule": "\"기름에 튀겨야 맛있다\"처럼 에어프라이어로는 부족하다는 말은 cooking_result negative. 평가 없이 조리 방법만 말하면 fact. 5점 리뷰의 팁 성격 문장도 불만으로 집계한다(2026-10-19 담당자 확인)"
+    },
+    {
+      "id": "short_praise_to_overall",
+      "decided": "2026-10-19",
+      "by": "프로젝트 담당자",
+      "rule": "\"벌써 다 먹었어요\", \"쟁여템\", \"굿\", \"추천합니다\", \"역시 맘스터치\"는 overall_satisfaction positive"
+    },
+    {
+      "id": "repeat_order_and_mild",
+      "decided": "2026-10-19",
+      "by": "프로젝트 담당자",
+      "rule": "\"자주 주문합니다\"는 purchase_intent positive, \"최고에요\"는 overall_satisfaction positive, \"그냥 그래요\"는 overall_satisfaction neutral"
+    }
+  ]
+}

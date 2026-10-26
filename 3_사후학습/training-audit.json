@@ -1,0 +1,17 @@
+{
+  "first_step_gradient_norms": {
+    "encoder_last_layer": 2.486332654953003,
+    "generator_last_layer": 0.5890111327171326
+  },
+  "three_epoch_parameter_change_norms": {
+    "electra.encoder.layer.0.attention.self.query.weight": 0.7871293425559998,
+    "electra.encoder.layer.11.output.dense.weight": 1.5132269859313965
+  },
+  "joint_training_seconds": 2375.602229500015,
+  "corruption_bank_sha256": {
+    "validation": "c6690825b0471e1f62e9a42ec95d2d5236508a59b0dd0dbe35ae34bef2ec3e23",
+    "test": "b5ced546adb6aca3cbee2d860c848fc7d9da6f633d35006b3f202ba1175ab639"
+  },
+  "peak_gpu_allocated_gib": 4.158932685852051,
+  "model_digest_after_epoch3": "c02e9199205ccfe8a499dea7483bba2ca6c356ba6abc184ba015ba907c703173"
+}

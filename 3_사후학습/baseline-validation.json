@@ -1,0 +1,17 @@
+{
+  "reviews": 2000,
+  "content_tokens": 25897,
+  "actually_replaced_tokens": 3181,
+  "fixed_corruption_token_bce": 0.2705765368556656,
+  "replaced_precision": 0.7194787379972565,
+  "replaced_recall": 0.3297705124174788,
+  "replaced_f1": 0.4522526406553136,
+  "roc_auc": 0.8459096145514016,
+  "average_precision": 0.5535426131313896,
+  "tp": 1049,
+  "fp": 409,
+  "fn": 2132,
+  "tn": 22307,
+  "generator_mlm_ce": 3.5090274255592124,
+  "generator_masked_token_accuracy": 0.39789135915654367
+}

@@ -1,0 +1,117 @@
+{
+  "encoder": "C:\\Users\\MingyunKang\\Desktop\\2026\\06. BiBi\\3_사후학습\\frozen-encoder",
+  "units": 747,
+  "excluded": {
+    "mixed_pos_neg": 2,
+    "ambiguous_or_neutral": 31
+  },
+  "label_counts": {
+    "POS": 367,
+    "NEG": 217,
+    "NONE": 163
+  },
+  "concessive_units": 66,
+  "settings": {
+    "epochs": 5,
+    "lr": 3e-05,
+    "batch": 16,
+    "warmup": 0.1
+  },
+  "runs": [
+    {
+      "repeat": 0,
+      "variant": "a",
+      "accuracy": 0.8447121820615796,
+      "macro_f1": 0.810261922306704,
+      "per_class_f1": {
+        "POS": 0.9134487350199734,
+        "NEG": 0.8571428571428571,
+        "NONE": 0.6601941747572816
+      },
+      "concessive_accuracy": 0.6818181818181818,
+      "confusion": [
+        [
+          343,
+          3,
+          21
+        ],
+        [
+          8,
+          186,
+          23
+        ],
+        [
+          33,
+          28,
+          102
+        ]
+      ]
+    },
+    {
+      "repeat": 1,
+      "variant": "a",
+      "accuracy": 0.8433734939759037,
+      "macro_f1": 0.8115497889512762,
+      "per_class_f1": {
+        "POS": 0.9142091152815014,
+        "NEG": 0.8537735849056604,
+        "NONE": 0.6666666666666666
+      },
+      "concessive_accuracy": 0.696969696969697,
+      "confusion": [
+        [
+          341,
+          2,
+          24
+        ],
+        [
+          7,
+          181,
+          29
+        ],
+        [
+          31,
+          24,
+          108
+        ]
+      ]
+    },
+    {
+      "repeat": 2,
+      "variant": "a",
+      "accuracy": 0.8460508701472557,
+      "macro_f1": 0.8118164819719519,
+      "per_class_f1": {
+        "POS": 0.9151193633952255,
+        "NEG": 0.8558139534883721,
+        "NONE": 0.6645161290322581
+      },
+      "concessive_accuracy": 0.6515151515151515,
+      "confusion": [
+        [
+          345,
+          3,
+          19
+        ],
+        [
+          8,
+          184,
+          25
+        ],
+        [
+          34,
+          26,
+          103
+        ]
+      ]
+    }
+  ],
+  "summary": {
+    "a": {
+      "accuracy": 0.8447121820615796,
+      "macro_f1": 0.8112093977433107,
+      "concessive_accuracy": 0.6767676767676768
+    }
+  },
+  "seconds": 123.3056774000288
+}

@@ -1,0 +1,7070 @@
+{
+  "_guide": {
+    "할 일": "리뷰마다 opinions에 의견을 추가하고, 다 봤으면 done을 true로 바꾼다. 의견이 하나도 없으면 opinions는 []로 두고 done만 true.",
+    "의견 형식": {
+      "evidence": "원문 구절을 그대로 복사 (띄어쓰기·맞춤법 고치지 않음)",
+      "aspect": "아래 속성 중 하나",
+      "sentiment": "아래 감성 중 하나",
+      "target": "기본값 \"이 상품\". 다른 상품 얘기면 \"다른 상품\""
+    },
+    "의견 나누기": "속성이나 감성이 다르면 의견을 따로 만든다. 같은 구절이 두 속성에 걸치면 의견 2개로 같은 구절을 써도 된다.",
+    "속성": {
+      "맛": "맛·냄새 (맛있다, 짜다, 밀가루 맛, 이상한 냄새)",
+      "식감": "바삭, 눅눅, 쫀득, 안 늘어남, 딱딱",
+      "재료구성": "치즈가 적다·많다, 튀김옷이 두껍다 (재료 비율)",
+      "양": "양·크기 (양이 많다, 크기가 작다)",
+      "품질": "녹아서 옴, 부서짐, 내용물 하자",
+      "신선도": "\"신선하다\", \"상했다\"처럼 직접 말한 것만",
+      "배송": "빠르다, 늦다 (\"잘 받았어요\"는 사실)",
+      "포장": "꼼꼼한 포장, 보냉·아이스팩, 터짐",
+      "가격": "저렴, 가성비, 비싸다",
+      "조리편의": "간편하다, 번거롭다",
+      "조리결과": "에어프라이어로 하니 터짐 등 조리 후 결과",
+      "설명일치": "안내·설명과 실제가 다름",
+      "종합만족": "무엇이 좋은지 없이 \"좋아요\", \"아이들이 잘 먹어요\", 용도 만족",
+      "종합불만": "무엇이 나쁜지 없이 \"별로예요\", 원료 불신 같은 애매한 불만",
+      "재구매": "\"또 살게요\", \"다시는 안 사요\"",
+      "사실": "평가 없는 사실 (\"간식으로 샀어요\", \"어제 받았어요\") — 감성은 \"해당없음\"",
+      "모름": "속성을 정말 모르겠을 때"
+    },
+    "감성": [
+      "긍정",
+      "부정",
+      "중립",
+      "혼합",
+      "애매",
+      "해당없음"
+    ],
+    "대상": [
+      "이 상품",
+      "다른 상품",
+      "일반 경험",
+      "불명확"
+    ],
+    "예시": {
+      "text": "치즈가 고소하고 맛있는데 잘 안 늘어나요. 배송도 빨라요",
+      "opinions": [
+        {
+          "evidence": "치즈가 고소하고 맛있는데",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "잘 안 늘어나요",
+          "aspect": "식감",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "배송도 빨라요",
+          "aspect": "배송",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ]
+    },
+    "애매할 때": "note에 이유를 적어둔다. 별점은 일부러 뺐다 (별점은 정답이 아님).",
+    "자세한 기준": "04_AI분석/검수기준_한장요약.md"
+  },
+  "meta": {
+    "source_bundle": "review_bundle.json",
+    "source_bundle_sha256": "85ceca218b4233ef8127a55c393556001ff631807cf186908ee0effde7ef23a7",
+    "reviews": 300,
+    "text": "bibi_reviews.backbone.normalize_text(review_text_raw)",
+    "order": "sha256(20261022:review_id)",
+    "ai_drafts": false,
+    "ratings_shown": false
+  },
+  "reviews": [
+    {
+      "no": 1,
+      "review_id": "5052829032",
+      "product": "가마솥 활재첩국 500g 간편한 국요리 냉장보관 추어탕 미역국 시락 매생이",
+      "text": "모래씹히고 맛도 떱어요 그냥 변루였어요",
+      "opinions": [
+        {
+          "evidence": "모래씹히고",
+          "aspect": "식감",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛도 떱어요",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "그냥 변루였어요",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 2,
+      "review_id": "4831310850",
+      "product": "[네이버 단독]가시없는 노르웨이고등어 특대 플러스 99.9 제거 순살고등어 아기생선",
+      "text": "생선도 너무 작고.. 맛없어요 ㅠ",
+      "opinions": [
+        {
+          "evidence": "생선도 너무 작고..",
+          "aspect": "양",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛없어요 ㅠ",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 3,
+      "review_id": "4955334334",
+      "product": "훈제오리 슬라이스 800g,1.6kg 훈제오리고기",
+      "text": "가성비 대비 넘 괜찮은 오리고기 입니다 맛있어여",
+      "opinions": [
+        {
+          "evidence": "가성비 대비 넘 괜찮은 오리고기 입니다",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있어여",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 4,
+      "review_id": "4885481666",
+      "product": "진해수산업협동조합 세절 오징어 (냉동), 500g, 2개입",
+      "text": "조리하기 편해서 좋긴 한데 살짝 볶았는데도 질기네요.",
+      "opinions": [
+        {
+          "evidence": "조리하기 편해서 좋긴 한데",
+          "aspect": "조리편의",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "살짝 볶았는데도 질기네요.",
+          "aspect": "식감",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 5,
+      "review_id": "4756330240",
+      "product": "오징어젓갈 500g 오징어 젓",
+      "text": "오징어젖갈이 씹히는게 없고 납작한게 질기기만 해시 좀 더럽게 보이기도 하구 그래서 버렸어요.상품가치도 없는걸 돈받고 팔다니 악덕판매자네요",
+      "opinions": [
+        {
+          "evidence": "씹히는게 없고 납작한게 질기기만 해시",
+          "aspect": "식감",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "좀 더럽게 보이기도 하구",
+          "aspect": "품질",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "그래서 버렸어요.상품가치도 없는걸 돈받고 팔다니 악덕판매자네요",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 6,
+      "review_id": "4765949887",
+      "product": "손질 생 새우살 900g 깐새우 흰다리새우 탈각",
+      "text": "아..익히면 새우가 너무 작아져요 저번에 장바구니서 지운걸 까먹고 구매해버렸네요… 익어도 투명하고 작아져도 반이상 줄어드는 새우.. 실망",
+      "opinions": [
+        {
+          "evidence": "익히면 새우가 너무 작아져요",
+          "aspect": "양",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "저번에 장바구니서 지운걸 까먹고 구매해버렸네요…",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "익어도 투명하고",
+          "aspect": "품질",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "작아져도 반이상 줄어드는 새우..",
+          "aspect": "양",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "실망",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 7,
+      "review_id": "4767496368",
+      "product": "칵테일새우 900g 냉동 새우살 흰다리새우",
+      "text": "맛있고신선해오 잘먹고있습니다~~~~~~~~~~~~~",
+      "opinions": [
+        {
+          "evidence": "맛있고",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "신선해오",
+          "aspect": "신선도",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 8,
+      "review_id": "5070985740",
+      "product": "국내산 새우 1kg 제철 활새우 흰다리새우",
+      "text": "배송빠르고 정확한 안내 품질도 최고 입니다",
+      "opinions": [
+        {
+          "evidence": "배송빠르고",
+          "aspect": "배송",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "정확한 안내",
+          "aspect": "설명일치",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "품질도 최고 입니다",
+          "aspect": "품질",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 9,
+      "review_id": "4996336090",
+      "product": "사옹원 부침명장 한입 땡초 김치전 부추전 300g+300g",
+      "text": "고기부추전 처음인데 계속 구매할 듯요 고기도 많이 들었고 바삭하고 맛있어요",
+      "opinions": [
+        {
+          "evidence": "계속 구매할 듯요",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "고기도 많이 들었고",
+          "aspect": "재료구성",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "바삭하고",
+          "aspect": "식감",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 10,
+      "review_id": "4927892305",
+      "product": "해물모듬 5종 해물모둠 믹스 2팩",
+      "text": "맛없는 홍합살이 많아요 볶음밥에 넣어보니 홍합살이 거슬리네요",
+      "opinions": [
+        {
+          "evidence": "맛없는 홍합살이 많아요",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "홍합살이 많아요",
+          "aspect": "재료구성",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "홍합살이 거슬리네요",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 11,
+      "review_id": "4884751337",
+      "product": "포항 구룡포 햇 손질 과메기(10쪽 5미/20쪽 10미) 야채세트 꽁치",
+      "text": "야채랑 같이 잘왔어요 순식간에 먹어버려서 사진이 없네요 아쉬워요",
+      "opinions": [
+        {
+          "evidence": "야채랑 같이 잘왔어요",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "순식간에 먹어버려서 사진이 없네요 아쉬워요",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "사진을 남기지 못한 아쉬움은 상품 불만으로 분류하지 않음."
+    },
+    {
+      "no": 12,
+      "review_id": "4944529652",
+      "product": "솔방울 오징어 550g 2팩",
+      "text": "모양만 이쁘고 맛이나 식감 다 별로에요 그래도 음식인데요",
+      "opinions": [
+        {
+          "evidence": "모양만 이쁘고",
+          "aspect": "품질",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛이나",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "식감 다 별로에요",
+          "aspect": "식감",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 13,
+      "review_id": "5051767735",
+      "product": "동해안 구룡포 반건조오징어 피데기 마른오징어 쫄쫄이 당일바리",
+      "text": "맛나게 먹었습니다...",
+      "opinions": [
+        {
+          "evidence": "맛나게 먹었습니다...",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 14,
+      "review_id": "4908175195",
+      "product": "포항 구룡포 햇 손질 과메기(10쪽 5미/20쪽 10미) 야채세트 꽁치",
+      "text": "너무 구성이 좋앗습니다 너무 좋네요 ㅎㅎ",
+      "opinions": [
+        {
+          "evidence": "너무 구성이 좋앗습니다",
+          "aspect": "재료구성",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "너무 좋네요 ㅎㅎ",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 15,
+      "review_id": "4754116457",
+      "product": "새우머리튀김 500g, 1kg 새우튀김",
+      "text": "새우머리튀김 매콩하고 진짜진짜 맛있어요. 벌써 순삭 다 먹어버렸어요. 에프돌려 먹으니 진짜 바싹 맛있어요.",
+      "opinions": [
+        {
+          "evidence": "매콩하고",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "진짜진짜 맛있어요.",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "에프돌려 먹으니 진짜 바싹",
+          "aspect": "식감",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있어요.",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 16,
+      "review_id": "4888441677",
+      "product": "냉동 혼합야채(샐러드용 볶음밥용) 4종 1kg 야채믹스",
+      "text": "두개나 구매했어요 굿굿",
+      "opinions": [
+        {
+          "evidence": "두개나 구매했어요",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "굿굿",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 17,
+      "review_id": "5049706927",
+      "product": "블랙타이거 킹타이거새우 1미 대왕새우 소금구이",
+      "text": "사이즈 및 원물 좋습니다. 옆에 새우는 12미짜리라 작은게 아님에도 불구하고 사이즈 좋네요 미리 해동후 조리 추천 드립니다. 사이즈가 크다보니 3~5분정도 살짝 찐 후 팬프라잉이나 조리 하셔야 안퍽퍽하게 드실 수 있습니다.",
+      "opinions": [
+        {
+          "evidence": "사이즈 및 원물 좋습니다.",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "원물 좋습니다.",
+          "aspect": "품질",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "사이즈 좋네요",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "미리 해동후 조리 추천 드립니다.",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "3~5분정도 살짝 찐 후 팬프라잉이나 조리 하셔야 안퍽퍽하게 드실 수 있습니다.",
+          "aspect": "조리결과",
+          "sentiment": "중립",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "조리 시간·방법에 관한 조언이며 실제 조리 실패를 주장하는 내용은 아님."
+    },
+    {
+      "no": 18,
+      "review_id": "4696705080",
+      "product": "맘스터치 케이준 감자튀김 양념감자 에어프라이어튀김",
+      "text": "에어프라이어 190도/15분하면 완벽하게 먹기좋은 감튀가 됩니다. 중간에 한번 까불어주는 건 필수고요!! 어느정도 간이 되어있어 맛나요 저희는 한번 먹을 양으로 소분해서 냉동해둡니다",
+      "opinions": [
+        {
+          "evidence": "에어프라이어 190도/15분하면 완벽하게 먹기좋은 감튀가 됩니다.",
+          "aspect": "조리결과",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "중간에 한번 까불어주는 건 필수고요!!",
+          "aspect": "조리편의",
+          "sentiment": "중립",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "어느정도 간이 되어있어 맛나요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "저희는 한번 먹을 양으로 소분해서 냉동해둡니다",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 19,
+      "review_id": "4995820711",
+      "product": "먹기편하게 손질한 대게 스노우크랩 냉동 자숙 러시아",
+      "text": "가격대비 너무 기대했나 별로예요",
+      "opinions": [
+        {
+          "evidence": "가격대비 너무 기대했나 별로예요",
+          "aspect": "가격",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "가격대비 너무 기대했나 별로예요",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 20,
+      "review_id": "4805729976",
+      "product": "왕특대 경산 자인농협 샤인머스켓 고당도 프리미엄 망고포도 2kg 4kg 농장직송 선물용 가정용",
+      "text": "상한알들도 있고.. 다른것보다 당도가 너무떨어집니다 샤인머스캣이라고 하기도 민망하네요",
+      "opinions": [
+        {
+          "evidence": "상한알들도 있고..",
+          "aspect": "신선도",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "당도가 너무떨어집니다",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "샤인머스캣이라고 하기도 민망하네요",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 21,
+      "review_id": "4738100943",
+      "product": "칵테일새우 900g 냉동 새우살 흰다리새우",
+      "text": "신선식품이에도 불구하고 배송이 참 아쉬웠어요. 도착하기로 한 날 밤 10시가 지나서도 배송 되지 않아, 결국 다음날 수령해서 개봉하니 새우가 다 녹아있었어요. 물론 비비수산만의 온전한 잘못은 아니지만 아쉬웠던 기억이 나네요",
+      "opinions": [
+        {
+          "evidence": "배송이 참 아쉬웠어요.",
+          "aspect": "배송",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "도착하기로 한 날 밤 10시가 지나서도 배송 되지 않아, 결국 다음날 수령해서",
+          "aspect": "배송",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "새우가 다 녹아있었어요.",
+          "aspect": "품질",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 22,
+      "review_id": "4738189639",
+      "product": "99.9 가시제거 순살 가자미",
+      "text": "먹기 편해서 좋아요",
+      "opinions": [
+        {
+          "evidence": "먹기 편해서 좋아요",
+          "aspect": "조리편의",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 23,
+      "review_id": "4911437586",
+      "product": "포항 구룡포 햇 손질 과메기(10쪽 5미/20쪽 10미) 야채세트 꽁치",
+      "text": "맛있게 잘먹었습니다 대박나세요",
+      "opinions": [
+        {
+          "evidence": "맛있게 잘먹었습니다",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 24,
+      "review_id": "4769136685",
+      "product": "세척 문어 제수용 큰 사이즈 숙회 자숙문어",
+      "text": "푹삶아서먹었써요포장은꼼꼼해요",
+      "opinions": [
+        {
+          "evidence": "푹삶아서먹었써요",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "포장은꼼꼼해요",
+          "aspect": "포장",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 25,
+      "review_id": "4835817870",
+      "product": "99.9 가시제거 순살 가자미",
+      "text": "식단 중인데 너무 맛있어요!!!",
+      "opinions": [
+        {
+          "evidence": "식단 중인데",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "너무 맛있어요!!!",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 26,
+      "review_id": "4870373743",
+      "product": "포항 구룡포 햇 손질 과메기(10쪽 5미/20쪽 10미) 야채세트 꽁치",
+      "text": "맛있어요 조아요 굿 굿",
+      "opinions": [
+        {
+          "evidence": "맛있어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "조아요 굿 굿",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 27,
+      "review_id": "4660722879",
+      "product": "고기듬뿍 쫄깃한 한우 스지수육전골 1.3kg 밀키트 캠핑요리 소머리고기",
+      "text": "성인 2~3인분으로 전골처럼 먹기도 좋고 부추 얹혀서 그냥 국밥처럼 먹기도 좋은것 같습니다. (다만,,뭐랄까 전문점가서 먹으면 훨씬 더 맛있을 것 같은 느낌이랄까요? 집에서 해서 먹으니 편하긴 한데 뚝배기에 끓어먹었음 더 맛있었을듯)",
+      "opinions": [
+        {
+          "evidence": "성인 2~3인분으로 전골처럼 먹기도 좋고 부추 얹혀서 그냥 국밥처럼 먹기도 좋은것 같습니다.",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "전문점가서 먹으면 훨씬 더 맛있을 것 같은 느낌이랄까요?",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "집에서 해서 먹으니 편하긴 한데",
+          "aspect": "조리편의",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "뚝배기에 끓어먹었음 더 맛있었을듯",
+          "aspect": "조리결과",
+          "sentiment": "애매",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 28,
+      "review_id": "4986408281",
+      "product": "맘스터치 케이준 감자튀김 양념감자 에어프라이어튀김",
+      "text": "다 녹아서 와서 그런가 에어프라이에 하고 먹으면 눅눅한 편임",
+      "opinions": [
+        {
+          "evidence": "다 녹아서 와서",
+          "aspect": "품질",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "에어프라이에 하고 먹으면 눅눅한 편임",
+          "aspect": "식감",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 29,
+      "review_id": "4816728472",
+      "product": "모짜렐라 맘스터치 치즈스틱 1kg 간편한 에어프라이어요리",
+      "text": "생각보다 그냥그래요",
+      "opinions": [
+        {
+          "evidence": "생각보다 그냥그래요",
+          "aspect": "종합불만",
+          "sentiment": "중립",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "“그냥그래요”는 구체 속성이 없는 미온적 평가로 해석."
+    },
+    {
+      "no": 30,
+      "review_id": "4658732888",
+      "product": "독일 전통 비바크부어스트 소시지 비엔나 도이치부어스트 헨 소세지",
+      "text": "이것저것 살떄 같이 사기 좋",
+      "opinions": [
+        {
+          "evidence": "이것저것 살떄 같이 사기 좋",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 31,
+      "review_id": "4846899246",
+      "product": "젓갈 500g 오징어젓 갈치속젓 백명란",
+      "text": "맛있어서 친구한테 추천했어요~",
+      "opinions": [
+        {
+          "evidence": "맛있어서",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "친구한테 추천했어요",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 32,
+      "review_id": "4686769794",
+      "product": "동해안 구룡포 반건조오징어 피데기 마른오징어 쫄쫄이 당일바리",
+      "text": "오징어 작지만 맛나요~",
+      "opinions": [
+        {
+          "evidence": "오징어 작지만",
+          "aspect": "양",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛나요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 33,
+      "review_id": "4943492849",
+      "product": "맘스터치 시그니처 순살치킨 닭다리살 튀김 에어프라이어",
+      "text": "닭다리살 이라고해서 구매해봤어요 먹어보고 맛있으면 재구매하러올게요",
+      "opinions": [
+        {
+          "evidence": "닭다리살 이라고해서 구매해봤어요",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "먹어보고 맛있으면 재구매하러올게요",
+          "aspect": "재구매",
+          "sentiment": "중립",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 34,
+      "review_id": "4668772293",
+      "product": "칵테일새우 900g 냉동 새우살 흰다리새우",
+      "text": "새우가 탱글탱글합니다~!",
+      "opinions": [
+        {
+          "evidence": "새우가 탱글탱글합니다",
+          "aspect": "식감",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 35,
+      "review_id": "4718442105",
+      "product": "칵테일새우 900g 냉동 새우살 흰다리새우",
+      "text": "중국산인줄 모르고 샀네요 잘 확인해야겠어요",
+      "opinions": [
+        {
+          "evidence": "중국산인줄 모르고 샀네요 잘 확인해야겠어요",
+          "aspect": "종합불만",
+          "sentiment": "애매",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "중국산임을 뒤늦게 확인했다는 내용이며 제품 자체의 품질 결함은 명시하지 않음."
+    },
+    {
+      "no": 36,
+      "review_id": "4758459825",
+      "product": "[네이버 단독]가시없는 노르웨이고등어 특대 플러스 99.9 제거 순살고등어 아기생선",
+      "text": "항상 애용하는 제품입니다. 빠른 배송 감사합니다.",
+      "opinions": [
+        {
+          "evidence": "항상 애용하는 제품입니다.",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "빠른 배송 감사합니다.",
+          "aspect": "배송",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 37,
+      "review_id": "4863709680",
+      "product": "포항 구룡포 햇 손질 과메기(10쪽 5미/20쪽 10미) 야채세트 꽁치",
+      "text": "10쪽씩 두개로 포장되어 왔으며 야채도 넉넉히 왔네요 맛은 청어보다 꽁치과메기가 비린내 없고 깔끔합니다",
+      "opinions": [
+        {
+          "evidence": "10쪽씩 두개로 포장되어 왔으며",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "야채도 넉넉히 왔네요",
+          "aspect": "재료구성",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "꽁치과메기가 비린내 없고 깔끔합니다",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 38,
+      "review_id": "4961509353",
+      "product": "한성기업 몬스터크랩 72g 10개 크래미",
+      "text": "연육함량 높아서 일반맛살과는 틀림",
+      "opinions": [
+        {
+          "evidence": "연육함량 높아서",
+          "aspect": "재료구성",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "일반맛살과는 틀림",
+          "aspect": "종합만족",
+          "sentiment": "애매",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "일반 맛살과 다르다고만 하여 맛에 대한 명확한 감성은 판단하기 어려움."
+    },
+    {
+      "no": 39,
+      "review_id": "4780833564",
+      "product": "[네이버 단독]가시없는 노르웨이고등어 특대 플러스 99.9 제거 순살고등어 아기생선",
+      "text": "아이 먹일려고 주문했는데 제조일자 보고 놀랬네요 2024년12월10일 이라뇨..처음 주문해봤는데 왜 이렇게 오랜된걸 판매 하시는지..아이 먹일건데 찜찜해서 안먹이고 싶네요",
+      "opinions": [
+        {
+          "evidence": "제조일자 보고 놀랬네요 2024년12월10일 이라뇨..",
+          "aspect": "품질",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "왜 이렇게 오랜된걸 판매 하시는지..",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "아이 먹일건데 찜찜해서 안먹이고 싶네요",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 40,
+      "review_id": "4880074411",
+      "product": "고기듬뿍 쫄깃한 한우 스지수육전골 1.3kg 밀키트 캠핑요리 소머리고기",
+      "text": "배송 빨라서 좋아요 자주 이용할게요",
+      "opinions": [
+        {
+          "evidence": "배송 빨라서 좋아요",
+          "aspect": "배송",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "자주 이용할게요",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 41,
+      "review_id": "4897140951",
+      "product": "감자말이새우10+10개(총2팩) 새우튀김",
+      "text": "빠 른 배 송 좋 음",
+      "opinions": [
+        {
+          "evidence": "빠 른 배 송 좋 음",
+          "aspect": "배송",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 42,
+      "review_id": "4838303918",
+      "product": "사세 순살치킨 크리스피치킨 가라아게1k 에어프라이어 텐더 너겟",
+      "text": "맛이 별루네요. 예상했던 맛....",
+      "opinions": [
+        {
+          "evidence": "맛이 별루네요.",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "예상했던 맛....",
+          "aspect": "맛",
+          "sentiment": "중립",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 43,
+      "review_id": "4720009983",
+      "product": "고기듬뿍 쫄깃한 한우 스지수육전골 1.3kg 밀키트 캠핑요리 소머리고기",
+      "text": "포장도 잘 되어있고 맛도 좋아요 곰탕 베이스입니다",
+      "opinions": [
+        {
+          "evidence": "포장도 잘 되어있고",
+          "aspect": "포장",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛도 좋아요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "곰탕 베이스입니다",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 44,
+      "review_id": "4962740573",
+      "product": "칵테일새우 900g 냉동 새우살 흰다리새우",
+      "text": "곰팡이맛이나요. 먹다 버림 녹았다얼렸다 여러번했는지...짬뽕했는데 이거 다 어쩌나 고민",
+      "opinions": [
+        {
+          "evidence": "곰팡이맛이나요.",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "먹다 버림",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "녹았다얼렸다 여러번했는지...",
+          "aspect": "품질",
+          "sentiment": "애매",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "반복 해동·냉동은 작성자의 추측이며 확인된 사실이 아님."
+    },
+    {
+      "no": 45,
+      "review_id": "4983091426",
+      "product": "한성기업 몬스터크랩 72g 10개 크래미",
+      "text": "너무 싸게 잘 샀습니다! 크레미는 역시 이게 젤 맛있어요 배송도 빠르고 아주 좋습니다!! 강추!!!",
+      "opinions": [
+        {
+          "evidence": "너무 싸게 잘 샀습니다!",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "이게 젤 맛있어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "배송도 빠르고",
+          "aspect": "배송",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "아주 좋습니다!! 강추!!!",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 46,
+      "review_id": "4993930126",
+      "product": "모짜렐라 맘스터치 치즈스틱 1kg 간편한 에어프라이어요리",
+      "text": "치즈성분을 보고샀어야했는데..",
+      "opinions": [
+        {
+          "evidence": "치즈성분을 보고샀어야했는데..",
+          "aspect": "재료구성",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "치즈 성분에 대한 구체적 문제는 명시하지 않았으나 구매 후 아쉬움을 표현."
+    },
+    {
+      "no": 47,
+      "review_id": "4899162446",
+      "product": "훈제오리 슬라이스 800g,1.6kg 훈제오리고기",
+      "text": "빠르은 배송 좋아요",
+      "opinions": [
+        {
+          "evidence": "빠르은 배송 좋아요",
+          "aspect": "배송",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 48,
+      "review_id": "4933040829",
+      "product": "사옹원 부침명장 한입 땡초 김치전 부추전 300g+300g",
+      "text": "모에요 만없어요 ㅠㅠ밀가루맛' '",
+      "opinions": [
+        {
+          "evidence": "만없어요 ㅠㅠ밀가루맛",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "“모에요 만없어요”에 오탈자가 있어 직접적으로 해석 가능한 밀가루 맛 중심으로 분류."
+    },
+    {
+      "no": 49,
+      "review_id": "4777199446",
+      "product": "고기듬뿍 쫄깃한 한우 스지수육전골 1.3kg 밀키트 캠핑요리 소머리고기",
+      "text": "양도 많고 손질도 잘 되어 있습니다.",
+      "opinions": [
+        {
+          "evidence": "양도 많고",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "손질도 잘 되어 있습니다.",
+          "aspect": "품질",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 50,
+      "review_id": "4959840037",
+      "product": "사옹원 부침명장 한입 땡초 김치전 부추전 300g+300g",
+      "text": "김치전 간편하게 먹을 수 있어서 좋아요!",
+      "opinions": [
+        {
+          "evidence": "간편하게 먹을 수 있어서 좋아요!",
+          "aspect": "조리편의",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 51,
+      "review_id": "4657052743",
+      "product": "맘스터치 케이준 감자튀김 양념감자 에어프라이어튀김",
+      "text": "맛있게 먹었습니다. 양이 더 많으면 좋겠어요~~ㅎ",
+      "opinions": [
+        {
+          "evidence": "맛있게 먹었습니다.",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "양이 더 많으면 좋겠어요~~ㅎ",
+          "aspect": "양",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 52,
+      "review_id": "4752393071",
+      "product": "손질한 해물모듬 해물모둠 해물믹스",
+      "text": "싸고 맛있어요!! 많이 파세요!!",
+      "opinions": [
+        {
+          "evidence": "싸고",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있어요!!",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 53,
+      "review_id": "4823536799",
+      "product": "한성기업 몬스터크랩 72g 10개 20개 게살 크래미 맛살",
+      "text": "양도 많고 맛도 좋아요 너무 좋아요 추천합니다",
+      "opinions": [
+        {
+          "evidence": "양도 많고",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛도 좋아요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "너무 좋아요 추천합니다",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 54,
+      "review_id": "4833368423",
+      "product": "자숙 꼬막살 냉동 제철 삶은 꼬막 살 피꼬막살",
+      "text": "너무 비려요 좀 실멍입니다",
+      "opinions": [
+        {
+          "evidence": "너무 비려요",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "좀 실멍입니다",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 55,
+      "review_id": "4877873966",
+      "product": "왕새우튀김 브래드 새우튀김 300g (빵가루 토페도새우)",
+      "text": "에어 후라이기에 구우면 밀가루 맛이 많이 나요. 기름에 튀겨야 제맛이 납니다.",
+      "opinions": [
+        {
+          "evidence": "에어 후라이기에 구우면 밀가루 맛이 많이 나요.",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "기름에 튀겨야 제맛이 납니다.",
+          "aspect": "조리결과",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 56,
+      "review_id": "4868586891",
+      "product": "국내산 새우 1kg 제철 활새우 흰다리새우",
+      "text": "얼음팩은 녹아있고 새우는 흐물흐물했어요",
+      "opinions": [
+        {
+          "evidence": "얼음팩은 녹아있고",
+          "aspect": "포장",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "새우는 흐물흐물했어요",
+          "aspect": "품질",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 57,
+      "review_id": "4813069784",
+      "product": "[네이버 단독]가시없는 노르웨이고등어 특대 플러스 99.9 제거 순살고등어 아기생선",
+      "text": "빠른배송 가성비 좋아여",
+      "opinions": [
+        {
+          "evidence": "빠른배송",
+          "aspect": "배송",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "가성비 좋아여",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 58,
+      "review_id": "4801901630",
+      "product": "손질한 해물모듬 해물모둠 해물믹스",
+      "text": "믿고 사는 비비수산인데 진짜 이 상품은 실망입니다. 조개 껍질도 많고 오징어가 짝퉁같아요. 익지도 않고 처음부터 계속 누런색만 띄고 있습니다. 이러다 큰일나겠다 싶어 다 버렸습니다",
+      "opinions": [
+        {
+          "evidence": "이 상품은 실망입니다.",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "조개 껍질도 많고",
+          "aspect": "품질",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "오징어가 짝퉁같아요.",
+          "aspect": "품질",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "익지도 않고 처음부터 계속 누런색만 띄고 있습니다.",
+          "aspect": "조리결과",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "다 버렸습니다",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 59,
+      "review_id": "5072508148",
+      "product": "맘스터치 케이준 감자튀김 양념감자 에어프라이어튀김",
+      "text": "에어프라이어에 돌려먹으니 바삭하고 맛있어요.",
+      "opinions": [
+        {
+          "evidence": "에어프라이어에 돌려먹으니 바삭하고",
+          "aspect": "식감",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있어요.",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 60,
+      "review_id": "4701436720",
+      "product": "맘스터치 케이준 감자튀김 양념감자 에어프라이어튀김",
+      "text": "맛있어요 자주구매합니다 맘스터치 감튀에오ㅡ",
+      "opinions": [
+        {
+          "evidence": "맛있어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "자주구매합니다",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 61,
+      "review_id": "5044741738",
+      "product": "안키모 200g 아귀간 소세지 바다의 푸아그라",
+      "text": "아 이거 맛있네요 앞으로도 종종 시킬거 같아요",
+      "opinions": [
+        {
+          "evidence": "맛있네요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "앞으로도 종종 시킬거 같아요",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 62,
+      "review_id": "4650625779",
+      "product": "황토 햇 꿀 고구마 호풍미 황금호박고구마 밤고구마 베니하루카",
+      "text": "숙성시켜 물 넉넉히 넣고 삶았더니 너무 달고 물렁물렁 식감도 너무 좋고 너무 맛있게 먹었어요",
+      "opinions": [
+        {
+          "evidence": "너무 달고",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "물렁물렁 식감도 너무 좋고",
+          "aspect": "식감",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "너무 맛있게 먹었어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 63,
+      "review_id": "4871580805",
+      "product": "사세 버팔로윙봉 820g 치킨",
+      "text": "다먹어서 사진을 못올리네요 잘먹었습니다",
+      "opinions": [
+        {
+          "evidence": "다먹어서 사진을 못올리네요",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "잘먹었습니다",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 64,
+      "review_id": "4909761781",
+      "product": "손질 쭈꾸미 400g(200gX2팩) 16-20마리 냉동 주꾸미",
+      "text": "비비수산에서 자주 구매하는 제품들은 대부분 대만족이긴한데 한번씩 새로운 제품 구매하면 실망할때가 있어요 손질쭈꾸미가 딱 그런 제품... 열때부터 비린향 많이 나구요 소주+맛술로도 비린내가 사라지지 않아요 쫄깃한 식감없이 부드럽게 부서지는 식감이고 한번 데치고 사용했는데도 물이 꽤 많이 나와요 여러모로 아쉬움이 많은 제품이라 다른건 몰라도 손질쭈꾸미는 재구매는 없을거 같아요",
+      "opinions": [
+        {
+          "evidence": "대부분 대만족이긴한데",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "다른 상품"
+        },
+        {
+          "evidence": "새로운 제품 구매하면 실망할때가 있어요",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "일반 경험"
+        },
+        {
+          "evidence": "손질쭈꾸미가 딱 그런 제품...",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "열때부터 비린향 많이 나구요",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "소주+맛술로도 비린내가 사라지지 않아요",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "쫄깃한 식감없이 부드럽게 부서지는 식감이고",
+          "aspect": "식감",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "한번 데치고 사용했는데도 물이 꽤 많이 나와요",
+          "aspect": "조리결과",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "여러모로 아쉬움이 많은 제품이라",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "손질쭈꾸미는 재구매는 없을거 같아요",
+          "aspect": "재구매",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "비비수산에서 구매한 다른 제품에 대한 만족과 해당 쭈꾸미 상품에 대한 불만을 분리."
+    },
+    {
+      "no": 65,
+      "review_id": "5081303995",
+      "product": "독일 전통 비바크부어스트 소시지 비엔나 도이치부어스트 헨 소세지",
+      "text": "맛있어요~ 계란이랑 같이 볶아서 먹습니다.",
+      "opinions": [
+        {
+          "evidence": "맛있어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "계란이랑 같이 볶아서 먹습니다.",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 66,
+      "review_id": "4901434704",
+      "product": "99.9 가시제거 순살 가자미",
+      "text": "식단용으로 잘샀어요",
+      "opinions": [
+        {
+          "evidence": "식단용으로 잘샀어요",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 67,
+      "review_id": "4657554989",
+      "product": "99.9 가시제거 순살 가자미",
+      "text": "가시제거라써있는데 그냥 머리만없는가자미이였음 ㅜㅜ",
+      "opinions": [
+        {
+          "evidence": "가시제거라써있는데 그냥 머리만없는가자미이였음 ㅜㅜ",
+          "aspect": "설명일치",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 68,
+      "review_id": "4673544325",
+      "product": "수협 손질 오징어 500g 1kg 오징어채",
+      "text": "포장상태도 좋아 냉동실에 쟁여두면 요긴하게 한끼 만들 수 있어요",
+      "opinions": [
+        {
+          "evidence": "포장상태도 좋아",
+          "aspect": "포장",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "냉동실에 쟁여두면 요긴하게 한끼 만들 수 있어요",
+          "aspect": "조리편의",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 69,
+      "review_id": "4847824717",
+      "product": "포항 구룡포 햇 손질 과메기(10쪽 5미/20쪽 10미) 야채세트 꽁치",
+      "text": "과메기가 기름기가 넘 없네요 ㅠㅠ",
+      "opinions": [
+        {
+          "evidence": "기름기가 넘 없네요 ㅠㅠ",
+          "aspect": "재료구성",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 70,
+      "review_id": "4827274012",
+      "product": "훈제오리 슬라이스 800g,1.6kg 훈제오리고기",
+      "text": "중국산인지 제대로 안보고 샀네요 물인지 기름인지가 국산에 비해 많아요 요리할때 역했어요",
+      "opinions": [
+        {
+          "evidence": "중국산인지 제대로 안보고 샀네요",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "물인지 기름인지가 국산에 비해 많아요",
+          "aspect": "재료구성",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "요리할때 역했어요",
+          "aspect": "조리결과",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "원산지에 대한 추측을 상품 설명 불일치의 확인된 증거로 취급하지 않음."
+    },
+    {
+      "no": 71,
+      "review_id": "4714910846",
+      "product": "에어프라이어치킨 로스트 치킨 1마리+1마리",
+      "text": "맛 있어서 재구매 중인 상품입니다. 에어프라이어에 돌리면 아주 간도 맞고 좋아요",
+      "opinions": [
+        {
+          "evidence": "맛 있어서",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "재구매 중인 상품입니다.",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "에어프라이어에 돌리면 아주 간도 맞고 좋아요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 72,
+      "review_id": "4964874050",
+      "product": "해물모듬 5종 해물모둠 믹스 2팩",
+      "text": "와우 행사때 얼른 구매했어요 감사해요",
+      "opinions": [
+        {
+          "evidence": "와우 행사때 얼른 구매했어요 감사해요",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 73,
+      "review_id": "5038469837",
+      "product": "한성기업 몬스터크랩 72g 10개 크래미",
+      "text": "너무 맛있네요 가성비도 좋고",
+      "opinions": [
+        {
+          "evidence": "너무 맛있네요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "가성비도 좋고",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 74,
+      "review_id": "4966154879",
+      "product": "동해안 구룡포 반건조오징어 피데기 마른오징어 쫄쫄이 당일바리",
+      "text": "버터구이 오징어가 먹고싶어 구입했어요 저녁에 맥주 한 잔 하며 구워먹었는데 정말 맛있네요 크기도 크고 도톰하고 큰사이즈라 더 맛있는 듯",
+      "opinions": [
+        {
+          "evidence": "버터구이 오징어가 먹고싶어 구입했어요",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "정말 맛있네요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "크기도 크고 도톰하고 큰사이즈라",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 75,
+      "review_id": "4916700008",
+      "product": "대구손포 슬라이스 400g 손질대구",
+      "text": "해동해보니 너무 작은 찌끄래기 모아놓은 듯해서 다음엔 구매하지 않을 듯 합니다.",
+      "opinions": [
+        {
+          "evidence": "너무 작은 찌끄래기 모아놓은 듯해서",
+          "aspect": "양",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "다음엔 구매하지 않을 듯 합니다.",
+          "aspect": "재구매",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 76,
+      "review_id": "4933144439",
+      "product": "케이준 감자튀김1kg+1kg",
+      "text": "재구매입니다 맛있어요",
+      "opinions": [
+        {
+          "evidence": "재구매입니다",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 77,
+      "review_id": "5004220390",
+      "product": "닭정육 뼈없는 순살 닭다리살 2kg",
+      "text": "냄새도없고 맛도 좋아요 😀",
+      "opinions": [
+        {
+          "evidence": "냄새도없고",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛도 좋아요 😀",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 78,
+      "review_id": "4929334443",
+      "product": "비비수산 오징어튀김 1kg 대용량",
+      "text": "작년에도 주문을 했었습니다, 물론 계산을 할때 배송비를 확인하지않고 결제한 제 잘못이긴 하지만, 7개 항목에 대해서 각 각의 배송비가 4천원씩 추가될줄은 몰랐습니다, 그전 주문에서도 분명히 한번의 배송비만 나갔으니까요, 배송이 오고도 놀랐지만 뒤늦게 상품 페이지에 배송비 방식이 바뀌었다는 안내도 없었고, 결제할때 한번더 확인하지않은 제 잘못이 크겠지만 오늘의 스트레스는 잊지 못할것같네요 추가 지급해버린 배송비와 한개씩 들어있던 7개의 스트로폼 박스도 그리고 수많은 얼음팩도요, 비비수산 이제 이용 안하겠습니다",
+      "opinions": [
+        {
+          "evidence": "각 각의 배송비가 4천원씩 추가될줄은 몰랐습니다",
+          "aspect": "가격",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "그전 주문에서도 분명히 한번의 배송비만 나갔으니까요",
+          "aspect": "가격",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "상품 페이지에 배송비 방식이 바뀌었다는 안내도 없었고",
+          "aspect": "설명일치",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "추가 지급해버린 배송비",
+          "aspect": "가격",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "한개씩 들어있던 7개의 스트로폼 박스도 그리고 수많은 얼음팩도요",
+          "aspect": "포장",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "비비수산 이제 이용 안하겠습니다",
+          "aspect": "재구매",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "배송비 정책 관련 불만이며 배송이 늦었다는 뜻은 아님."
+    },
+    {
+      "no": 79,
+      "review_id": "4950285652",
+      "product": "훈제오리 슬라이스 800g,1.6kg 훈제오리고기",
+      "text": "대용량에 착한가격 맛있어요",
+      "opinions": [
+        {
+          "evidence": "대용량에",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "착한가격",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 80,
+      "review_id": "4855477416",
+      "product": "칵테일새우 900g 냉동 새우살 흰다리새우",
+      "text": "아직도 한봉지 다못먹을만큼 흑내? 잡내가 많이납니다. 식구들은 아예 손도안대고.. 원산지 따라 차이가 큰거 같네요.",
+      "opinions": [
+        {
+          "evidence": "흑내? 잡내가 많이납니다.",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "식구들은 아예 손도안대고..",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "원산지 따라 차이가 큰거 같네요.",
+          "aspect": "종합불만",
+          "sentiment": "애매",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 81,
+      "review_id": "5074273207",
+      "product": "명태포 제수용 명태 슬라이스 700g+700g 동태전 동태포",
+      "text": "왼만하면 이런 리뷰 안쓰려고 했는데.. 명절에 정말 최악이였어요 명태포 1+1팩으로 2개 구매했는데 벌크로 왔어요 일단 생선모양이 일정하지않고 너무 들쑥날쑥함 포떠놓은걸 사는이유가 나름대로 모양이 일정해서 보기좋아 산건데.. 그리고 두번쨰로 가시가 정말 너~~~무 많습니다 3개 걸러 2개가 가시가 나올정도로 ... 많이나온건 포 떠놓은 한개에 8개가 뼈나왔어요 진짜.. 전붙이고 열심히 했는데 다들 드시다가 가시가 나오고 하니 어디서샀냐며.. 부끄러워 죽는줄 알았습니다",
+      "opinions": [
+        {
+          "evidence": "정말 최악이였어요",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "1+1팩으로 2개 구매했는데 벌크로 왔어요",
+          "aspect": "포장",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "생선모양이 일정하지않고 너무 들쑥날쑥함",
+          "aspect": "품질",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "가시가 정말 너~~~무 많습니다",
+          "aspect": "품질",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "포 떠놓은 한개에 8개가 뼈나왔어요",
+          "aspect": "품질",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "부끄러워 죽는줄 알았습니다",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 82,
+      "review_id": "4703385929",
+      "product": "순살 노르웨이고등어 진공 포장 1kg 손질 고등어 필렛",
+      "text": "제목은 손질 순살인데 잔가시 있다는 주의사항은 상세에 맨 밑에 있네요 다들 조심하세요",
+      "opinions": [
+        {
+          "evidence": "제목은 손질 순살인데 잔가시 있다는 주의사항은 상세에 맨 밑에 있네요",
+          "aspect": "설명일치",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "순살이라는 제목과 잔가시 안내의 충돌을 지적하며 실제 제품의 가시 여부는 확인되지 않음."
+    },
+    {
+      "no": 83,
+      "review_id": "5044088125",
+      "product": "맘스터치 케이준 감자튀김 양념감자 에어프라이어튀김",
+      "text": "아주 맛있게 잘먹었습니다 역시 👍",
+      "opinions": [
+        {
+          "evidence": "아주 맛있게 잘먹었습니다",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 84,
+      "review_id": "4791959684",
+      "product": "항공직송 노르웨이 생연어 딥스킨 연어회 필렛 스테이크 숙성연어",
+      "text": "시켜본연어중에 선도가 가장 떨어졌어요 살들이 좀 갈라지는게 아니라 심하게 갈라지고 씹는맛도 푸석한 물컹 냄새는 안나길래 그냥 먹었긴함 일부러 아이스팩 1개추가했고 아이스팩도 세개 다 반절정도 얼음이 있었는데..",
+      "opinions": [
+        {
+          "evidence": "선도가 가장 떨어졌어요",
+          "aspect": "신선도",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "살들이 좀 갈라지는게 아니라 심하게 갈라지고",
+          "aspect": "품질",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "씹는맛도 푸석한 물컹",
+          "aspect": "식감",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "냄새는 안나길래",
+          "aspect": "맛",
+          "sentiment": "중립",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "아이스팩도 세개 다 반절정도 얼음이 있었는데..",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 85,
+      "review_id": "4856183805",
+      "product": "칵테일새우 900g 냉동 새우살 흰다리새우",
+      "text": "감바스로 딱 좋아요",
+      "opinions": [
+        {
+          "evidence": "감바스로 딱 좋아요",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 86,
+      "review_id": "4902776140",
+      "product": "진도 프리미엄 세번 구운 곱창김 28g x10팩 구운김 선물세트",
+      "text": "너무 맛있어요 명절선물로 구입했습니다",
+      "opinions": [
+        {
+          "evidence": "너무 맛있어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "명절선물로 구입했습니다",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 87,
+      "review_id": "4938478223",
+      "product": "해물모듬 5종 해물모둠 믹스 2팩",
+      "text": "저렴하게 잘 샀습니다 많이 파세요",
+      "opinions": [
+        {
+          "evidence": "저렴하게 잘 샀습니다",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 88,
+      "review_id": "4705182175",
+      "product": "에어프라이어치킨 로스트 치킨 1마리+1마리",
+      "text": "넘나맛잇어요 쟁여두세요",
+      "opinions": [
+        {
+          "evidence": "넘나맛잇어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "쟁여두세요",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 89,
+      "review_id": "4752679715",
+      "product": "사세 버팔로윙 순살치킨 가라아게 버팔로스틱 봉 치킨 텐더 너겟 후라이드근위",
+      "text": "사세 가라아게 1+1이어서 저렴히구매했어요 역시 사세 존멋탱입니다요 배송도 너무 빠르고 좋아요🥰",
+      "opinions": [
+        {
+          "evidence": "1+1이어서 저렴히구매했어요",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "역시 사세 존멋탱입니다요",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "배송도 너무 빠르고 좋아요🥰",
+          "aspect": "배송",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 90,
+      "review_id": "4787942991",
+      "product": "냉동 꽁치 1kg, 2개",
+      "text": "사이즈도 좋고 포장상태괜찮아요",
+      "opinions": [
+        {
+          "evidence": "사이즈도 좋고",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "포장상태괜찮아요",
+          "aspect": "포장",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 91,
+      "review_id": "4783239540",
+      "product": "한성기업 몬스터크랩 72g 10개 20개 게살 크래미 맛살",
+      "text": "크래미 계란찜에 넣어 먹으니 꿀맛이에요 잘 샀어요 감사해요",
+      "opinions": [
+        {
+          "evidence": "크래미 계란찜에 넣어 먹으니 꿀맛이에요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "잘 샀어요",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 92,
+      "review_id": "4812857547",
+      "product": "맘스터치 버터플라이 쉬림프 새우튀김 1kg(왕새우튀김 50gX20개)",
+      "text": "괜찮은듯하기도 그냥 그런듯하기도. 난해함.",
+      "opinions": [
+        {
+          "evidence": "괜찮은듯하기도 그냥 그런듯하기도. 난해함.",
+          "aspect": "종합만족",
+          "sentiment": "애매",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "괜찮다는 반응과 그저 그렇다는 반응이 공존해 감성 판단이 불명확."
+    },
+    {
+      "no": 93,
+      "review_id": "5030688678",
+      "product": "타코야끼 1kg 50개입 타꼬야끼 문어빵 문어볼 타코야키",
+      "text": "타코 잘 받았습니다",
+      "opinions": [
+        {
+          "evidence": "타코 잘 받았습니다",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 94,
+      "review_id": "4802812878",
+      "product": "맘스터치 케이준 감자튀김 양념감자 에어프라이어튀김",
+      "text": "개인적으로 케이준 감자튀김을 정말 좋아하는데 맘스터치 감자튀김이라고 해서 구매했다가 넘 맛있게 먹어서 2봉지 재구매 했습니당~!",
+      "opinions": [
+        {
+          "evidence": "넘 맛있게 먹어서",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "2봉지 재구매 했습니당~!",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 95,
+      "review_id": "4826395597",
+      "product": "칵테일새우 900g 냉동 새우살 흰다리새우",
+      "text": "새우 실하고 맛나요 ㅎㅎ",
+      "opinions": [
+        {
+          "evidence": "새우 실하고",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛나요 ㅎㅎ",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 96,
+      "review_id": "4933438546",
+      "product": "세진 통통 고추튀김 1kg 업소용 식당 분식 바삭한 튀김 술안주",
+      "text": "세진 통통 시리즈는 갑이예요.",
+      "opinions": [
+        {
+          "evidence": "세진 통통 시리즈는 갑이예요.",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 97,
+      "review_id": "4885889944",
+      "product": "초밥 재료 초새우 초문어 초한치 계란 조미유부",
+      "text": "주문하고 생각보다 훨씬 빨리 도착해서 깜짝 놀랐습니다! 혹시나 배송 중에 파손되지 않을까 걱정했는데, 박스를 열어보니 포장을 정말 꼼꼼하고 튼튼하게 해주셔서 흠집 하나 없이 안전하게 잘 받았습니다. 덕분에 기분 좋게 상품 사용할 수 있을 것 같네요. 판매자님도 오늘 하루 행복하고 기분 좋은 일만 가득하시길 바라겠습니다!",
+      "opinions": [
+        {
+          "evidence": "생각보다 훨씬 빨리 도착해서 깜짝 놀랐습니다!",
+          "aspect": "배송",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "포장을 정말 꼼꼼하고 튼튼하게 해주셔서",
+          "aspect": "포장",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "흠집 하나 없이 안전하게 잘 받았습니다.",
+          "aspect": "품질",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 98,
+      "review_id": "4648873667",
+      "product": "살아있는 완도 활전복 1kg 활 전복 참전복 선물세트",
+      "text": "잘좀............",
+      "opinions": [
+        {
+          "evidence": "잘좀............",
+          "aspect": "모름",
+          "sentiment": "애매",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "“잘좀............”만으로 불만의 구체 대상이나 정도를 특정하기 어려움."
+    },
+    {
+      "no": 99,
+      "review_id": "4656803052",
+      "product": "사세 버팔로윙 순살치킨 가라아게 버팔로스틱 봉 치킨 텐더 너겟 후라이드근위",
+      "text": "튀김옷이 너무 두껍고 짜요...",
+      "opinions": [
+        {
+          "evidence": "튀김옷이 너무 두껍고",
+          "aspect": "재료구성",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "짜요...",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 100,
+      "review_id": "4660246450",
+      "product": "상급 명태알(동태) 명태고니(곤이 명태곤) 500g 생선고니 알탕재료",
+      "text": "맛있었어요.....",
+      "opinions": [
+        {
+          "evidence": "맛있었어요.....",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 101,
+      "review_id": "4961676133",
+      "product": "국내산 새우젓 강화도 햇 가을 추젓 육젓 특상품 동백하 생새우",
+      "text": "두번째 주문했어요 육젓 맛있어서 그냥도 먹고 김치도 담습니다 계속 구매할게요~^^",
+      "opinions": [
+        {
+          "evidence": "두번째 주문했어요",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "육젓 맛있어서",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "계속 구매할게요~^^",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 102,
+      "review_id": "4879447582",
+      "product": "모짜렐라 맘스터치 치즈스틱 1kg 간편한 에어프라이어요리",
+      "text": "배송빠르고양많음 ㅋ",
+      "opinions": [
+        {
+          "evidence": "배송빠르고",
+          "aspect": "배송",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "양많음 ㅋ",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 103,
+      "review_id": "4902063834",
+      "product": "홍야 직화 고기짬뽕 2인분 1260g 면2 소스2",
+      "text": "일반적인 짬뽕 맛이에요. 별다른 건 없네요.",
+      "opinions": [
+        {
+          "evidence": "일반적인 짬뽕 맛이에요.",
+          "aspect": "맛",
+          "sentiment": "중립",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "별다른 건 없네요.",
+          "aspect": "종합불만",
+          "sentiment": "중립",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 104,
+      "review_id": "4948372354",
+      "product": "맘스터치 시그니처 순살치킨 닭다리살 튀김 에어프라이어",
+      "text": "또띠아에 싸먹으니 정말 맛있어요.",
+      "opinions": [
+        {
+          "evidence": "또띠아에 싸먹으니 정말 맛있어요.",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 105,
+      "review_id": "4651706119",
+      "product": "맘스터치 케이준 감자튀김 양념감자 에어프라이어튀김",
+      "text": "좋은 제품이에요 ..",
+      "opinions": [
+        {
+          "evidence": "좋은 제품이에요 ..",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 106,
+      "review_id": "4974441124",
+      "product": "한성기업 몬스터크랩 72g 10개 크래미",
+      "text": "저렴한데 무료배송이라 더 좋아용",
+      "opinions": [
+        {
+          "evidence": "저렴한데",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "무료배송이라 더 좋아용",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 107,
+      "review_id": "4849095222",
+      "product": "포항 구룡포 햇 손질 과메기(10쪽 5미/20쪽 10미) 야채세트 꽁치",
+      "text": "오우 맛있어요 ! 올해 첫 과매기 잘 샀네요 맛있게 묵었어요 !",
+      "opinions": [
+        {
+          "evidence": "맛있어요 !",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있게 묵었어요 !",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 108,
+      "review_id": "4880722813",
+      "product": "닭정육 뼈없는 순살 닭다리살 2kg",
+      "text": "배송상태가 너무 좋아서 안심했습니다!",
+      "opinions": [
+        {
+          "evidence": "배송상태가 너무 좋아서 안심했습니다!",
+          "aspect": "배송",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 109,
+      "review_id": "4844549900",
+      "product": "대구 북성로 연탄 불고기 돼지불고기 간장 고추장",
+      "text": "첨먹어봤는데 기대대요",
+      "opinions": [
+        {
+          "evidence": "첨먹어봤는데 기대대요",
+          "aspect": "종합만족",
+          "sentiment": "애매",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "기대하는 감정을 나타내지만 아직 먹어본 후의 평가인지는 불명확."
+    },
+    {
+      "no": 110,
+      "review_id": "4650545393",
+      "product": "부산 야시장 당면만두 (냉장보관) 옛날 야끼만두 군만두",
+      "text": "맛있어요.잘 먹을게요",
+      "opinions": [
+        {
+          "evidence": "맛있어요.",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 111,
+      "review_id": "4765380402",
+      "product": "맘스터치 케이준 감자튀김 양념감자 에어프라이어튀김",
+      "text": "감자튀김 넘 맛있어요",
+      "opinions": [
+        {
+          "evidence": "감자튀김 넘 맛있어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 112,
+      "review_id": "4917642977",
+      "product": "냉동과일 두리안 450g 열대과일 냉동과일",
+      "text": "역시 맛있습니다 강추입니다",
+      "opinions": [
+        {
+          "evidence": "역시 맛있습니다",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "강추입니다",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 113,
+      "review_id": "4682272097",
+      "product": "손질 쭈꾸미 400g(200gX2팩) 16-20마리 냉동 주꾸미",
+      "text": "급할때 바로해먹기 좋은 양이예요",
+      "opinions": [
+        {
+          "evidence": "급할때 바로해먹기 좋은 양이예요",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "급할때 바로해먹기 좋은 양이예요",
+          "aspect": "조리편의",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 114,
+      "review_id": "4958273572",
+      "product": "한성기업 몬스터크랩 72g 10개 크래미",
+      "text": "아주 맛있습니다 각종요리에 넣어서 맛나게 먹었어요.",
+      "opinions": [
+        {
+          "evidence": "아주 맛있습니다",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "각종요리에 넣어서 맛나게 먹었어요.",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 115,
+      "review_id": "5029716054",
+      "product": "알탕 700g 마트납품 그대로 완제품",
+      "text": "알이너무 적어요. 지리탕인지. 두번다시 구매는 하지않을것같네요. 양념장도 그다지 별맛없고 양이 적어 다른양념 추가해야되여",
+      "opinions": [
+        {
+          "evidence": "알이너무 적어요.",
+          "aspect": "재료구성",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "두번다시 구매는 하지않을것같네요.",
+          "aspect": "재구매",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "양념장도 그다지 별맛없고",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "양이 적어 다른양념 추가해야되여",
+          "aspect": "조리편의",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "양이 적어",
+          "aspect": "재료구성",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 116,
+      "review_id": "5067860583",
+      "product": "[네이버 단독]가시없는 노르웨이고등어 특대 플러스 99.9 제거 순살고등어 아기생선",
+      "text": "잘 못 구워서 퍽퍽할 수 있다고 치고, 노르웨이 고등어의 고소한 기름기가 적고, 가장 큰 문제는 비려요. 비추. 장어낚시 미끼로나 써야겠어요. 낚시나 통발 미끼로 강추합니다.",
+      "opinions": [
+        {
+          "evidence": "잘 못 구워서 퍽퍽할 수 있다고 치고",
+          "aspect": "식감",
+          "sentiment": "애매",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "노르웨이 고등어의 고소한 기름기가 적고",
+          "aspect": "재료구성",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "가장 큰 문제는 비려요.",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "비추.",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "퍽퍽한 식감은 작성자 스스로 조리 실패 가능성을 제기해 애매로 처리."
+    },
+    {
+      "no": 117,
+      "review_id": "4805831311",
+      "product": "한성기업 몬스터크랩 72g 10개 20개 게살 크래미 맛살",
+      "text": "여전히 계란 씹히는 느낌이 납니다",
+      "opinions": [
+        {
+          "evidence": "여전히 계란 씹히는 느낌이 납니다",
+          "aspect": "식감",
+          "sentiment": "애매",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "“계란 씹히는 느낌” 자체의 선호·불호를 알 수 없음."
+    },
+    {
+      "no": 118,
+      "review_id": "4881889545",
+      "product": "칵테일새우 900g 냉동 새우살 흰다리새우",
+      "text": "유명하다고해서 구매했어요 다먹고 재구매할게요~!",
+      "opinions": [
+        {
+          "evidence": "유명하다고해서 구매했어요",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "다먹고 재구매할게요~!",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 119,
+      "review_id": "4963735011",
+      "product": "닭정육 뼈없는 순살 닭다리살 2kg",
+      "text": "닭고기가 맞는체질입니다. 후라이팬에 구워서 양념하고 각종. 야채와 먹으니 맛이 좋습니다",
+      "opinions": [
+        {
+          "evidence": "닭고기가 맞는체질입니다.",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛이 좋습니다",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 120,
+      "review_id": "4881260023",
+      "product": "포항 구룡포 햇 손질 과메기(10쪽 5미/20쪽 10미) 야채세트 꽁치",
+      "text": "야채가 참 많네요^^ 맛있어요. 왕추천!!!!",
+      "opinions": [
+        {
+          "evidence": "야채가 참 많네요^^",
+          "aspect": "재료구성",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있어요.",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "왕추천!!!!",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 121,
+      "review_id": "5070739505",
+      "product": "명태포 슬라이스 700g 동태포",
+      "text": "안 녹고 잘 왔어요. 포 두께 적당합니다. 내일 맛나게 구워볼께요~",
+      "opinions": [
+        {
+          "evidence": "안 녹고 잘 왔어요.",
+          "aspect": "품질",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "포 두께 적당합니다.",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "내일 맛나게 구워볼께요",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 122,
+      "review_id": "4957043768",
+      "product": "해물모듬 5종 해물모둠 믹스 2팩",
+      "text": "괜찮아서 재구매했는데 냄새가 마니나네요",
+      "opinions": [
+        {
+          "evidence": "괜찮아서 재구매했는데",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "냄새가 마니나네요",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 123,
+      "review_id": "5001265507",
+      "product": "해물모듬 5종 해물모둠 믹스 2팩",
+      "text": "다양한 요리에 사용하기 좋은제품이에요",
+      "opinions": [
+        {
+          "evidence": "다양한 요리에 사용하기 좋은제품이에요",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 124,
+      "review_id": "5063894280",
+      "product": "한성기업 몬스터크랩 72g 10개 크래미",
+      "text": "입안에서 살살 녹는게 또 시키고싶네오",
+      "opinions": [
+        {
+          "evidence": "입안에서 살살 녹는게",
+          "aspect": "식감",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "또 시키고싶네오",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 125,
+      "review_id": "4659920300",
+      "product": "맘스터치 케이준 감자튀김 양념감자 에어프라이어튀김",
+      "text": "맘스터치 감자튀김이 젤 맛있어서 사봤어요 아직 시식전이지만 비슷하겠지요",
+      "opinions": [
+        {
+          "evidence": "맘스터치 감자튀김이 젤 맛있어서",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "다른 상품"
+        },
+        {
+          "evidence": "아직 시식전이지만 비슷하겠지요",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "구매한 상품은 아직 시식 전이며 맛있다는 평가는 기존 맘스터치 감자튀김을 가리킴."
+    },
+    {
+      "no": 126,
+      "review_id": "4633896126",
+      "product": "황토 햇 꿀 고구마 호풍미 황금호박고구마 밤고구마 베니하루카",
+      "text": "완전 호박고구마에요. 군고구마해먹으니 너무 맛있네요",
+      "opinions": [
+        {
+          "evidence": "완전 호박고구마에요.",
+          "aspect": "설명일치",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "군고구마해먹으니 너무 맛있네요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 127,
+      "review_id": "4803001232",
+      "product": "한성기업 몬스터크랩 72g 10개 20개 게살 크래미 맛살",
+      "text": "아이들이 좋아합니다!",
+      "opinions": [
+        {
+          "evidence": "아이들이 좋아합니다!",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 128,
+      "review_id": "4927732927",
+      "product": "비비수산 깔끔하게 손질된 가자미 1kg",
+      "text": "사이즈가 너무 작아요. 손작은편인데 손사이즈랑 비슷 담엔 뼈없는걸로 사보려구여.",
+      "opinions": [
+        {
+          "evidence": "사이즈가 너무 작아요.",
+          "aspect": "양",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "손작은편인데 손사이즈랑 비슷",
+          "aspect": "양",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "담엔 뼈없는걸로 사보려구여.",
+          "aspect": "재구매",
+          "sentiment": "애매",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 129,
+      "review_id": "4881444188",
+      "product": "모짜렐라 맘스터치 치즈스틱 1kg 간편한 에어프라이어요리",
+      "text": "다좋은데 맛이 너무 없어요",
+      "opinions": [
+        {
+          "evidence": "다좋은데",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛이 너무 없어요",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 130,
+      "review_id": "4941275341",
+      "product": "[네이버 단독]가시없는 노르웨이고등어 특대 플러스 99.9 제거 순살고등어 아기생선",
+      "text": "아직 먹어 보진 않았지만 맛있겠죠.",
+      "opinions": [
+        {
+          "evidence": "아직 먹어 보진 않았지만 맛있겠죠.",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "맛에 대한 실제 경험이 아닌 기대 표현이므로 긍정 맛 평가로 간주하지 않음."
+    },
+    {
+      "no": 131,
+      "review_id": "4734649464",
+      "product": "추억의 옛날 경양식 소디프 돈까스 10장(1350g) 돈가스",
+      "text": "처음에는 옛날에 피카츄 돈까스 같아서 맛있게 먹었는데 계속 먹다보니까 느끼해서 다 버렸어요 지방 양을 좀 줄였으면 좋겠어요",
+      "opinions": [
+        {
+          "evidence": "처음에는 옛날에 피카츄 돈까스 같아서 맛있게 먹었는데",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "계속 먹다보니까 느끼해서",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "다 버렸어요",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "지방 양을 좀 줄였으면 좋겠어요",
+          "aspect": "재료구성",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 132,
+      "review_id": "4766319069",
+      "product": "냉동 혼합야채(샐러드용 볶음밥용) 4종 1kg 야채믹스",
+      "text": "좋아요 ㅎㅎ 오늘 저녁",
+      "opinions": [
+        {
+          "evidence": "좋아요 ㅎㅎ",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "오늘 저녁",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 133,
+      "review_id": "4789057887",
+      "product": "한우 대창 500g 구이용 통대창 생대창 곱창 소곱창",
+      "text": "흠 생긴건 정말 맛있어보이는데.. 굽기를 잘못한건지.. 일반 대창맛이 아니네요..",
+      "opinions": [
+        {
+          "evidence": "일반 대창맛이 아니네요..",
+          "aspect": "맛",
+          "sentiment": "애매",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "굽기를 잘못한건지..",
+          "aspect": "조리결과",
+          "sentiment": "애매",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "일반 대창 맛과 다르다는 표현의 방향 및 굽기 영향이 불분명."
+    },
+    {
+      "no": 134,
+      "review_id": "4842783717",
+      "product": "칵테일새우 900g 냉동 새우살 흰다리새우",
+      "text": "꼬리도 흐물텅흐물텅 해서 재구매는 안하려구요",
+      "opinions": [
+        {
+          "evidence": "꼬리도 흐물텅흐물텅 해서",
+          "aspect": "식감",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "재구매는 안하려구요",
+          "aspect": "재구매",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 135,
+      "review_id": "4739107304",
+      "product": "한성기업 몬스터크랩 72g 10개 20개 게살 크래미 맛살",
+      "text": "하루에 한개씩 아침 대용으로 잘 먹고 있습니다",
+      "opinions": [
+        {
+          "evidence": "아침 대용으로 잘 먹고 있습니다",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 136,
+      "review_id": "4987729962",
+      "product": "홍야 직화 고기짬뽕 2인분 1260g 면2 소스2",
+      "text": "취향에 잘 맞네요. 좋아요",
+      "opinions": [
+        {
+          "evidence": "취향에 잘 맞네요.",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "좋아요",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 137,
+      "review_id": "4858393213",
+      "product": "노바시새우 1+1 새우 제수용 냉동 손질 튀김용새우",
+      "text": "신선하고 탱글해서 맛있어요",
+      "opinions": [
+        {
+          "evidence": "신선하고",
+          "aspect": "신선도",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "탱글해서",
+          "aspect": "식감",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 138,
+      "review_id": "4789538367",
+      "product": "비비수산 깐새우장 300g(간장 양념)",
+      "text": "양이 많이 아쉽긴해요. 새우 9개임",
+      "opinions": [
+        {
+          "evidence": "양이 많이 아쉽긴해요.",
+          "aspect": "양",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "새우 9개임",
+          "aspect": "양",
+          "sentiment": "중립",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 139,
+      "review_id": "4780250641",
+      "product": "한성기업 몬스터크랩 72g 10개 20개 게살 크래미 맛살",
+      "text": "세일가로 잘 구매했어요",
+      "opinions": [
+        {
+          "evidence": "세일가로 잘 구매했어요",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 140,
+      "review_id": "4908387260",
+      "product": "포항 구룡포 햇 손질 과메기(10쪽 5미/20쪽 10미) 야채세트 꽁치",
+      "text": "금요일 도착 생각하고 주문했는데 다음날 도착해버리는 센스 맛있게먹을게요!!",
+      "opinions": [
+        {
+          "evidence": "다음날 도착해버리는 센스",
+          "aspect": "배송",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있게먹을게요!!",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 141,
+      "review_id": "4740819774",
+      "product": "속이꽉찬 냉동꽃게 450g+450g 손질 절단꽃게",
+      "text": "너무작았어요... 된장찌개에 넣었네요",
+      "opinions": [
+        {
+          "evidence": "너무작았어요...",
+          "aspect": "양",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "된장찌개에 넣었네요",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 142,
+      "review_id": "4939942414",
+      "product": "칵테일새우 900g 냉동 새우살 흰다리새우",
+      "text": "가성비새우라고 해서 처음 사봤눈데 새우맛보다 게맛상맛이 가깝슴니다",
+      "opinions": [
+        {
+          "evidence": "새우맛보다 게맛상맛이 가깝슴니다",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 143,
+      "review_id": "4831350143",
+      "product": "한성기업 몬스터크랩 72g 10개 20개 게살 크래미 맛살",
+      "text": "매번먹어도 맛있음 ㅋㅋㅋ",
+      "opinions": [
+        {
+          "evidence": "매번먹어도 맛있음 ㅋㅋㅋ",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 144,
+      "review_id": "5004828889",
+      "product": "맘스터치 시그니처 순살치킨 닭다리살 튀김 에어프라이어",
+      "text": "보통 치킨 맛이네요 아이들도 잘먹어요",
+      "opinions": [
+        {
+          "evidence": "보통 치킨 맛이네요",
+          "aspect": "맛",
+          "sentiment": "중립",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "아이들도 잘먹어요",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 145,
+      "review_id": "5076581531",
+      "product": "맘스터치 케이준 감자튀김 양념감자 에어프라이어튀김",
+      "text": "일단 배달도 굉장히 빠르고, 가격에 비해 양도 많고, 맛은 뭐 이미 보증되어 있으니 만족 못할 요소가 앖습니다.",
+      "opinions": [
+        {
+          "evidence": "배달도 굉장히 빠르고",
+          "aspect": "배송",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "가격에 비해 양도 많고",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "가격에 비해 양도 많고",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛은 뭐 이미 보증되어 있으니",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "만족 못할 요소가 앖습니다.",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 146,
+      "review_id": "5066779002",
+      "product": "국내산 새우 1kg 제철 활새우 흰다리새우",
+      "text": "아주 신선해요. 맛있게 잘 먹었습니다",
+      "opinions": [
+        {
+          "evidence": "아주 신선해요.",
+          "aspect": "신선도",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있게 잘 먹었습니다",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 147,
+      "review_id": "4958749538",
+      "product": "훈제오리 슬라이스 800g,1.6kg 훈제오리고기",
+      "text": "맛있어서 재구매했는데 안녹고 와서 좋은거같아요",
+      "opinions": [
+        {
+          "evidence": "맛있어서",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "재구매했는데",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "안녹고 와서 좋은거같아요",
+          "aspect": "품질",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 148,
+      "review_id": "4653473459",
+      "product": "고기듬뿍 쫄깃한 한우 스지수육전골 1.3kg 밀키트 캠핑요리 소머리고기",
+      "text": "맛있어서 다음 모임에 준비하려구요",
+      "opinions": [
+        {
+          "evidence": "맛있어서",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "다음 모임에 준비하려구요",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 149,
+      "review_id": "4721706003",
+      "product": "자연산 홍새우 2kg L1 (손질 아르헨티나 붉은새우) 적새우살",
+      "text": "감바스 해먹었는데 너무 맛있어요",
+      "opinions": [
+        {
+          "evidence": "너무 맛있어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 150,
+      "review_id": "4975471026",
+      "product": "항공직송 노르웨이 생연어 딥스킨 연어회 필렛 스테이크 숙성연어",
+      "text": "자주 시켜먹는데 오늘은 가족들이 비리다고 난리네요 등쪽 살이 비려서, 못먹고 버렸어요, 더워서 지려지는 건가요??!?",
+      "opinions": [
+        {
+          "evidence": "가족들이 비리다고 난리네요",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "등쪽 살이 비려서, 못먹고 버렸어요",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 151,
+      "review_id": "4751360272",
+      "product": "칵테일새우 900g 냉동 새우살 흰다리새우",
+      "text": "와 첨에 배송올때부터 비린내가 진동하더니 요리해서 먹을려니 도저히 삼킬수가 없네요.. 다시는 중국산 안삽니다",
+      "opinions": [
+        {
+          "evidence": "배송올때부터 비린내가 진동하더니",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "요리해서 먹을려니 도저히 삼킬수가 없네요..",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "다시는 중국산 안삽니다",
+          "aspect": "재구매",
+          "sentiment": "부정",
+          "target": "일반 경험"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 152,
+      "review_id": "4903306143",
+      "product": "가시제거 순살 동태 500g 손질 절단 코다리 동태살 동태포 동태전",
+      "text": "항상 애용하고 있습니다",
+      "opinions": [
+        {
+          "evidence": "항상 애용하고 있습니다",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 153,
+      "review_id": "4764611973",
+      "product": "세척 문어 제수용 큰 사이즈 숙회 자숙문어",
+      "text": "해동시켜서 삶았는데 탱글탱글 하니 맛있었어요,짠맛이 조금 나긴 했는데 그리 심하지 않았고 부드러운 쫄깃한 맛이에요 .참기름장에 찍어먹으니 고소하고 맛있었어요 .",
+      "opinions": [
+        {
+          "evidence": "탱글탱글 하니",
+          "aspect": "식감",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있었어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "짠맛이 조금 나긴 했는데 그리 심하지 않았고",
+          "aspect": "맛",
+          "sentiment": "중립",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "부드러운 쫄깃한 맛이에요",
+          "aspect": "식감",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "고소하고 맛있었어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 154,
+      "review_id": "4993217985",
+      "product": "가마솥 활재첩국 500g 간편한 국요리 냉장보관 추어탕 미역국 시락 매생이",
+      "text": "유통기한에 신경쫌 쓰세요",
+      "opinions": [
+        {
+          "evidence": "유통기한에 신경쫌 쓰세요",
+          "aspect": "품질",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 155,
+      "review_id": "4718950341",
+      "product": "동해안 구룡포 반건조오징어 피데기 마른오징어 쫄쫄이 당일바리",
+      "text": "그냥 생물 오징어가 왔어요 반건조 아니고 생물 오징어라면 진짜 백점인데..반건조의 뜻을 모르시나요?",
+      "opinions": [
+        {
+          "evidence": "그냥 생물 오징어가 왔어요 반건조 아니고",
+          "aspect": "설명일치",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "반건조의 뜻을 모르시나요?",
+          "aspect": "설명일치",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 156,
+      "review_id": "4748344968",
+      "product": "아르헨티나 붉은 새우 이지필 300g 홍새우",
+      "text": "항상 집에 두고 먹고잏습니다",
+      "opinions": [
+        {
+          "evidence": "항상 집에 두고 먹고잏습니다",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 157,
+      "review_id": "4872145958",
+      "product": "강화도 추젓 새우젓 1kg+1kg 특상품",
+      "text": "비비수산 좋아하는 1인으로, 새우젓 재구매~~ 깔끔하고, 깨끗해서 좋아요^^",
+      "opinions": [
+        {
+          "evidence": "새우젓 재구매~~",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "깔끔하고, 깨끗해서 좋아요^^",
+          "aspect": "품질",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 158,
+      "review_id": "4690208384",
+      "product": "수협 손질 오징어 500g 1kg 오징어채",
+      "text": "깔끔하게 포장되었고, 녹지도 않게 잘 배송되었습니다. 짬뽕용으로 최고에요",
+      "opinions": [
+        {
+          "evidence": "깔끔하게 포장되었고",
+          "aspect": "포장",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "녹지도 않게 잘 배송되었습니다.",
+          "aspect": "품질",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "짬뽕용으로 최고에요",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 159,
+      "review_id": "4821038955",
+      "product": "사세 치킨가라아게 500g 순살치킨",
+      "text": "치킨은 항상 맛있으",
+      "opinions": [
+        {
+          "evidence": "치킨은 항상 맛있으",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 160,
+      "review_id": "5013582180",
+      "product": "국내산 새우젓 강화도 햇 가을 추젓 육젓 특상품 동백하 생새우",
+      "text": "맛은 타사제품하고 별차이는 없는데 새우크기가 일정하지 않네요.",
+      "opinions": [
+        {
+          "evidence": "맛은 타사제품하고 별차이는 없는데",
+          "aspect": "맛",
+          "sentiment": "중립",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "새우크기가 일정하지 않네요.",
+          "aspect": "품질",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 161,
+      "review_id": "4724948063",
+      "product": "진도 프리미엄 세번 구운 곱창김 28g x10팩 구운김 선물세트",
+      "text": "김 신서합니다. 곱창김이 맞아요",
+      "opinions": [
+        {
+          "evidence": "김 신서합니다.",
+          "aspect": "신선도",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "곱창김이 맞아요",
+          "aspect": "설명일치",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 162,
+      "review_id": "4767891988",
+      "product": "냉동 망고다이스 하프컷 과육 1kg",
+      "text": "이것저것 넣고 막 갈아먹기좋아요",
+      "opinions": [
+        {
+          "evidence": "이것저것 넣고 막 갈아먹기좋아요",
+          "aspect": "조리편의",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 163,
+      "review_id": "4817470499",
+      "product": "국내산 새우 1kg 제철 활새우 흰다리새우",
+      "text": "싱싱한데 새우 뾰족한데 찔렸는지 물이 많이 새어나와 배송됐습니다. 맛있게 쪄먹었어요!",
+      "opinions": [
+        {
+          "evidence": "싱싱한데",
+          "aspect": "신선도",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "물이 많이 새어나와 배송됐습니다.",
+          "aspect": "포장",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있게 쪄먹었어요!",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 164,
+      "review_id": "4968219043",
+      "product": "사세 버팔로윙봉 820g 치킨",
+      "text": "맛있어요 야식으로 딱입니다",
+      "opinions": [
+        {
+          "evidence": "맛있어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "야식으로 딱입니다",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 165,
+      "review_id": "4651429718",
+      "product": "포항 구룡포 햇 손질 과메기(10쪽 5미/20쪽 10미) 야채세트 꽁치",
+      "text": "맛있게 잘 먹었습니다. 사이즈가 살짝 작았는데 알고 산거라 괜찮습니다.",
+      "opinions": [
+        {
+          "evidence": "맛있게 잘 먹었습니다.",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "사이즈가 살짝 작았는데 알고 산거라 괜찮습니다.",
+          "aspect": "양",
+          "sentiment": "혼합",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "크기가 작지만 그 사실을 알고 구입해서 괜찮았다고 하므로 혼합으로 처리."
+    },
+    {
+      "no": 166,
+      "review_id": "4998681703",
+      "product": "초밥 재료 초새우 초문어 초한치 계란 조미유부",
+      "text": "포장도 잘 되있고 가성비 좋아요",
+      "opinions": [
+        {
+          "evidence": "포장도 잘 되있고",
+          "aspect": "포장",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "가성비 좋아요",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 167,
+      "review_id": "4864430839",
+      "product": "손질한 해물모듬 해물모둠 해물믹스",
+      "text": "먹어보고 괜찮아서 재구매했어요!내용물도 큼지막하고 맛도 좋아요",
+      "opinions": [
+        {
+          "evidence": "괜찮아서 재구매했어요!",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "내용물도 큼지막하고",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛도 좋아요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 168,
+      "review_id": "4942676640",
+      "product": "냉동과일 잭후르츠 500g+500g 잭푸르트 잭프릇 열대과일",
+      "text": "제 입맛에는 영 아니네요.",
+      "opinions": [
+        {
+          "evidence": "제 입맛에는 영 아니네요.",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 169,
+      "review_id": "4910494571",
+      "product": "포항 구룡포 햇 손질 과메기(10쪽 5미/20쪽 10미) 야채세트 꽁치",
+      "text": "맛있게 먹어 보고 싶어서 샀어요",
+      "opinions": [
+        {
+          "evidence": "맛있게 먹어 보고 싶어서 샀어요",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 170,
+      "review_id": "4840125078",
+      "product": "저염 명란젓 백명란 양념 못난이 파지 선동 백명란젓 500g",
+      "text": "저렴하고 맛있어요 잘먹고 있어요",
+      "opinions": [
+        {
+          "evidence": "저렴하고",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 171,
+      "review_id": "4776220246",
+      "product": "블랙타이거새우 500g 냉동 30,20,10미 새우소금구이",
+      "text": "만족스럽게 먹었습니다",
+      "opinions": [
+        {
+          "evidence": "만족스럽게 먹었습니다",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 172,
+      "review_id": "4977353064",
+      "product": "모짜렐라 맘스터치 치즈스틱 1kg 간편한 에어프라이어요리",
+      "text": "빠른배송매우 감사합니다!",
+      "opinions": [
+        {
+          "evidence": "빠른배송매우 감사합니다!",
+          "aspect": "배송",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 173,
+      "review_id": "5062665549",
+      "product": "국내산 새우 1kg 제철 활새우 흰다리새우",
+      "text": "너무 맛있게 먹었어요~ 또 주문할께요",
+      "opinions": [
+        {
+          "evidence": "너무 맛있게 먹었어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "또 주문할께요",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 174,
+      "review_id": "5032279726",
+      "product": "칵테일새우 900g 냉동 새우살 흰다리새우",
+      "text": "감바스 &파스타 만들었는데 새우가득넣고 만들어먹었습니다! 너무맛있어요~~",
+      "opinions": [
+        {
+          "evidence": "감바스 &파스타 만들었는데 새우가득넣고 만들어먹었습니다!",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "너무맛있어요~~",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 175,
+      "review_id": "4678933357",
+      "product": "자숙 꼬막살 냉동 제철 삶은 꼬막 살 피꼬막살",
+      "text": "스폰지 씹는맛, 조개맛 1도없음.",
+      "opinions": [
+        {
+          "evidence": "스폰지 씹는맛",
+          "aspect": "식감",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "조개맛 1도없음.",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 176,
+      "review_id": "4930784111",
+      "product": "포항 구룡포 햇 손질 과메기(10쪽 5미/20쪽 10미) 야채세트 꽁치",
+      "text": "맛있게 잘 먹었습니다 다음에 겨울 되면 또 먹을께요",
+      "opinions": [
+        {
+          "evidence": "맛있게 잘 먹었습니다",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "다음에 겨울 되면 또 먹을께요",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 177,
+      "review_id": "5011864203",
+      "product": "맘스터치 케이준 감자튀김 양념감자 에어프라이어튀김",
+      "text": "맛있어요 맘터랑 같아요",
+      "opinions": [
+        {
+          "evidence": "맛있어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맘터랑 같아요",
+          "aspect": "설명일치",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 178,
+      "review_id": "4838865349",
+      "product": "사세 버팔로윙 순살치킨 가라아게 버팔로스틱 봉 치킨 텐더 너겟 후라이드근위",
+      "text": "치킨너겟 간편하게 먹을수있을거같아서 주문해ㅛ어요",
+      "opinions": [
+        {
+          "evidence": "치킨너겟 간편하게 먹을수있을거같아서 주문해ㅛ어요",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 179,
+      "review_id": "5007503086",
+      "product": "진도 프리미엄 세번 구운 곱창김 28g x10팩 구운김 선물세트",
+      "text": "먹기편하고 맛있어서 엄마도 사드렸어요",
+      "opinions": [
+        {
+          "evidence": "먹기편하고",
+          "aspect": "조리편의",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있어서",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "엄마도 사드렸어요",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 180,
+      "review_id": "5004639601",
+      "product": "한성기업 몬스터크랩 72g 10개 20개 게살 크래미 맛살",
+      "text": "늘주문해요 세일자주해주세요 ㅎㅎ",
+      "opinions": [
+        {
+          "evidence": "늘주문해요",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "세일자주해주세요 ㅎㅎ",
+          "aspect": "가격",
+          "sentiment": "중립",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 181,
+      "review_id": "5041751546",
+      "product": "독일 전통 비바크부어스트 소시지 비엔나 도이치부어스트 헨 소세지",
+      "text": "물에 데쳐먹으니 뽀득하고 맛있어요",
+      "opinions": [
+        {
+          "evidence": "뽀득하고",
+          "aspect": "식감",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 182,
+      "review_id": "4797211007",
+      "product": "수제 빅치즈스틱 400g 대왕 고구마 치즈스틱",
+      "text": "배송빠르고 품질이 좋아요",
+      "opinions": [
+        {
+          "evidence": "배송빠르고",
+          "aspect": "배송",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "품질이 좋아요",
+          "aspect": "품질",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 183,
+      "review_id": "5074806682",
+      "product": "독일 전통 비바크부어스트 소시지 비엔나 도이치부어스트 헨 소세지",
+      "text": "임박 상품이라 저렴한 가격에 훌륭한 소시지를 먹었네요. 맛이 아주 좋아요.",
+      "opinions": [
+        {
+          "evidence": "임박 상품이라 저렴한 가격에",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "훌륭한 소시지를 먹었네요.",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛이 아주 좋아요.",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 184,
+      "review_id": "4766735647",
+      "product": "훈제오리 슬라이스 800g,1.6kg 훈제오리고기",
+      "text": "맜은적당히맜있고좋아해요",
+      "opinions": [
+        {
+          "evidence": "맜은적당히맜있고",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "좋아해요",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 185,
+      "review_id": "4840769716",
+      "product": "[네이버 단독]가시없는 노르웨이고등어 특대 플러스 99.9 제거 순살고등어 아기생선",
+      "text": "아직 먹어보진 못했지만 좋은것같아요",
+      "opinions": [
+        {
+          "evidence": "아직 먹어보진 못했지만 좋은것같아요",
+          "aspect": "종합만족",
+          "sentiment": "애매",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "미시식 상태의 막연한 긍정 평가라 감성을 애매로 처리."
+    },
+    {
+      "no": 186,
+      "review_id": "4925084327",
+      "product": "한성기업 몬스터크랩 72g 10개 크래미",
+      "text": "자주 시켜먹었었는데 여전히 맛나고 좋아요",
+      "opinions": [
+        {
+          "evidence": "자주 시켜먹었었는데",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "여전히 맛나고",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "좋아요",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 187,
+      "review_id": "4886670706",
+      "product": "정통 오사카식 오꼬노미야키 풀세트 (가쓰오부시 + 데리야끼 + 마요네즈) 오코노미야끼",
+      "text": "두껍고 싱거워요 내가 반죽하는게 더 나을듯",
+      "opinions": [
+        {
+          "evidence": "두껍고",
+          "aspect": "식감",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "싱거워요",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "내가 반죽하는게 더 나을듯",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 188,
+      "review_id": "4806684461",
+      "product": "칵테일새우 900g 냉동 새우살 흰다리새우",
+      "text": "새우 알이 크거 좋라요",
+      "opinions": [
+        {
+          "evidence": "새우 알이 크거",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "좋라요",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 189,
+      "review_id": "4644627974",
+      "product": "진도 명품 돌김 구운 곱창김 돌자반 김자반 파래 조미김",
+      "text": "시장 건어물가게에서 샀던 곱창김에 비해 앏고 맛이 덜한거 같습니다",
+      "opinions": [
+        {
+          "evidence": "시장 건어물가게에서 샀던 곱창김에 비해 앏고",
+          "aspect": "양",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛이 덜한거 같습니다",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 190,
+      "review_id": "4688123167",
+      "product": "살아있을때 깔끔하게 손질된 통낙지 200g(2-3미)x2개입",
+      "text": "막상 조리 하니까 낙지 너무작아요",
+      "opinions": [
+        {
+          "evidence": "조리 하니까 낙지 너무작아요",
+          "aspect": "양",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 191,
+      "review_id": "4771582568",
+      "product": "동해안 구룡포 반건조오징어 피데기 마른오징어 쫄쫄이 당일바리",
+      "text": "저번보다크기가 작아졌네요",
+      "opinions": [
+        {
+          "evidence": "저번보다크기가 작아졌네요",
+          "aspect": "양",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 192,
+      "review_id": "4895584494",
+      "product": "사옹원 부침명장 한입 땡초 김치전 부추전 300g+300g",
+      "text": "이렇게 맛없는 호떡은 처음 먹어보네요 최악입니다 다 먹지도 못하고 버렸어요",
+      "opinions": [
+        {
+          "evidence": "이렇게 맛없는 호떡은 처음 먹어보네요",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "불명확"
+        },
+        {
+          "evidence": "최악입니다",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "불명확"
+        },
+        {
+          "evidence": "다 먹지도 못하고 버렸어요",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "불명확"
+        }
+      ],
+      "done": true,
+      "note": "상품명은 김치전·부추전이지만 리뷰에는 “호떡”이라 명시되어 있어 대상 상품이 불명확."
+    },
+    {
+      "no": 193,
+      "review_id": "5030598088",
+      "product": "순살 노르웨이고등어 진공 포장 1kg 손질 고등어 필렛",
+      "text": "제품명을 순살로 표기하지 마세요. 이름은 순살로 해놓고 상품설명 중간쯤에 잔가시는 제거되지 않았다고 써놓으면 그만입니까? 필렛고등어라고 판매를 하셔야지 순살고등어라고 쓰는 건 엄연한 소비자 기만입니다. 구매하시는분들 필히 참고하세요.",
+      "opinions": [
+        {
+          "evidence": "제품명을 순살로 표기하지 마세요.",
+          "aspect": "설명일치",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "이름은 순살로 해놓고 상품설명 중간쯤에 잔가시는 제거되지 않았다고 써놓으면 그만입니까?",
+          "aspect": "설명일치",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "순살고등어라고 쓰는 건 엄연한 소비자 기만입니다.",
+          "aspect": "설명일치",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 194,
+      "review_id": "4844841214",
+      "product": "살아있는 완도 활전복 1kg 활 전복 참전복 선물세트",
+      "text": "포장이 터져왔네요. 하단부가 터져서 물 다 흐르고 난리였습니다. 물이 스티로폴하고 섞여서 못먹을것같아서 다버렸습니다.",
+      "opinions": [
+        {
+          "evidence": "포장이 터져왔네요.",
+          "aspect": "포장",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "하단부가 터져서 물 다 흐르고 난리였습니다.",
+          "aspect": "포장",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "못먹을것같아서 다버렸습니다.",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 195,
+      "review_id": "4881941001",
+      "product": "모짜렐라 맘스터치 치즈스틱 1kg 간편한 에어프라이어요리",
+      "text": "이렇게 맛없는 치즈스틱은 처음이네요. 밀가루맛만나고...진짜치즈인지 의심스럽습니다. 치즈맛은 안나고 밀가루맛에 늘어나는것도 없습니다. 돈아깝고 애들먹이기 불안하네요.",
+      "opinions": [
+        {
+          "evidence": "이렇게 맛없는 치즈스틱은 처음이네요.",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "밀가루맛만나고...",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "진짜치즈인지 의심스럽습니다.",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "치즈맛은 안나고 밀가루맛에",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "늘어나는것도 없습니다.",
+          "aspect": "식감",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "돈아깝고",
+          "aspect": "가격",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "애들먹이기 불안하네요.",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 196,
+      "review_id": "4706475512",
+      "product": "칵테일새우 900g 냉동 새우살 흰다리새우",
+      "text": "크고맛있어요.오동통해서 파스타에제격입니다",
+      "opinions": [
+        {
+          "evidence": "크고",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있어요.",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "오동통해서",
+          "aspect": "식감",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "파스타에제격입니다",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 197,
+      "review_id": "4801571996",
+      "product": "젓갈 500g 오징어젓 갈치속젓 백명란",
+      "text": "고기 먹을때 같이 먹으면 깔끔하고 맛 있어요",
+      "opinions": [
+        {
+          "evidence": "깔끔하고 맛 있어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 198,
+      "review_id": "4816080648",
+      "product": "훈제오리 슬라이스 800g,1.6kg 훈제오리고기",
+      "text": "맛있어서 주문합니다",
+      "opinions": [
+        {
+          "evidence": "맛있어서 주문합니다",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 199,
+      "review_id": "5067652267",
+      "product": "[네이버 단독]가시없는 노르웨이고등어 특대 플러스 99.9 제거 순살고등어 아기생선",
+      "text": "그냥 그럭저럭 먹을만함",
+      "opinions": [
+        {
+          "evidence": "그럭저럭 먹을만함",
+          "aspect": "맛",
+          "sentiment": "중립",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 200,
+      "review_id": "4797447875",
+      "product": "칵테일새우 900g 냉동 새우살 흰다리새우",
+      "text": "렴한 가격에 잘 구매햌ㅅ습니다",
+      "opinions": [
+        {
+          "evidence": "렴한 가격에 잘 구매햌ㅅ습니다",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 201,
+      "review_id": "4941661066",
+      "product": "명태포 제수용 명태 슬라이스 700g+700g 동태전 동태포",
+      "text": "어머니가 좋다고 하네요",
+      "opinions": [
+        {
+          "evidence": "어머니가 좋다고 하네요",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 202,
+      "review_id": "4670213587",
+      "product": "맘스터치 케이준 감자튀김 양념감자 에어프라이어튀김",
+      "text": "에어프라이어에 간단하게 해먹을 수 있고 저렴하여 재구매 의사 있습니다!",
+      "opinions": [
+        {
+          "evidence": "에어프라이어에 간단하게 해먹을 수 있고",
+          "aspect": "조리편의",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "저렴하여",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "재구매 의사 있습니다!",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 203,
+      "review_id": "4974652044",
+      "product": "통통 야채튀김1.5kg 분식집 튀김 에어프라이어가능",
+      "text": "야채가 모두 중국산인거 인가봐요. 좀 그래요. 재구매 의사는 없어요",
+      "opinions": [
+        {
+          "evidence": "야채가 모두 중국산인거 인가봐요. 좀 그래요.",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "재구매 의사는 없어요",
+          "aspect": "재구매",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 204,
+      "review_id": "4749427933",
+      "product": "칵테일새우 900g 냉동 새우살 흰다리새우",
+      "text": "큼직해서 좋아요 맛있어요",
+      "opinions": [
+        {
+          "evidence": "큼직해서 좋아요",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 205,
+      "review_id": "4841765472",
+      "product": "블랙타이거새우 500g+500g",
+      "text": "포장일자 2023년 9월이네요 냉동시킨지 2년하고도 2개월이 지난 상품을 받았습니다 판매자님 말로는 3년안되어서 문제되지 않는다네요.. 이렇게 오래된줄 알았다면 절대 시키지 않았을거예요.. 저희집 냉동실 통틀어서도 제일 오래된 식품이네요. 먹고싶은 생각도 뚝떨어졌어요. 부디 많이 파시고 번창하시길",
+      "opinions": [
+        {
+          "evidence": "포장일자 2023년 9월이네요",
+          "aspect": "품질",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "냉동시킨지 2년하고도 2개월이 지난 상품을 받았습니다",
+          "aspect": "품질",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "이렇게 오래된줄 알았다면 절대 시키지 않았을거예요..",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "먹고싶은 생각도 뚝떨어졌어요.",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "오래된 포장·냉동 기간은 작성자가 언급한 사실이며 법적 유통기한 초과 여부는 확인할 수 없음."
+    },
+    {
+      "no": 206,
+      "review_id": "4947189824",
+      "product": "사세 매콤 점보 닭다리 1.3kg",
+      "text": "매번 저렴하게 잘 구매하고있어요 감사합니다.",
+      "opinions": [
+        {
+          "evidence": "매번",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "저렴하게 잘 구매하고있어요",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 207,
+      "review_id": "4987656014",
+      "product": "한성기업 몬스터크랩 72g 10개 크래미",
+      "text": "몇번째 재구매 입니다 맛있고 많은 양이라서 여러 음식에 사용하기 좋아요",
+      "opinions": [
+        {
+          "evidence": "몇번째 재구매 입니다",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있고",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "많은 양이라서",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "여러 음식에 사용하기 좋아요",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 208,
+      "review_id": "5070863277",
+      "product": "강화도 추젓 새우젓 1kg+1kg 특상품",
+      "text": "만족합니다 다음에도 구매할 생각입니다.",
+      "opinions": [
+        {
+          "evidence": "만족합니다",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "다음에도 구매할 생각입니다.",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 209,
+      "review_id": "4878882132",
+      "product": "한성기업 몬스터크랩 72g 10개 크래미",
+      "text": "가격도 맛도 최고에요.",
+      "opinions": [
+        {
+          "evidence": "가격도",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛도 최고에요.",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 210,
+      "review_id": "5035030749",
+      "product": "먹기편하게 손질한 대게 스노우크랩 냉동 자숙 러시아",
+      "text": "가격대비 살짝 비싼느낌이 조금은 드는 ? 조리하기에 따라 완성도와 만족도가 다르게 느껴질것 같구여. 단순히 쪄서 드신다면 글쎄요? 호불호는 가릴것 같네요. 맛은 그냥 게맛이구여 특별한 감칠맛은 모르겠네요.",
+      "opinions": [
+        {
+          "evidence": "가격대비 살짝 비싼느낌이 조금은 드는 ?",
+          "aspect": "가격",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "조리하기에 따라 완성도와 만족도가 다르게 느껴질것 같구여.",
+          "aspect": "조리결과",
+          "sentiment": "애매",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "단순히 쪄서 드신다면 글쎄요? 호불호는 가릴것 같네요.",
+          "aspect": "종합만족",
+          "sentiment": "애매",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛은 그냥 게맛이구여",
+          "aspect": "맛",
+          "sentiment": "중립",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "특별한 감칠맛은 모르겠네요.",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 211,
+      "review_id": "4955394173",
+      "product": "한성기업 몬스터크랩 72g 10개 크래미",
+      "text": "할인해서 잘 샀어요.",
+      "opinions": [
+        {
+          "evidence": "할인해서 잘 샀어요.",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 212,
+      "review_id": "4977617811",
+      "product": "냉동과일 베리믹스 1kg 블루베리 라즈베리 블랙베리",
+      "text": "택배가 피를 흘리고 있었어요... 아이스팩은 꽁꽁 얼어있었는데 믹스베리는 다 녹아서 곤죽상태 ... 아이스팩 두개 다 꽁꽁 얼어있었기에 아이스팩을 추가하지않아서 그런건아닌것같고 오히려 아이스팩 땜에 믹스베리 봉투가 터진듯싶네요 ... ㅜ",
+      "opinions": [
+        {
+          "evidence": "택배가 피를 흘리고 있었어요...",
+          "aspect": "포장",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "아이스팩은 꽁꽁 얼어있었는데",
+          "aspect": "포장",
+          "sentiment": "중립",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "믹스베리는 다 녹아서 곤죽상태 ...",
+          "aspect": "품질",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "믹스베리 봉투가 터진듯싶네요 ... ㅜ",
+          "aspect": "포장",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 213,
+      "review_id": "4657717361",
+      "product": "국내산 새우젓 강화도 햇 가을 추젓 육젓 특상품 동백하 생새우",
+      "text": "국물이 많고 너무 짜요 이렇게 짠 새우젓은 처음인거 같아요 배송 중 뚜껑이 제대로 안 닫혀서인지 국물도 조금 샜어요",
+      "opinions": [
+        {
+          "evidence": "국물이 많고",
+          "aspect": "재료구성",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "너무 짜요",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "이렇게 짠 새우젓은 처음인거 같아요",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "뚜껑이 제대로 안 닫혀서인지 국물도 조금 샜어요",
+          "aspect": "포장",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 214,
+      "review_id": "4731035842",
+      "product": "냉동과일 블루베리 1kg",
+      "text": "냉동이라 저렴히 잘먹고 있어요.",
+      "opinions": [
+        {
+          "evidence": "저렴히 잘먹고 있어요.",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 215,
+      "review_id": "4635790558",
+      "product": "고기듬뿍 쫄깃한 한우 스지수육전골 1.3kg 밀키트 캠핑요리 소머리고기",
+      "text": "냄새가 약간나요. 근데 간되어있는 갈비탕에 넣어 끓이니까 좀나아요. 부드러워요",
+      "opinions": [
+        {
+          "evidence": "냄새가 약간나요.",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "간되어있는 갈비탕에 넣어 끓이니까 좀나아요.",
+          "aspect": "조리결과",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "부드러워요",
+          "aspect": "식감",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 216,
+      "review_id": "4791701821",
+      "product": "제주에서 잡은 손질고등어 80-100g 외",
+      "text": "맛이 ...................",
+      "opinions": [
+        {
+          "evidence": "맛이 ...................",
+          "aspect": "맛",
+          "sentiment": "애매",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "“맛이 ...................”에 긍정·부정을 직접 뒷받침할 내용이 없음."
+    },
+    {
+      "no": 217,
+      "review_id": "4922012704",
+      "product": "99.9 가시제거 순살 가자미",
+      "text": "늘 좋은 가자미를 구매할수 있어서 감사합니다.",
+      "opinions": [
+        {
+          "evidence": "늘 좋은 가자미를 구매할수 있어서 감사합니다.",
+          "aspect": "품질",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "늘 좋은 가자미를 구매할수 있어서 감사합니다.",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 218,
+      "review_id": "4860920542",
+      "product": "포항 구룡포 햇 손질 과메기(10쪽 5미/20쪽 10미) 야채세트 꽁치",
+      "text": "과메기 저렴해서 혼자 먹을려고 시켰어요 쫀득하이 맛있어요 당일 배송 온거 당일 다 먹고 또 시켜 먹을려고요",
+      "opinions": [
+        {
+          "evidence": "저렴해서",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "쫀득하이",
+          "aspect": "식감",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "또 시켜 먹을려고요",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 219,
+      "review_id": "4819526122",
+      "product": "손질 생 새우살 450g 깐새우 흰다리새우 탈각새우",
+      "text": "맛나요. 재주문 합니다",
+      "opinions": [
+        {
+          "evidence": "맛나요.",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "재주문 합니다",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 220,
+      "review_id": "4978604223",
+      "product": "케이준 감자튀김1kg+1kg",
+      "text": "저렴하게 구매 잘했습니다",
+      "opinions": [
+        {
+          "evidence": "저렴하게 구매 잘했습니다",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 221,
+      "review_id": "4936902892",
+      "product": "한성기업 몬스터크랩 72g 10개 크래미",
+      "text": "맛있게 먹을게요….",
+      "opinions": [
+        {
+          "evidence": "맛있게 먹을게요….",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "“맛있게 먹을게요”는 향후 기대를 나타내며 실제 맛 평가는 아님."
+    },
+    {
+      "no": 222,
+      "review_id": "4904822553",
+      "product": "해물모듬 5종 해물모둠 믹스 2팩",
+      "text": "나누므나라야그라눌ㄹ",
+      "opinions": [],
+      "done": true,
+      "note": "문장을 해독할 수 없어 근거 있는 의견 추출이 불가능함."
+    },
+    {
+      "no": 223,
+      "review_id": "4639879946",
+      "product": "[네이버 단독]가시없는 노르웨이고등어 특대 플러스 99.9 제거 순살고등어 아기생선",
+      "text": "포장은 완벽해요 고등어는 아직 먹어 보지 안았지만 어제 대구와 가자미 먹었는데 대구는 맛이 좋구요 가자미는 슴금해오 전 대두가 좋아요",
+      "opinions": [
+        {
+          "evidence": "포장은 완벽해요",
+          "aspect": "포장",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "고등어는 아직 먹어 보지 안았지만",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "대구는 맛이 좋구요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "다른 상품"
+        },
+        {
+          "evidence": "가자미는 슴금해오",
+          "aspect": "맛",
+          "sentiment": "애매",
+          "target": "다른 상품"
+        },
+        {
+          "evidence": "전 대두가 좋아요",
+          "aspect": "종합만족",
+          "sentiment": "애매",
+          "target": "다른 상품"
+        }
+      ],
+      "done": true,
+      "note": "고등어는 미시식 상태이고, 맛 평가는 다른 상품인 대구·가자미에 대한 것임. “슴금해오”, “대두”는 오탈자로 보이지만 원문 그대로 유지."
+    },
+    {
+      "no": 224,
+      "review_id": "4911719665",
+      "product": "사옹원 부침명장 한입 땡초 김치전 부추전 300g+300g",
+      "text": "생각보다 김치나 오징어가 없어요 김치맛 밀가루 부침개 같아 좀 실망했습니다",
+      "opinions": [
+        {
+          "evidence": "생각보다 김치나 오징어가 없어요",
+          "aspect": "재료구성",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "김치맛 밀가루 부침개 같아 좀 실망했습니다",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 225,
+      "review_id": "4928441331",
+      "product": "맘스터치 시그니처 순살치킨 닭다리살 튀김 에어프라이어",
+      "text": "에어프라이기 돌리니 맛있네요.",
+      "opinions": [
+        {
+          "evidence": "에어프라이기 돌리니 맛있네요.",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 226,
+      "review_id": "4882855214",
+      "product": "칵테일새우 900g 냉동 새우살 흰다리새우",
+      "text": "신선하고 크기가 파스타 토핑용으로 딱 좋와요",
+      "opinions": [
+        {
+          "evidence": "신선하고",
+          "aspect": "신선도",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "크기가 파스타 토핑용으로 딱 좋와요",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "크기가 파스타 토핑용으로 딱 좋와요",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 227,
+      "review_id": "4920654034",
+      "product": "모짜렐라 맘스터치 치즈스틱 1kg 간편한 에어프라이어요리",
+      "text": "맘스터치 믿고 주문, 에프 된다해서 주문 에프 돌리니 맛이 없음",
+      "opinions": [
+        {
+          "evidence": "에프 된다해서 주문",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "에프 돌리니 맛이 없음",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "에프 돌리니 맛이 없음",
+          "aspect": "조리결과",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 228,
+      "review_id": "4867075975",
+      "product": "살아있는 완도 활전복 1kg 활 전복 참전복 선물세트",
+      "text": "앗있게 잘 먹었습니다",
+      "opinions": [
+        {
+          "evidence": "앗있게 잘 먹었습니다",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 229,
+      "review_id": "4708414003",
+      "product": "고기듬뿍 쫄깃한 한우 스지수육전골 1.3kg 밀키트 캠핑요리 소머리고기",
+      "text": "배송 빠르고 캠핑가서 먹느라 사진을 못찍었네요~",
+      "opinions": [
+        {
+          "evidence": "배송 빠르고",
+          "aspect": "배송",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "캠핑가서 먹느라 사진을 못찍었네요",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 230,
+      "review_id": "4887222344",
+      "product": "맘스터치 시그니처 순살치킨 닭다리살 튀김 에어프라이어",
+      "text": "냄새나고 맛없고 다 버렸어요.",
+      "opinions": [
+        {
+          "evidence": "냄새나고",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛없고",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "다 버렸어요.",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 231,
+      "review_id": "4886128431",
+      "product": "한성기업 몬스터크랩 72g 10개 크래미",
+      "text": "낱개포장되어있어서 좋습니다",
+      "opinions": [
+        {
+          "evidence": "낱개포장되어있어서 좋습니다",
+          "aspect": "포장",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 232,
+      "review_id": "4937507156",
+      "product": "맘스터치 시그니처 순살치킨 닭다리살 튀김 에어프라이어",
+      "text": "맛있습니다. 쯔란 뿌려먹으니 쯔란윙봉같아서 좋습니다.",
+      "opinions": [
+        {
+          "evidence": "맛있습니다.",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "쯔란 뿌려먹으니 쯔란윙봉같아서 좋습니다.",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 233,
+      "review_id": "4781229270",
+      "product": "한성기업 몬스터크랩 72g 10개 20개 게살 크래미 맛살",
+      "text": "무난하게 잘 먹었어요!",
+      "opinions": [
+        {
+          "evidence": "무난하게 잘 먹었어요!",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 234,
+      "review_id": "4768890876",
+      "product": "사세 버팔로윙 순살치킨 가라아게 버팔로스틱 봉 치킨 텐더 너겟 후라이드근위",
+      "text": "떨어지면 시킵니다. 그만큼 가성비 갑 에프에 돌려먹으면 존맛탱구리",
+      "opinions": [
+        {
+          "evidence": "떨어지면 시킵니다.",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "가성비 갑",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "에프에 돌려먹으면 존맛탱구리",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 235,
+      "review_id": "4814780087",
+      "product": "맘스터치 케이준 감자튀김 양념감자 에어프라이어튀김",
+      "text": "배송이 빠르고 상품이 좋아요.",
+      "opinions": [
+        {
+          "evidence": "배송이 빠르고",
+          "aspect": "배송",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "상품이 좋아요.",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 236,
+      "review_id": "5043022877",
+      "product": "칵테일새우 900g 냉동 새우살 흰다리새우",
+      "text": "평소랑 다른 사이즈로 샀더나 맛이 떨어져요. 익히면 비린내나요ㅠㅠ매번 사먹었는데 사이즈마다 품질이 다를거라곤 예상못핬네요. 실망쓰...담엔 그냥 먹던더 먹겠습미다..",
+      "opinions": [
+        {
+          "evidence": "평소랑 다른 사이즈로 샀더나 맛이 떨어져요.",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "익히면 비린내나요ㅠㅠ",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "사이즈마다 품질이 다를거라곤 예상못핬네요.",
+          "aspect": "품질",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "실망쓰...",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "담엔 그냥 먹던더 먹겠습미다..",
+          "aspect": "재구매",
+          "sentiment": "애매",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "다음에는 기존에 먹던 사이즈를 구매하겠다는 뜻으로 이번 사이즈의 재구매 의도는 명확하지 않음."
+    },
+    {
+      "no": 237,
+      "review_id": "5045662103",
+      "product": "독일 전통 비바크부어스트 소시지 비엔나 도이치부어스트 헨 소세지",
+      "text": "싸게 잘샀어요 좋습니다",
+      "opinions": [
+        {
+          "evidence": "싸게 잘샀어요",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "좋습니다",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 238,
+      "review_id": "4732123306",
+      "product": "블랙타이거새우 500g 냉동 30,20,10미 새우소금구이",
+      "text": "저번에 먹어보고 너무맛잇어서 재구매해요 강추입니다",
+      "opinions": [
+        {
+          "evidence": "저번에 먹어보고 너무맛잇어서",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "재구매해요",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "강추입니다",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 239,
+      "review_id": "4947324106",
+      "product": "살아있는 완도 활전복 1kg 활 전복 참전복 선물세트",
+      "text": "미지근한 상태로 도착해서 뜯어보니 냄새나서 교환요청하였으나 토요일날이라 고객센터 휴무 주말동안 부패한냄새가 더 나서 버림 사진촬영을 못해서 환불못받음 냄새도 사진으로 촬영가능하면 참 좋겠다",
+      "opinions": [
+        {
+          "evidence": "미지근한 상태로 도착해서",
+          "aspect": "품질",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "냄새나서",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "주말동안 부패한냄새가 더 나서 버림",
+          "aspect": "신선도",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "사진촬영을 못해서 환불못받음",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 240,
+      "review_id": "4637864630",
+      "product": "강화도 추젓 새우젓 1kg+1kg 특상품",
+      "text": "김장때 잘 사용했어요. 깔끔하고 좋네요",
+      "opinions": [
+        {
+          "evidence": "김장때 잘 사용했어요.",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "깔끔하고 좋네요",
+          "aspect": "품질",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 241,
+      "review_id": "4932502338",
+      "product": "칵테일새우 900g 냉동 새우살 흰다리새우",
+      "text": "흙냄새 장난아님 새우넣고 요리하면 요리에 흙냄새가나서 못 먹을 정도",
+      "opinions": [
+        {
+          "evidence": "흙냄새 장난아님",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "요리에 흙냄새가나서 못 먹을 정도",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 242,
+      "review_id": "4955246417",
+      "product": "한성기업 몬스터크랩 72g 10개 크래미",
+      "text": "빠른배송 감사합니다 맛있게 먹어요",
+      "opinions": [
+        {
+          "evidence": "빠른배송 감사합니다",
+          "aspect": "배송",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있게 먹어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 243,
+      "review_id": "5000026607",
+      "product": "살아있는 완도 활전복 1kg 활 전복 참전복 선물세트",
+      "text": "버터구이는 역시나에요",
+      "opinions": [
+        {
+          "evidence": "버터구이는 역시나에요",
+          "aspect": "맛",
+          "sentiment": "애매",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "“역시나에요”의 긍정·부정 방향이 직접적으로 명시되지 않음."
+    },
+    {
+      "no": 244,
+      "review_id": "4721916279",
+      "product": "자숙 꼬막살 냉동 제철 삶은 꼬막 살 피꼬막살",
+      "text": "꼬막이 손바닥만해요. 무쳤더니 씁쓸하니 못먹구 버렸어요.",
+      "opinions": [
+        {
+          "evidence": "꼬막이 손바닥만해요.",
+          "aspect": "양",
+          "sentiment": "중립",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "씁쓸하니 못먹구 버렸어요.",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 245,
+      "review_id": "4943113583",
+      "product": "닭정육 뼈없는 순살 닭다리살 2kg",
+      "text": "싸게 구매해서 잘 먹었습니다.",
+      "opinions": [
+        {
+          "evidence": "싸게 구매해서",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "잘 먹었습니다.",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 246,
+      "review_id": "4808003620",
+      "product": "99.9 가시제거 순살 가자미",
+      "text": "캠핑가서 맛잏게 먹었어요",
+      "opinions": [
+        {
+          "evidence": "맛잏게 먹었어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 247,
+      "review_id": "4911512335",
+      "product": "제주갈치 순살갈치 두툼한 특대 구이",
+      "text": "개별포장 돼있어서 편리해요",
+      "opinions": [
+        {
+          "evidence": "개별포장 돼있어서 편리해요",
+          "aspect": "포장",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 248,
+      "review_id": "5072501006",
+      "product": "왕특대 노바시새우 20미 450g 손질새우 튀김용 왕새우튀김 제수용",
+      "text": "노바시새우는 처음 사보는데 실수로 작은사이즈를 선택하는 바람에 어쩔 수없이 전을 부쳤는데 식감이 너무 물컹해서별로네요. 익히면 수축, 확 작아지며 땡글한 식감이되야하는데 첨가물때문인지물먹은듯 물컹ㅠ",
+      "opinions": [
+        {
+          "evidence": "실수로 작은사이즈를 선택하는 바람에",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "식감이 너무 물컹해서별로네요.",
+          "aspect": "식감",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "첨가물때문인지물먹은듯 물컹ㅠ",
+          "aspect": "식감",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "작은 사이즈 선택은 구매자 자신의 실수이며 제품 하자로 보지 않음."
+    },
+    {
+      "no": 249,
+      "review_id": "4824322311",
+      "product": "한성기업 몬스터크랩 72g 10개 20개 게살 크래미 맛살",
+      "text": "이거 싸개 아주 잘 구입함",
+      "opinions": [
+        {
+          "evidence": "싸개 아주 잘 구입함",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 250,
+      "review_id": "4985094358",
+      "product": "사옹원 부침명장 한입 땡초 김치전 부추전 300g+300g",
+      "text": "이거 넘 맛있어서 항상 시켜먹어요~~ 또 시키러 올께요!! ㅎ",
+      "opinions": [
+        {
+          "evidence": "넘 맛있어서",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "항상 시켜먹어요~~",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "또 시키러 올께요!!",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 251,
+      "review_id": "5009739088",
+      "product": "[네이버 단독]가시없는 노르웨이고등어 특대 플러스 99.9 제거 순살고등어 아기생선",
+      "text": "신선하고 뼈가 진짜 하나도 안나와서 먹기 편했어요. 다음에도 또 구입해야겠어요.",
+      "opinions": [
+        {
+          "evidence": "신선하고",
+          "aspect": "신선도",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "뼈가 진짜 하나도 안나와서",
+          "aspect": "설명일치",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "먹기 편했어요.",
+          "aspect": "조리편의",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "다음에도 또 구입해야겠어요.",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 252,
+      "review_id": "4740480242",
+      "product": "상급 대구알 대구고니(곤이) 500g 생선고니",
+      "text": "쩡짱맛있습니다 재구매했어요 알찜해먹었습니다",
+      "opinions": [
+        {
+          "evidence": "쩡짱맛있습니다",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "재구매했어요",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "알찜해먹었습니다",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 253,
+      "review_id": "4646943911",
+      "product": "포항 구룡포 햇 손질 과메기(10쪽 5미/20쪽 10미) 야채세트 꽁치",
+      "text": "너무 맛있게 잘먹었습니다 다음에 또 주문할게요",
+      "opinions": [
+        {
+          "evidence": "너무 맛있게 잘먹었습니다",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "다음에 또 주문할게요",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 254,
+      "review_id": "4829740096",
+      "product": "특대 사이즈 햇양파 15kg 업소용 식자재 대용량",
+      "text": "알이 굵고 속이 단단하니 쓰기 좋았습니다. 번창하세요~~~~",
+      "opinions": [
+        {
+          "evidence": "알이 굵고",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "속이 단단하니",
+          "aspect": "품질",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "쓰기 좋았습니다.",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 255,
+      "review_id": "4932053209",
+      "product": "냉동과일 잭후르츠 500g+500g 잭푸르트 잭프릇 열대과일",
+      "text": "버렸어요..아무도안먹어요",
+      "opinions": [
+        {
+          "evidence": "버렸어요..아무도안먹어요",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 256,
+      "review_id": "4785973076",
+      "product": "99.9 가시제거 순살 가자미",
+      "text": "랜만에 집에서 생선구이를 해 먹으려고 냉동 생선을 구매했어요. 솔직히 냉동이라 큰 기대는 없었는데, 배송받고 너무 만족스러워서 후기 남깁니다. 일단 포장 상태부터가 남달랐어요. 꼼꼼한 아이스팩 포장 덕분에 꽁꽁 언 상태 그대로 도착했습니다. 해동 후 비린내가 날까 걱정했는데, 살이 통통하고 비린내가 전혀 없어서 바로 구워 먹기 좋았어요. 특히 가시를 바를 필요 없는 순살이라 너무 편했습니다. 생선구이를 해 먹었는데요, 부드럽고 촉촉한 살만 있으니 아이들이나 어르신들이 드시기에도 안심이더라고요. 밥 한 그릇 뚝딱 비웠네요. 손질도 깔끔하게 되어 있어서 따로 손댈 필요 없이 바로 조리할 수 있었던 점도 정말 좋았어요. 신선하고 맛있는 냉동 생선을 찾는다면 정말 추천합니다! 다음에 다른 생선도 여기서 구매해야겠어요.",
+      "opinions": [
+        {
+          "evidence": "배송받고 너무 만족스러워서 후기 남깁니다.",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "포장 상태부터가 남달랐어요.",
+          "aspect": "포장",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "꼼꼼한 아이스팩 포장 덕분에",
+          "aspect": "포장",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "꽁꽁 언 상태 그대로 도착했습니다.",
+          "aspect": "품질",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "비린내가 전혀 없어서",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "살이 통통하고",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "가시를 바를 필요 없는 순살이라 너무 편했습니다.",
+          "aspect": "조리편의",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "가시를 바를 필요 없는 순살이라",
+          "aspect": "설명일치",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "부드럽고 촉촉한 살만 있으니",
+          "aspect": "식감",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "손질도 깔끔하게 되어 있어서",
+          "aspect": "품질",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "따로 손댈 필요 없이 바로 조리할 수 있었던 점도 정말 좋았어요.",
+          "aspect": "조리편의",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "신선하고",
+          "aspect": "신선도",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있는 냉동 생선을 찾는다면 정말 추천합니다!",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "다음에 다른 생선도 여기서 구매해야겠어요.",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "다른 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 257,
+      "review_id": "4923198358",
+      "product": "제주갈치 순살갈치 두툼한 특대 구이",
+      "text": "순살이라고 적혀있는데 순살이 아님",
+      "opinions": [
+        {
+          "evidence": "순살이라고 적혀있는데 순살이 아님",
+          "aspect": "설명일치",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 258,
+      "review_id": "5048421948",
+      "product": "독일 전통 비바크부어스트 소시지 비엔나 도이치부어스트 헨 소세지",
+      "text": "맛있습니다. 소량으로 구매할수 있어서 좋네요.",
+      "opinions": [
+        {
+          "evidence": "맛있습니다.",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "소량으로 구매할수 있어서 좋네요.",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 259,
+      "review_id": "4756756628",
+      "product": "연어가마살+꼬리살 1kg(구이용)",
+      "text": "아직 못먹었는데 일부 녹아서 물이 흥건했꼬..포장불량인지...그안에서 한방울씩밖으로 생선물이 뚝뚝 떨어짐...사진보냈으나 뜯어서 냄새 별로면 다시 얘기해달라고하네요",
+      "opinions": [
+        {
+          "evidence": "일부 녹아서 물이 흥건했꼬..",
+          "aspect": "품질",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "포장불량인지...",
+          "aspect": "포장",
+          "sentiment": "애매",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "한방울씩밖으로 생선물이 뚝뚝 떨어짐...",
+          "aspect": "포장",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 260,
+      "review_id": "4828032043",
+      "product": "감자말이새우10+10개(총2팩) 새우튀김",
+      "text": "아이들이 질 안먹어서 그대로 있네요",
+      "opinions": [
+        {
+          "evidence": "아이들이 질 안먹어서 그대로 있네요",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 261,
+      "review_id": "4650141143",
+      "product": "노바시새우 1+1 새우 제수용 냉동 손질 튀김용새우",
+      "text": "명절에 새우전하려고 구매했어요",
+      "opinions": [
+        {
+          "evidence": "명절에 새우전하려고 구매했어요",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 262,
+      "review_id": "5077727162",
+      "product": "초밥 재료 초새우 초문어 초한치 계란 조미유부",
+      "text": "안신선해서 회로 먹기 좀 의심스러워요 진액이 너무 많아요 설이 작아요",
+      "opinions": [
+        {
+          "evidence": "안신선해서",
+          "aspect": "신선도",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "회로 먹기 좀 의심스러워요",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "진액이 너무 많아요",
+          "aspect": "품질",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "설이 작아요",
+          "aspect": "양",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "“설이 작아요”가 “살이 작아요”의 오탈자일 가능성이 있어 양으로 분류."
+    },
+    {
+      "no": 263,
+      "review_id": "4885114232",
+      "product": "사세 매콤 점보 닭다리 1.3kg",
+      "text": "다시한번또 구매합니다. 맛있어요",
+      "opinions": [
+        {
+          "evidence": "다시한번또 구매합니다.",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 264,
+      "review_id": "4650925194",
+      "product": "맘스터치 케이준 감자튀김 양념감자 에어프라이어튀김",
+      "text": "1kg 금방먹고 좋네요~~",
+      "opinions": [
+        {
+          "evidence": "1kg 금방먹고 좋네요~~",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 265,
+      "review_id": "4883704777",
+      "product": "순살 노르웨이고등어 진공 포장 1kg 손질 고등어 필렛",
+      "text": "지인분이 시골 사셔서 장보러 가기 힘드시대서 이것저것 보내드렸어요. 제가 맛있게 먹었으니 보내드렸겠죠 😋",
+      "opinions": [
+        {
+          "evidence": "지인분이 시골 사셔서 장보러 가기 힘드시대서 이것저것 보내드렸어요.",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "제가 맛있게 먹었으니 보내드렸겠죠 😋",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 266,
+      "review_id": "4963451809",
+      "product": "한성기업 몬스터크랩 72g 10개 크래미",
+      "text": "이미다먹고 없지만 한달리뷰는 씁니다. 너무 맛있어서 아이둘이 너무 좋아해요 강력추천 합니다.",
+      "opinions": [
+        {
+          "evidence": "너무 맛있어서",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "아이둘이 너무 좋아해요",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "강력추천 합니다.",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 267,
+      "review_id": "5054338219",
+      "product": "알탕 700g 마트납품 그대로 완제품",
+      "text": "항상맛있게먹어요 최고에요",
+      "opinions": [
+        {
+          "evidence": "항상맛있게먹어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "항상맛있게먹어요",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "최고에요",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 268,
+      "review_id": "4954184218",
+      "product": "범표 부산 어묵꼬치장국포함 제주갈치어육 꼬치어묵 즉석오뎅탕 어묵탕 캠핑요리",
+      "text": "포장 잘되고 잘받았어요",
+      "opinions": [
+        {
+          "evidence": "포장 잘되고",
+          "aspect": "포장",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "잘받았어요",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 269,
+      "review_id": "4819767747",
+      "product": "저염 명란젓 백명란 양념 못난이 파지 선동 백명란젓 500g",
+      "text": "명란아보카도 덮밥해먹었어요 파지라도 먹는데 이상없음",
+      "opinions": [
+        {
+          "evidence": "명란아보카도 덮밥해먹었어요",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "파지라도 먹는데 이상없음",
+          "aspect": "품질",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 270,
+      "review_id": "4904551609",
+      "product": "닭정육 뼈없는 순살 닭다리살 2kg",
+      "text": "양도많고 맛있어서 잘먹고닜어요",
+      "opinions": [
+        {
+          "evidence": "양도많고",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛있어서",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 271,
+      "review_id": "4646892440",
+      "product": "수협 손질 오징어 500g 1kg 오징어채",
+      "text": "다좋은데 너무 작게 썰린듯",
+      "opinions": [
+        {
+          "evidence": "다좋은데",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "너무 작게 썰린듯",
+          "aspect": "양",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 272,
+      "review_id": "4817319155",
+      "product": "손질 생 새우살 900g 깐새우 흰다리새우 탈각",
+      "text": "매번 잘 이용 중입니다",
+      "opinions": [
+        {
+          "evidence": "매번 잘 이용 중입니다",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 273,
+      "review_id": "4855567551",
+      "product": "모짜렐라 맘스터치 치즈스틱 1kg 간편한 에어프라이어요리",
+      "text": "이제 네이버리뷰도 못믿겠네요 평좋아서 샀더니 ..여기 평중에 제일별점낮은 리뷰들하고 같은 생각입니다 애가 좋아해서 2봉지나 샀는데 별로예요",
+      "opinions": [
+        {
+          "evidence": "네이버리뷰도 못믿겠네요",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "일반 경험"
+        },
+        {
+          "evidence": "애가 좋아해서 2봉지나 샀는데 별로예요",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 274,
+      "review_id": "4678750951",
+      "product": "훈제오리 슬라이스 800g 1+1팩 오리고기",
+      "text": "배송 빠르고 좋아요 오리고기 맛있어요! 숙주랑 배추랑 넣어서 찜해먹으니까 잘어울려요!",
+      "opinions": [
+        {
+          "evidence": "배송 빠르고",
+          "aspect": "배송",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "오리고기 맛있어요!",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "숙주랑 배추랑 넣어서 찜해먹으니까 잘어울려요!",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 275,
+      "review_id": "4649868998",
+      "product": "초밥 재료 초새우 초문어 초한치 계란 조미유부",
+      "text": "23년포장 유통기한 5개월 남았네요.",
+      "opinions": [
+        {
+          "evidence": "23년포장 유통기한 5개월 남았네요.",
+          "aspect": "품질",
+          "sentiment": "애매",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "오래된 포장연도와 잔여 유통기한만 언급하여 불만인지 단순 정보인지 명확하지 않음."
+    },
+    {
+      "no": 276,
+      "review_id": "4926821215",
+      "product": "단새우회 20미 횟감용 아마애비 북쪽분홍새우 초밥용 스시 홈마카세 손질 홍새우 달마새우",
+      "text": "생각보다 작아서 좀그런데 싱싱해요",
+      "opinions": [
+        {
+          "evidence": "생각보다 작아서 좀그런데",
+          "aspect": "양",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "싱싱해요",
+          "aspect": "신선도",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 277,
+      "review_id": "4657912479",
+      "product": "젓갈 500g 오징어젓 갈치속젓 백명란",
+      "text": "짜지않고 파지인데도 괜찮아요 잘먹을께요",
+      "opinions": [
+        {
+          "evidence": "짜지않고",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "파지인데도 괜찮아요",
+          "aspect": "품질",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "잘먹을께요",
+          "aspect": "사실",
+          "sentiment": "해당없음",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 278,
+      "review_id": "5021927953",
+      "product": "초밥 재료 초새우 초문어 초한치 계란 조미유부",
+      "text": "맛있어요 가성비 있어요",
+      "opinions": [
+        {
+          "evidence": "맛있어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "가성비 있어요",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 279,
+      "review_id": "5000054735",
+      "product": "손질 쭈꾸미 400g(200gX2팩) 16-20마리 냉동 주꾸미",
+      "text": "만족하지는 않지만 나름구성은 음..",
+      "opinions": [
+        {
+          "evidence": "만족하지는 않지만",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "나름구성은 음..",
+          "aspect": "재료구성",
+          "sentiment": "애매",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": "구성이 어떤 점에서 좋은지/나쁜지 끝맺지 않아 애매로 처리."
+    },
+    {
+      "no": 280,
+      "review_id": "4812208692",
+      "product": "단새우 성게알 우니 홈마카세 자연산 제철 달마새우 아마에비",
+      "text": "우니 = 매우 맛있어요! 달마새우 = 내장제거가 잘 안되었지만 그래도 맛있어요 감태 = 조미된거라 같이 먹기에는 별로에요 나중에 밥 싸먹을게요",
+      "opinions": [
+        {
+          "evidence": "우니 = 매우 맛있어요!",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "달마새우 = 내장제거가 잘 안되었지만",
+          "aspect": "품질",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "그래도 맛있어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "감태 = 조미된거라 같이 먹기에는 별로에요",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 281,
+      "review_id": "4897567957",
+      "product": "사옹원 부침명장 한입 땡초 김치전 부추전 300g+300g",
+      "text": "에어프라이어에 바삭하게 구워먹으니 밥 반찬으로도 좋고 간식으로도 맛있네요",
+      "opinions": [
+        {
+          "evidence": "에어프라이어에 바삭하게 구워먹으니",
+          "aspect": "식감",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "밥 반찬으로도 좋고",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "간식으로도 맛있네요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 282,
+      "review_id": "4812957166",
+      "product": "왕특대 경산 자인농협 샤인머스켓 고당도 프리미엄 망고포도 2kg 4kg 농장직송 선물용 가정용",
+      "text": "포도가 큰데 껍질이 두꺼워서 애들이 못먹어요",
+      "opinions": [
+        {
+          "evidence": "포도가 큰데",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "껍질이 두꺼워서",
+          "aspect": "식감",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "애들이 못먹어요",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 283,
+      "review_id": "4976921322",
+      "product": "상급 명태알(동태) 명태고니(곤이 명태곤) 500g 생선고니 알탕재료",
+      "text": "꽁꽁 얼어서 잘 도착했어요~ 이번이 두 번째 주문이네요ㅎ",
+      "opinions": [
+        {
+          "evidence": "꽁꽁 얼어서 잘 도착했어요~",
+          "aspect": "품질",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "이번이 두 번째 주문이네요ㅎ",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 284,
+      "review_id": "4788638110",
+      "product": "낙지젓갈 500g 오징어 낙지 젓 비빔낙지",
+      "text": "맛은 가격대비 괜찮아요",
+      "opinions": [
+        {
+          "evidence": "맛은 가격대비 괜찮아요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "가격대비 괜찮아요",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 285,
+      "review_id": "4926729469",
+      "product": "상급 대구알 대구고니(곤이) 500g 생선고니",
+      "text": "매운탕 소스가 빠졌어요.",
+      "opinions": [
+        {
+          "evidence": "매운탕 소스가 빠졌어요.",
+          "aspect": "재료구성",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 286,
+      "review_id": "4887770875",
+      "product": "모짜렐라 맘스터치 치즈스틱 1kg 간편한 에어프라이어요리",
+      "text": "후기가 왜 좋은건지? 진짜 맛 없어요.",
+      "opinions": [
+        {
+          "evidence": "진짜 맛 없어요.",
+          "aspect": "맛",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 287,
+      "review_id": "4980411553",
+      "product": "해물모듬 5종 해물모둠 믹스 2팩",
+      "text": "냉동포장으로 깔끔하게 배송되었습니다",
+      "opinions": [
+        {
+          "evidence": "냉동포장으로 깔끔하게 배송되었습니다",
+          "aspect": "포장",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 288,
+      "review_id": "4843941040",
+      "product": "열대과일 패션후르츠 퓨레1kg 망고 람부탄 리치 잭후르츠 냉동과일",
+      "text": "냉동 상태는 좋은데 산산조각 깨진게 한 팩에서 2개 나옴.포장 안 뜯고 보자마자 보임. 패션후르츠 몇 년을 먹었어도 깨진건 처음임. 포장할 때부터 알텐데 이 무슨. 교환이나 환불 귀찮아서 안했는데 다음에는 신경 좀 써주세요.",
+      "opinions": [
+        {
+          "evidence": "냉동 상태는 좋은데",
+          "aspect": "품질",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "산산조각 깨진게 한 팩에서 2개 나옴.",
+          "aspect": "품질",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "포장할 때부터 알텐데 이 무슨.",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "다음에는 신경 좀 써주세요.",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 289,
+      "review_id": "4753211578",
+      "product": "[네이버 단독]가시없는 노르웨이고등어 특대 플러스 99.9 제거 순살고등어 아기생선",
+      "text": "네이버 행사할 때 마다 구입해서 잘 먹고 있어요~ 고구마순 넣고 토막 썬 무랑 같이 조림도 해 먹고 구워도 먹고 너무 맛있게 잘 먹었습니다~",
+      "opinions": [
+        {
+          "evidence": "네이버 행사할 때 마다 구입해서",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "너무 맛있게 잘 먹었습니다~",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 290,
+      "review_id": "5072756905",
+      "product": "한성기업 몬스터크랩 72g 10개 20개 게살 크래미 맛살",
+      "text": "잘게 찢어서 카레에 넣고 끓여 먹어도, 샐러드나 간식으로 그냥 먹어도 좋네요",
+      "opinions": [
+        {
+          "evidence": "카레에 넣고 끓여 먹어도, 샐러드나 간식으로 그냥 먹어도 좋네요",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 291,
+      "review_id": "4921428682",
+      "product": "모짜렐라 맘스터치 치즈스틱 1kg 간편한 에어프라이어요리",
+      "text": "저희집 최애간식입니다",
+      "opinions": [
+        {
+          "evidence": "저희집 최애간식입니다",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 292,
+      "review_id": "5025577699",
+      "product": "홍야 유니짜장 2인분 920g 면2 소스2",
+      "text": "맛있어요 재주문합니다",
+      "opinions": [
+        {
+          "evidence": "맛있어요",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "재주문합니다",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 293,
+      "review_id": "4695940483",
+      "product": "99.9 가시제거 순살 가자미",
+      "text": "아이가 좋아해서 2번째 구매입니다ㅎ",
+      "opinions": [
+        {
+          "evidence": "아이가 좋아해서",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "2번째 구매입니다ㅎ",
+          "aspect": "재구매",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 294,
+      "review_id": "4840632995",
+      "product": "한성기업 몬스터크랩 72g 10개 20개 게살 크래미 맛살",
+      "text": "품질도 좋고 가성비가 최고요",
+      "opinions": [
+        {
+          "evidence": "품질도 좋고",
+          "aspect": "품질",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "가성비가 최고요",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 295,
+      "review_id": "4780714347",
+      "product": "동해안 구룡포 반건조오징어 피데기 마른오징어 쫄쫄이 당일바리",
+      "text": "싸게 맛난 제품입니다",
+      "opinions": [
+        {
+          "evidence": "싸게",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "맛난 제품입니다",
+          "aspect": "맛",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 296,
+      "review_id": "4846403717",
+      "product": "칵테일새우 900g 냉동 새우살 흰다리새우",
+      "text": "저렴하게 잘구매했습니다 씨알도크고 좋습니다!!",
+      "opinions": [
+        {
+          "evidence": "저렴하게 잘구매했습니다",
+          "aspect": "가격",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "씨알도크고 좋습니다!!",
+          "aspect": "양",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 297,
+      "review_id": "4719867941",
+      "product": "칵테일새우 900g 냉동 새우살 흰다리새우",
+      "text": "만족합니다 아주좋아요",
+      "opinions": [
+        {
+          "evidence": "만족합니다 아주좋아요",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 298,
+      "review_id": "4646027701",
+      "product": "냉동 꽁치 1kg, 1개",
+      "text": "빠른배송감사합니다^^",
+      "opinions": [
+        {
+          "evidence": "빠른배송감사합니다^^",
+          "aspect": "배송",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 299,
+      "review_id": "4826774200",
+      "product": "왕특대 경산 자인농협 샤인머스켓 고당도 프리미엄 망고포도 2kg 4kg 농장직송 선물용 가정용",
+      "text": "좋은 샤인머스캣입니다",
+      "opinions": [
+        {
+          "evidence": "좋은 샤인머스캣입니다",
+          "aspect": "종합만족",
+          "sentiment": "긍정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    },
+    {
+      "no": 300,
+      "review_id": "5070244396",
+      "product": "비비수산 살아있을때 얼린 주꾸미 5kg 벌크",
+      "text": "너무 질겨서 솔직히 1봉지는 버림",
+      "opinions": [
+        {
+          "evidence": "너무 질겨서",
+          "aspect": "식감",
+          "sentiment": "부정",
+          "target": "이 상품"
+        },
+        {
+          "evidence": "솔직히 1봉지는 버림",
+          "aspect": "종합불만",
+          "sentiment": "부정",
+          "target": "이 상품"
+        }
+      ],
+      "done": true,
+      "note": ""
+    }
+  ]
+}

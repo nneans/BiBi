@@ -1,0 +1,9 @@
+{
+  "discriminator_digest_before": "a8770acc67c819ef197c7ed641fe614c390757225301c2b4e57f11db35779154",
+  "discriminator_digest_after": "a8770acc67c819ef197c7ed641fe614c390757225301c2b4e57f11db35779154",
+  "discriminator_unchanged": true,
+  "training_reviews": 494941,
+  "epochs": 1,
+  "seconds": 218.7306746999966,
+  "generator_file_sha256": "099abf1e5993faee1c903bd5dc56cb4db581a911307a860568f9e2db87825190"
+}

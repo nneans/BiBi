@@ -1,1 +1,63 @@
-# BiBi
+# 비비수산 AI 리뷰 분석
+
+상품(`product_id`)마다 고객이 **무엇을 칭찬하고 무엇에 불만인지, 왜 그런지**를 근거 문장과 함께 찾아 집계합니다. 상품은 ID 하나씩 따로 분석하고 서로 합치지 않습니다. 보고서는 '맛있어요' 같은 일반 칭찬보다 '치즈가 안 늘어난다', '기름에 튀겨야 맛있다' 같은 구체적인 불만·의견을 앞에 둡니다.
+
+## 폴더 지도 (흐름 순서)
+
+| 단계 | 폴더 | 하는 일 |
+| --- | --- | --- |
+| 1 | [1_전처리](1_전처리/README.md) | 원본 CSV(수정 금지) → 정상 리뷰만, 상품 ID별 대표 이름, HTML 기호 정리 |
+| 2 | [2_DB](2_DB/README.md) | PostgreSQL 리뷰 DB, 새 CSV의 신규·수정분만 반영, 백업 |
+| 3 | [3_사후학습](3_사후학습/README.md) | KcELECTRA를 우리 리뷰 49.5만 건으로 추가 학습(식품 리뷰 적응), 1에폭 결과 `frozen-encoder/` 사용 |
+| 4 | [4_정답데이터](4_정답데이터/README.md) | 사람이 확정한 정답 300리뷰·666의견, 추가 단위 정답 800개, 같은 뜻 판정 148쌍 |
+| 5 | [5_감성분류](5_감성분류/README.md) | Kiwi로 문장·절 단위 나누기, 단위 감성 분류기 교차검증 |
+| 6 | [6_이유분석](6_이유분석/README.md) | 30개 상품 분석: 감성 판정 → KURE-v1 임베딩 → BERTopic 묶기·합치기 → 상품별 보고서 |
+| 7 | [7_보고](7_보고/README.md) | 기초 집계, 흐름도 그림, 대시보드 인계, [리뷰 한 건 따라가기 노트북](7_보고/노트북/리뷰_한_건_따라가기.ipynb) |
+
+코드와 설정은 단계 폴더와 따로 있습니다: `src/bibi_reviews/`(공용 코드, 폴더 위치는 [paths.py](src/bibi_reviews/paths.py) 한 곳에서 관리), `configs/`, `scripts/`, `tests/`, `docs/`.
+
+## 분석 흐름 (v3, 2026-10-26)
+
+```
+원문 리뷰 ─ ① 전처리(normalize_text) ─ ② Kiwi 문장·절 단위 ─ ③ KcELECTRA 단위 감성(긍정/부정/평가 아님, 확신도 0.8 미만은 재확인)
+         ─ ④ KURE-v1 임베딩 ─ ⑤ BERTopic(UMAP → HDBSCAN → c-TF-IDF) → 같은 뜻 묶음 합치기 → 묶음 중심 기준 소속 정리
+         ─ ⑥ 상품별 보고서: 구체적 불만과 같은 주제 칭찬 짝짓기, 최근 3개월 vs 이전(리뷰 100건당)
+```
+
+- 감성 분류기: 사후학습 인코더에서 출발해 정답 단위 725개 + 추가 단위 799개로 미세조정(정답 교차검증 정확도 0.862, 실제 상품 단위의 '부정' 정확도 0.76).
+- 결과: [요약](6_이유분석/results-v3/summary.md) · [상품별 구체적 불만·칭찬](6_이유분석/results-v3/insights.md) · [리뷰별 판정](6_이유분석/results-v3/review-samples.md)
+- 그림: [분석 흐름](7_보고/그림/pipeline-flow.png) · [전처리 흐름](7_보고/그림/preprocess-flow.png) · [고등어 묶음 지도](6_이유분석/results-v3/300868056/topics-map-NEG.png)
+
+## 저장소에 없는 것 (분석 PC에만 있음)
+
+고객 리뷰 원본과 거기서 바로 나온 큰 파일은 올리지 않았습니다(`.gitignore`).
+
+| 파일 | 위치 | 다시 만드는 법 |
+| --- | --- | --- |
+| 원본 리뷰 CSV | `1_전처리/원본/` | 스마트스토어에서 내보내기 |
+| 정리된 리뷰 parquet | `1_전처리/결과/processed/` | `python -m bibi_reviews.canonicalize_products` |
+| DB 백업 | `2_DB/db/backups/` | `powershell -File scripts/postgres_server.ps1 backup` |
+| 상품별 단위 결과(`units.jsonl` 등) | `6_이유분석/results-v3/<상품ID>/` | `bash 6_이유분석/run_all.sh` |
+
+모델 두 개는 **Git LFS**로 올라가 있습니다. 받은 뒤 `git lfs pull`로 실제 파일을 내려받으세요.
+
+| 모델 | 위치 | 크기 |
+| --- | --- | ---: |
+| 사후학습 KcELECTRA 인코더 | `3_사후학습/frozen-encoder/` | 487MB |
+| 단위 감성 분류기 v3 | `6_이유분석/models/unit-sentiment-v3/` | 489MB |
+
+외부에서 받는 모델: `beomi/KcELECTRA-base-v2022`(사후학습 출발점), `nlpai-lab/KURE-v1`(임베딩). 위치는 [paths.py](src/bibi_reviews/paths.py)에 있습니다.
+
+## 자주 쓰는 명령
+
+```powershell
+pip install -e .                                                 # src/bibi_reviews 패키지 설치
+powershell -File scripts/postgres_server.ps1 start                # PC를 켠 뒤 DB 서버 켜기
+bash 6_이유분석/run_all.sh                                        # 30개 상품 분석 (products.json)
+python 6_이유분석/summarize_all.py v3                             # 요약·인사이트 보고서
+python -m pytest tests 3_사후학습/test_stage1_core.py             # 54 passed, 2 skipped (2026-10-25)
+```
+
+**이 PC 주의:** i9-14900KF의 성능 코어가 불안정해서(2026-10-25 확인) `bibi_reviews`를 불러오면 효율 코어에만 고정됩니다([cpu.py](src/bibi_reviews/cpu.py)). 다른 PC에서는 CPU 수가 달라 자동으로 꺼지고, `BIBI_ALL_CORES=1`로 끌 수도 있습니다.
+
+정리 기록: [docs/cleanup-2026-10-23.md](docs/cleanup-2026-10-23.md)

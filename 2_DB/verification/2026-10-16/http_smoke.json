@@ -1,0 +1,14 @@
+{
+  "unauthenticated_status": 401,
+  "first_upload_new": 2,
+  "reupload_new": 0,
+  "reupload_computed_texts": 0,
+  "real_http_review_count": 2,
+  "real_model_automatic_analysis_completed": true,
+  "uploads": [
+    "15ff602633da427eba7e9436163fd442",
+    "864c19c3396d4a22a1b0547630d095a7"
+  ],
+  "public_network_exposure": false,
+  "human_accuracy_validated": false
+}

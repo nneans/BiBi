@@ -1,0 +1,122 @@
+{
+  "rows": 649524,
+  "normal_reviews": 642172,
+  "blind_reviews": 7352,
+  "products_with_normal_reviews": 539,
+  "products_total": 539,
+  "duplicate_review_ids": 0,
+  "review_id_uniqueness": "enforced by DB primary key",
+  "products_with_multiple_source_names": 246,
+  "representative_name": "products.product_name = most frequent normal-review name per product_id",
+  "review_type_counts": {
+    "일반": 418003,
+    "한달사용": 231521
+  },
+  "linked_related_reviews": 193623,
+  "period": {
+    "start": "2025-01-01T00:02:53+09:00",
+    "end": "2026-10-13T16:49:47+09:00"
+  },
+  "rating_counts": {
+    "1": 1732,
+    "2": 1475,
+    "3": 11934,
+    "4": 43687,
+    "5": 583344
+  },
+  "mean_rating": 4.8771,
+  "length_chars_quantiles": {
+    "0.05": 10.0,
+    "0.25": 13.0,
+    "0.5": 18.0,
+    "0.75": 29.0,
+    "0.95": 62.0,
+    "0.99": 112.0
+  },
+  "empty_or_symbol_only_texts": 856,
+  "distinct_texts": 501010,
+  "reviews_with_exact_duplicate_text": 174394,
+  "cue_shares": {
+    "negative_candidate": 0.0385,
+    "positive_candidate": 0.6478,
+    "contrast_marker": 0.1139,
+    "other_product_reference": 0.0047
+  },
+  "five_star_with_negative_candidate_cue": 17829,
+  "low_rating_without_negative_candidate_cue": 1824,
+  "upload_jobs": [
+    {
+      "job_id": "12d5caa12a93492b8f0e34ccd60214a2",
+      "filename": "리뷰데이터(2025.01.01~2026.10.13).csv",
+      "status": "failed",
+      "created_at": "2026-10-16T06:22:34.784067+00:00",
+      "finished_at": "2026-10-16T06:23:01.771304+00:00",
+      "error": "'function' object has no attribute 'isdigit'"
+    },
+    {
+      "job_id": "4e21deb389d74d8596d5d6c4797d0166",
+      "filename": "리뷰데이터(2025.01.01~2026.10.13).csv",
+      "status": "completed",
+      "created_at": "2026-10-16T06:26:04.325129+00:00",
+      "finished_at": "2026-10-16T06:27:40.202431+00:00",
+      "error": null
+    },
+    {
+      "job_id": "f08011007c18469c96d3665444f15685",
+      "filename": "리뷰데이터(2025.01.01~2026.10.13).csv",
+      "status": "completed",
+      "created_at": "2026-10-16T06:28:45.343677+00:00",
+      "finished_at": "2026-10-16T06:29:22.867505+00:00",
+      "error": null
+    },
+    {
+      "job_id": "07456413585841f293c132e03db44bd2",
+      "filename": "리뷰데이터(2025.01.01~2026.10.13).csv",
+      "status": "running",
+      "created_at": "2026-10-16T06:34:20.629228+00:00",
+      "finished_at": null,
+      "error": null
+    },
+    {
+      "job_id": "ea205bca19a94e979e609a2973caccc2",
+      "filename": "리뷰데이터(2025.01.01~2026.10.13).csv",
+      "status": "completed",
+      "created_at": "2026-10-16T06:34:44.069831+00:00",
+      "finished_at": "2026-10-16T06:35:25.358352+00:00",
+      "error": null
+    }
+  ],
+  "stale_running_upload_jobs": [
+    "07456413585841f293c132e03db44bd2"
+  ],
+  "analysis_cache_by_model_version": [
+    {
+      "model_version": "local-v1-6289bdfec25016736edcbd66",
+      "n": 180
+    },
+    {
+      "model_version": "local-v1-7b3b543a7beae28b9df51c8b",
+      "n": 180
+    },
+    {
+      "model_version": "local-v1-93d0c8773492306f36bf9b35",
+      "n": 180
+    },
+    {
+      "model_version": "local-v1-b9d70553e2a03f1b82866a93",
+      "n": 180
+    },
+    {
+      "model_version": "local-v1-c769ff23112c7a0c74d3934b",
+      "n": 180
+    },
+    {
+      "model_version": "local-v1-cb14b50ae63a9b27ce14f0f6",
+      "n": 180
+    }
+  ],
+  "analysis_cache_note": "existing cache rows are experimental local-v1 outputs; not production predictions",
+  "cue_note": "surface-expression candidates only; not sentiment labels. Rating is not an aspect sentiment label.",
+  "database": "postgresql+psycopg://bibi@127.0.0.1:5432/bibi_reviews",
+  "read_only": true
+}

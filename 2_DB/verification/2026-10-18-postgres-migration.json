@@ -1,0 +1,84 @@
+{
+  "source": "03_DB_증분반영\\db\\reviews.sqlite3",
+  "target": "postgresql+psycopg://bibi@127.0.0.1:5432/bibi_reviews",
+  "started_at": "2026-10-18T12:49:17+00:00",
+  "tables": {
+    "products": {
+      "rows": 539,
+      "source_rows": 539,
+      "target_rows": 539,
+      "sha256_source": "91efd454a797c3dc0c3ce47f1fd4baca1a2ad01610cf35d28bbad9595c50d47c",
+      "identical": true,
+      "seconds": 0.0
+    },
+    "reviews": {
+      "rows": 649524,
+      "source_rows": 649524,
+      "target_rows": 649524,
+      "sha256_source": "11608cac6319579625f696983a5c22d7a48faa2a4c95e0d2d3f01b150d01729a",
+      "identical": true,
+      "seconds": 61.9
+    },
+    "upload_jobs": {
+      "rows": 5,
+      "source_rows": 5,
+      "target_rows": 5,
+      "sha256_source": "42713db59b7b8decf8f5973dda07fa2f507120e370566296961c1e3728c0fa8d",
+      "identical": true,
+      "seconds": 0.5
+    },
+    "upload_reviews": {
+      "rows": 649524,
+      "source_rows": 649524,
+      "target_rows": 649524,
+      "sha256_source": "ebcc5466dd0f874028d222f14fd3a101b5b8d74b816f165fdd4d9889d0cccdde",
+      "identical": true,
+      "seconds": 35.9
+    },
+    "review_history": {
+      "rows": 0,
+      "source_rows": 0,
+      "target_rows": 0,
+      "sha256_source": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true,
+      "seconds": 0.1
+    },
+    "analysis_cache": {
+      "rows": 1080,
+      "source_rows": 1080,
+      "target_rows": 1080,
+      "sha256_source": "ffae5f5e573cfe5969e65802399fbd1fadf553ca3d0cd49907345e4061736c14",
+      "identical": true,
+      "seconds": 0.4
+    },
+    "analysis_runs": {
+      "rows": 0,
+      "source_rows": 0,
+      "target_rows": 0,
+      "sha256_source": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true,
+      "seconds": 0.0
+    }
+  },
+  "target_indexes": {
+    "reviews": [
+      "ix_reviews_created_at",
+      "ix_reviews_display_status",
+      "ix_reviews_product_id",
+      "ix_reviews_text_hash"
+    ],
+    "analysis_labels": [
+      "ix_labels_version_aspect"
+    ],
+    "opinions": [
+      "ix_opinions_product_id",
+      "ix_opinions_product_tier",
+      "ix_opinions_review_id",
+      "ix_opinions_text_hash"
+    ]
+  },
+  "finished_at": "2026-10-18T12:50:56+00:00",
+  "seconds": 100.0,
+  "all_identical": true,
+  "source_left_unchanged": "opened read-only (mode=ro)"
+}

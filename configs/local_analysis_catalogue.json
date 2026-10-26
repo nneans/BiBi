@@ -1,0 +1,29 @@
+{
+  "version": "food-reasons-v1-experimental",
+  "status": "Developer-defined hypotheses; not human gold labels or validated production taxonomy",
+  "topics": [
+    {"id":"taste","aspect":"taste","name":"맛","positive":"맛이 좋고 맛있어서 만족한다.","negative":"맛이 없거나 맛이 별로라서 불만이다.","deferred":"아직 먹어보지 않아서 맛은 모르거나 맛있기를 기대한다."},
+    {"id":"saltiness","aspect":"taste","name":"간·짠맛","positive":"간이 적당하고 짜지 않아서 만족한다.","negative":"너무 짜거나 너무 싱거워서 불만이다.","deferred":"간을 아직 확인하지 않았거나 짠지 알 수 없다."},
+    {"id":"odor","aspect":"freshness","name":"냄새·비린내","positive":"비린내나 이상한 냄새가 없어서 만족한다.","negative":"비린내나 이상한 냄새가 나서 불만이다.","deferred":"냄새가 날까 걱정하지만 아직 확인하지 않았다."},
+    {"id":"freshness","aspect":"freshness","name":"신선도","positive":"상품이 신선하고 상태가 좋아서 만족한다.","negative":"상품이 신선하지 않거나 상한 것 같아 불만이다.","deferred":"신선해 보이지만 실제 상태는 아직 확인하지 않았다."},
+    {"id":"bones","aspect":"quality_texture","name":"가시·뼈","positive":"가시나 뼈가 적고 잘 제거되어 만족한다.","negative":"가시나 뼈가 많아서 불편하고 불만이다.","deferred":"가시나 뼈가 있을까 걱정하지만 아직 먹어보지 않았다."},
+    {"id":"texture","aspect":"quality_texture","name":"식감","positive":"살이 부드럽고 쫄깃해서 식감이 좋다.","negative":"살이 퍽퍽하거나 질기고 흐물해서 식감이 나쁘다.","deferred":"식감은 아직 먹어보지 않아서 모르겠다."},
+    {"id":"breakage","aspect":"quality_texture","name":"부서짐·자투리","positive":"조각이 온전하고 부서지지 않아서 만족한다.","negative":"살이 부서지거나 부스러기와 자투리가 많아서 불만이다.","deferred":"조각의 상태를 아직 확인하지 않았다."},
+    {"id":"water","aspect":"quality_texture","name":"해동·조리 수분","positive":"해동하거나 조리할 때 물기가 적어 만족한다.","negative":"해동하거나 조리할 때 물이 너무 많이 나와 불만이다.","deferred":"해동하기 전이라 물기가 얼마나 나오는지 모른다."},
+    {"id":"thickness","aspect":"quantity_size","name":"두께·절단","positive":"두께가 적당하고 일정하게 잘 썰려 있어서 만족한다.","negative":"너무 두껍거나 얇고 두께가 불균일하게 썰려 불만이다.","deferred":"두껍거나 얇아 보이지만 좋은지 나쁜지는 판단하지 않았다."},
+    {"id":"size","aspect":"quantity_size","name":"크기","positive":"크기가 크고 적당해서 만족한다.","negative":"크기가 너무 작거나 크고 제각각이라 불만이다.","deferred":"크기는 아직 확인하지 않았다."},
+    {"id":"quantity","aspect":"quantity_size","name":"양·중량","positive":"양이 많고 넉넉해서 만족한다.","negative":"양이 적거나 중량이 부족해서 불만이다.","deferred":"중량이 맞는지 의심하지만 직접 측정하지 않았다."},
+    {"id":"delivery","aspect":"delivery","name":"배송 속도·일정","positive":"배송이 빠르거나 약속한 일정에 도착해서 만족한다.","negative":"배송이 늦거나 약속한 일정에 도착하지 않아 불만이다.","deferred":"상품을 받았다는 인사일 뿐 배송 속도는 평가하지 않았다."},
+    {"id":"damage","aspect":"packaging_cold_chain","name":"포장 파손·누수","positive":"포장이 튼튼하고 밀봉되어 파손이나 누수가 없었다.","negative":"포장 봉지가 찢어지거나 터져서 물이 새어 불만이다.","deferred":"포장이 터졌는지 또는 물이 샜는지는 확실하지 않다."},
+    {"id":"cold_chain","aspect":"packaging_cold_chain","name":"냉동 상태·냉매","positive":"상품이 녹지 않고 꽁꽁 얼어 도착해서 만족한다.","negative":"냉동 상품이 녹아서 도착하거나 냉매가 부족해 불만이다.","deferred":"얼음팩 상태만 언급했고 상품이 녹았는지는 확인하지 않았다."},
+    {"id":"packaging","aspect":"packaging_cold_chain","name":"포장 전반","positive":"포장이 꼼꼼하고 잘되어 있어 만족한다.","negative":"포장이 부실하고 잘되지 않아서 개선이 필요하다.","deferred":"포장 상태는 아직 확인하지 않았다."},
+    {"id":"price","aspect":"price_shipping_cost","name":"가격·가성비","positive":"가격이 저렴하고 가성비가 좋아 만족한다.","negative":"가격이 비싸거나 가격 대비 품질이 나빠 불만이다.","deferred":"가격만 언급했을 뿐 싸거나 비싼지는 평가하지 않았다."},
+    {"id":"shipping_fee","aspect":"price_shipping_cost","name":"배송비","positive":"배송비가 저렴하거나 무료여서 만족한다.","negative":"개별 배송비가 비싸거나 합배송이 되지 않아 불만이다.","deferred":"배송비가 얼마인지 확인하지 않았다."},
+    {"id":"preparation","aspect":"cooking_convenience","name":"손질·조리 편의","positive":"손질과 조리가 간편하고 편리해서 만족한다.","negative":"다시 자르거나 손질해야 하고 조리가 어려워 불편하다.","deferred":"아직 조리하지 않았고 나중에 손질하거나 요리할 계획이다."},
+    {"id":"cooking_result","aspect":"cooking_convenience","name":"조리 결과·용도","positive":"전이나 원하는 요리가 잘 만들어져 만족한다.","negative":"전을 부치거나 원하는 요리를 만들기에 부적합하다.","deferred":"명절이나 제사 때 쓰려고 샀지만 아직 사용하지 않았다."},
+    {"id":"description","aspect":"description_option","name":"설명·옵션 일치","positive":"설명이나 주문한 구성대로 도착해서 만족한다.","negative":"설명이나 주문한 옵션과 실제 구성이 달라 불만이다.","deferred":"본인이 옵션을 잘못 골랐을 수 있어 판매 설명의 오류인지는 모른다."},
+    {"id":"service","aspect":"customer_service","name":"문의·교환·환불","positive":"문의나 교환 환불이 신속하고 친절하게 처리되어 만족한다.","negative":"문의나 교환 환불이 제대로 처리되지 않아 불만이다.","deferred":"문의나 교환 환불을 아직 신청하지 않았다."},
+    {"id":"repurchase","aspect":"purchase_behavior","name":"재구매 의향","positive":"다시 구매하고 싶거나 계속 재구매할 의향이 있다.","negative":"다시는 구매하지 않거나 재구매할 의사가 없다.","deferred":"재구매 여부는 아직 결정하지 않았다."},
+    {"id":"overall","aspect":"overall","name":"전반 평가","positive":"상품 전반에 만족하고 좋다고 평가한다.","negative":"상품 전반이 별로이고 실망스럽다고 평가한다.","deferred":"아직 사용하지 않아 상품을 평가하지 못한다."}
+  ]
+}

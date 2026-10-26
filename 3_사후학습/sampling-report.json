@@ -1,0 +1,49 @@
+{
+  "seed": 20261022,
+  "source_path": "C:\\Users\\MingyunKang\\Desktop\\2026\\06. BiBi\\02_상품정리\\processed\\canonical_products\\reviews_normal_canonical.parquet",
+  "source_sha256": "0509f0429f8f7813f1c6ca41b9540a6e85d8dec7afe0441c8b2b628fe010aa99",
+  "text_column": "review_text",
+  "population_reviews": 642172,
+  "population_products": 539,
+  "excluded_reviews": {
+    "duplicate_text_copy": 139908,
+    "prior_100_or_gold_300_direct_link": 1833,
+    "outside_whole_review_length_limit": 18,
+    "heldout_family_partner_not_used": 1472
+  },
+  "prior_dataset_sha256": "14bcff2fa84ebfbb24453c836569a7f3f40da640b59a7d6c8095f744d88f0f25",
+  "gold_sha256": "c372172411fe090ff078d541249b0d846c158a1ce95e822ba2c20cd360647ae5",
+  "sampling": "validation/test = diverse_sample of 2,000 each from their family partitions; train = every other eligible review (train partition + held-out partitions minus held-out families)",
+  "family_rule": "review_group_id + related_review_id only; identical text deduplicated, never chained",
+  "tokenizer_path": "C:\\Users\\MingyunKang\\.cache\\huggingface\\hub\\models--beomi--KcELECTRA-base-v2022\\snapshots\\568fe985a10c013c8f605e3c80a199413bbe9d00",
+  "vocab_sha256": "e58e7e071b2b7225c5682767b3ae0968cac65ca52262b0e0f957b07828c086ce",
+  "counts": {
+    "train": {
+      "reviews": 494941,
+      "products": 534,
+      "content_tokens": 6250754,
+      "unknown_tokens": 2599,
+      "min_reviews_per_product": 1,
+      "max_reviews_per_product": 69814,
+      "file_sha256": "7177973c4c516191bbe197366e04d03128df126ba34c4a958e8393165de2dd06"
+    },
+    "validation": {
+      "reviews": 2000,
+      "products": 436,
+      "content_tokens": 25897,
+      "unknown_tokens": 12,
+      "min_reviews_per_product": 1,
+      "max_reviews_per_product": 6,
+      "file_sha256": "1f659a5a09fac38d11bb8f87f713c39bcf60eabfac883386aab3cfeb219042a6"
+    },
+    "test": {
+      "reviews": 2000,
+      "products": 429,
+      "content_tokens": 26694,
+      "unknown_tokens": 3,
+      "min_reviews_per_product": 1,
+      "max_reviews_per_product": 7,
+      "file_sha256": "c7801cb17634ac87effdd6387d02b4fa9980459ac584a63b0cc5fdce12677bb6"
+    }
+  }
+}

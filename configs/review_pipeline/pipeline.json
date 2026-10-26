@@ -1,0 +1,87 @@
+{
+  "version": "review-pipeline-v2",
+  "database": "postgresql+psycopg://bibi@127.0.0.1:5432/bibi_reviews",
+  "database_note": "운영 리뷰 DB(2026-10-18 SQLite에서 이전). 비밀번호는 URL에 넣지 않고 Windows 사용자 pgpass.conf에서 읽는다. 다른 PC·서버는 환경변수 BIBI_DATABASE_URL로 바꾼다. 이전 전 SQLite 사본: 03_DB_증분반영/db/reviews.sqlite3(읽기 전용 보관)",
+  "labeling_database": "postgresql+psycopg://bibi@127.0.0.1:5432/bibi_labeling",
+  "taxonomy": "configs/review_pipeline/taxonomy_v2.json",
+  "workspace": "04_AI분석/labeling_workspace",
+  "artifacts": "04_AI분석/models/classifiers",
+  "registry": "configs/review_pipeline/production_model.json",
+  "seed": 20261017,
+
+  "llm": {
+    "provider": "groq",
+    "endpoint": "https://api.groq.com/openai/v1/chat/completions",
+    "model": "openai/gpt-oss-120b",
+    "structured_output": "json_schema strict=true (Groq docs 2026-10-17: gpt-oss-20b/120b support strict mode)",
+    "reasoning_effort": "low",
+    "temperature": 0,
+    "max_completion_tokens": 4096,
+    "reviews_per_call": 4,
+    "max_review_chars_per_call": 2400,
+    "timeout_seconds": 120,
+    "max_attempts_per_request": 3,
+    "max_retry_after_seconds": 90,
+    "budget": {
+      "daily_requests": 300,
+      "daily_tokens": 150000,
+      "run_requests": 100,
+      "run_tokens": 120000,
+      "note": "Groq published table (2026-10-17) for gpt-oss-120b: 30 RPM, 1K RPD, 8K TPM, 200K TPD. Our caps stay below; confirm the organization's limits page."
+    },
+    "rpm_limit": 25,
+    "tpm_limit": 7000
+  },
+
+  "selection": {
+    "stage0": "existing opinion_review_v1 50 reviews (product 296889036)",
+    "stage1_size": 150,
+    "human_eval_size": 300,
+    "pool_per_product_cap": 400,
+    "pool_min_chars": 8,
+    "stage1_rating_quota": {"1": 0.22, "2": 0.18, "3": 0.2, "4": 0.15, "5": 0.25},
+    "stage1_max_per_product": 4,
+    "near_duplicate_cosine": 0.93,
+    "human_eval_low_rating_share": 0.3
+  },
+
+  "training": {
+    "max_tokens": 256,
+    "token_overlap": 32,
+    "batch_size": 16,
+    "epochs": 8,
+    "patience": 2,
+    "encoder_learning_rate": 2e-05,
+    "head_learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "positive_weight_cap": 10,
+    "mlp_hidden_size": 256,
+    "threshold_grid": [0.2, 0.3, 0.4, 0.5, 0.6, 0.7],
+    "uncertain_margin": 0.1,
+    "minimum_label_support": 10,
+    "split": {"validation": 0.2, "test": 0.2},
+    "silver_absence_supervised": true,
+    "encoders": {
+      "klue_roberta": {"checkpoint": "klue/roberta-base", "revision": "02f94ba5e3fcb7e2a58a390b8639b0fac974a8da"},
+      "kcelectra": {"checkpoint": "beomi/KcELECTRA-base-v2022", "revision": "568fe985a10c013c8f605e3c80a199413bbe9d00", "note": "refs/pr/1 SFconvertbot safetensors of main 87285578; config verified identical; torch 2.5.1 cannot load .bin (CVE-2025-32434)"},
+      "koelectra": {"checkpoint": "monologg/koelectra-base-v3-discriminator", "revision": null}
+    },
+    "sbert": {"checkpoint": "jhgan/ko-sroberta-multitask", "revision": "8fca7c9c98c26599be0e14b9916b11a756a26f19",
+              "local_path": "04_AI분석/models/sbert_ko-sroberta-multitask"}
+  },
+
+  "production_gate": {
+    "fixed_on": "2026-10-17, before any human-gold evaluation exists",
+    "status": "proposed defaults; business owner approval required",
+    "evaluation_source": "human_gold test split only (never LLM silver)",
+    "minimum_test_reviews": 200,
+    "minimum_test_products": 10,
+    "minimum_label_support_for_evaluated": 10,
+    "minimum_review_micro_f1": 0.75,
+    "minimum_review_macro_f1_evaluated": 0.6,
+    "minimum_negative_recall_evaluated": 0.7,
+    "maximum_false_complaint_rate": 0.05,
+    "unseen_product_micro_f1_drop_max": 0.1,
+    "insufficient_labels_policy": "label shown as '평가 불충분' and excluded from dashboard negative statistics"
+  }
+}

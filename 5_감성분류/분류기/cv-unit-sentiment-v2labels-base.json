@@ -1,0 +1,117 @@
+{
+  "encoder": "C:\\Users\\MingyunKang\\.cache\\huggingface\\hub\\models--beomi--KcELECTRA-base-v2022\\snapshots\\568fe985a10c013c8f605e3c80a199413bbe9d00",
+  "units": 739,
+  "excluded": {
+    "mixed_pos_neg": 3,
+    "ambiguous_or_neutral": 31
+  },
+  "label_counts": {
+    "POS": 365,
+    "NEG": 215,
+    "NONE": 159
+  },
+  "concessive_units": 60,
+  "settings": {
+    "epochs": 5,
+    "lr": 3e-05,
+    "batch": 16,
+    "warmup": 0.1
+  },
+  "runs": [
+    {
+      "repeat": 0,
+      "variant": "a",
+      "accuracy": 0.8092016238159675,
+      "macro_f1": 0.7581066385770884,
+      "per_class_f1": {
+        "POS": 0.892998678996037,
+        "NEG": 0.8151447661469933,
+        "NONE": 0.5661764705882353
+      },
+      "concessive_accuracy": 0.6,
+      "confusion": [
+        [
+          338,
+          10,
+          17
+        ],
+        [
+          13,
+          183,
+          19
+        ],
+        [
+          41,
+          41,
+          77
+        ]
+      ]
+    },
+    {
+      "repeat": 1,
+      "variant": "a",
+      "accuracy": 0.7794316644113667,
+      "macro_f1": 0.7207838262130739,
+      "per_class_f1": {
+        "POS": 0.8769633507853403,
+        "NEG": 0.7853881278538812,
+        "NONE": 0.5
+      },
+      "concessive_accuracy": 0.5666666666666667,
+      "confusion": [
+        [
+          335,
+          10,
+          20
+        ],
+        [
+          15,
+          172,
+          28
+        ],
+        [
+          49,
+          41,
+          69
+        ]
+      ]
+    },
+    {
+      "repeat": 2,
+      "variant": "a",
+      "accuracy": 0.7916102841677943,
+      "macro_f1": 0.7335482549302194,
+      "per_class_f1": {
+        "POS": 0.8844621513944223,
+        "NEG": 0.7973856209150327,
+        "NONE": 0.518796992481203
+      },
+      "concessive_accuracy": 0.55,
+      "confusion": [
+        [
+          333,
+          10,
+          22
+        ],
+        [
+          16,
+          183,
+          16
+        ],
+        [
+          39,
+          51,
+          69
+        ]
+      ]
+    }
+  ],
+  "summary": {
+    "a": {
+      "accuracy": 0.7934145241317095,
+      "macro_f1": 0.7374795732401273,
+      "concessive_accuracy": 0.5722222222222222
+    }
+  },
+  "seconds": 187.98700059999828
+}

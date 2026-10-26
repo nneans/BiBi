@@ -1,0 +1,2964 @@
+{
+  "mode": "merged",
+  "seed": 20261021,
+  "split_seed_offset": 2,
+  "product_id": "296889036",
+  "reviews": [
+    {
+      "review_id": "4879967968",
+      "product_id": "296889036",
+      "text": "마시써요 재구매할게요",
+      "rating": 5,
+      "text_hash": "b50fa5bd83fd8feaaff11526a7e03be7f02a40a2555dfa8c3e0cdcc021aea135",
+      "review_group_id": "review:4879967968",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        0,
+        0
+      ],
+      "review_mask": [
+        false,
+        false,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "unlabeled",
+      "human_answer": "",
+      "family": "4879967968",
+      "split": "unlabeled",
+      "shares_labeled_family": false
+    },
+    {
+      "review_id": "4913182713",
+      "product_id": "296889036",
+      "text": "치즈스틱 맛있어요~",
+      "rating": 5,
+      "text_hash": "54cfe609470fedfe90d395c76d474f6b761ee0a7c19bfde927cb3849a0e0537b",
+      "review_group_id": "review:4886584799",
+      "related_review_id": "4886584799",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정",
+      "family": "4913182713",
+      "split": "train"
+    },
+    {
+      "review_id": "4893781564",
+      "product_id": "296889036",
+      "text": "맘스터치 매장에서 먹던거 맛있어서 주문했어요.치즈가 고소하고 맛잇어요",
+      "rating": 5,
+      "text_hash": "e615485cf818473695b68b351aeeb787ebad17ce877f9b85c4724b0ac7c447f3",
+      "review_group_id": "review:4893781564",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정",
+      "family": "4893781564",
+      "split": "test"
+    },
+    {
+      "review_id": "4924961509",
+      "product_id": "296889036",
+      "text": "그저그래요. 치즈도 쪽득하지 않고 튀김은 많고, 튀김맛밖에 안났어요",
+      "rating": 2,
+      "text_hash": "3e40abc5f6adca14bb6e42bde5ff5715d975a62f0bc5000c9d584d803a1b49ce",
+      "review_group_id": "review:4883048035",
+      "related_review_id": "4883048035",
+      "review_targets": [
+        0,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "식감 부정. 맛 부정.",
+      "family": "4924961509",
+      "split": "train"
+    },
+    {
+      "review_id": "4966791391",
+      "product_id": "296889036",
+      "text": "너무 맛있네요  매장에서 먹는것보다 더 맛있어요",
+      "rating": 5,
+      "text_hash": "0e5ade311a5d25961e02af29413ca84451e12bc16b5158b3f36995fb798fb32f",
+      "review_group_id": "review:4966791391",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정",
+      "family": "4966791391",
+      "split": "validation"
+    },
+    {
+      "review_id": "4882360392",
+      "product_id": "296889036",
+      "text": "생각보다 맛있고 자극적이지 않은 맛이라 좋았어요!",
+      "rating": 5,
+      "text_hash": "0723a7a07a593f822bf7fe360952a821602eb6b161c3420b96b2e62304883c86",
+      "review_group_id": "review:4882360392",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정",
+      "family": "4882360392",
+      "split": "validation"
+    },
+    {
+      "review_id": "4819010672",
+      "product_id": "296889036",
+      "text": "아이랑 저랑 잘 먹는 중",
+      "rating": 5,
+      "text_hash": "eb619e7c2202119c5397c0d6afbebaebb831f36de7614fd6f7cd9587a9608919",
+      "review_group_id": "review:4801145484",
+      "related_review_id": "4801145484",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정",
+      "family": "4819010672",
+      "split": "train"
+    },
+    {
+      "review_id": "4800327265",
+      "product_id": "296889036",
+      "text": "할인가루 얼음 추가구매했어요. \n얼음 추가라 3개가 들어있어서 많이 녹진않았는데 드라이 아이스는 다 녹아있었고 슬쩍 녹아서 바로 냉동실에 넣었어요. \n오자마자 몇개는 후라팬에 구워서 저녁반찬으로 아이들 줬는데 맛있다네요. 가격대비 양이 많아 좋아요. 날이 더 시원해지면 구매하기 더 좋을것같아요. 또 구매하러 올게요.",
+      "rating": 4,
+      "text_hash": "dca5e36da3c5c7026ab44dce0722a2652b397c13231e4c038ba9e6b4935acef3",
+      "review_group_id": "review:4800327265",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        true
+      ],
+      "spans": [
+        {
+          "start": 45,
+          "end": 82,
+          "text": "드라이 아이스는 다 녹아있었고 슬쩍 녹아서 바로 냉동실에 넣었어요.",
+          "sentiment": "negative",
+          "source_aspect": "quality"
+        },
+        {
+          "start": 109,
+          "end": 123,
+          "text": "아이들 줬는데 맛있다네요.",
+          "sentiment": "positive",
+          "source_aspect": "taste"
+        },
+        {
+          "start": 124,
+          "end": 139,
+          "text": "가격대비 양이 많아 좋아요.",
+          "sentiment": "positive",
+          "source_aspect": "quantity"
+        },
+        {
+          "start": 124,
+          "end": 139,
+          "text": "가격대비 양이 많아 좋아요.",
+          "sentiment": "positive",
+          "source_aspect": "price"
+        },
+        {
+          "start": 166,
+          "end": 177,
+          "text": "또 구매하러 올게요.",
+          "sentiment": "positive",
+          "source_aspect": "out_of_scope"
+        }
+      ],
+      "span_annotation_known": true,
+      "annotation_source": "existing_human_approved_drafts",
+      "human_decision": {
+        "no": 13,
+        "approve_all": true
+      },
+      "family": "4800327265",
+      "split": "train"
+    },
+    {
+      "review_id": "4932540980",
+      "product_id": "296889036",
+      "text": "진짜 별로네요. 치즈는 너무 조금 들었고 튀김옷이 너무 두껍고 딱딱해요. 치즈맛은 하나도 안나요. 느끼하고 맛없어요.",
+      "rating": 1,
+      "text_hash": "0603fd83fb112866bde15f9743be5d5fa4a7efe21d3ea72eb9928ced7ddd68ab",
+      "review_group_id": "review:4932540980",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 부정. 식감 부정",
+      "family": "4932540980",
+      "split": "train"
+    },
+    {
+      "review_id": "4734730273",
+      "product_id": "296889036",
+      "text": "세일할때 저렴하게 구매했고 아이들이 좋아해요",
+      "rating": 4,
+      "text_hash": "077b9a2e3119cebe59451cb105b71737af0342bd714aaca1d9f74c2ba6dfe3bb",
+      "review_group_id": "review:4734730273",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        true
+      ],
+      "spans": [
+        {
+          "start": 0,
+          "end": 14,
+          "text": "세일할때 저렴하게 구매했고",
+          "sentiment": "positive",
+          "source_aspect": "price"
+        },
+        {
+          "start": 15,
+          "end": 24,
+          "text": "아이들이 좋아해요",
+          "sentiment": "positive",
+          "source_aspect": "out_of_scope"
+        }
+      ],
+      "span_annotation_known": true,
+      "annotation_source": "existing_human_approved_drafts",
+      "human_decision": {
+        "no": 4,
+        "approve_all": true,
+        "note": "가격 대비 가치는 긍정. 아이들의 선호도는 높음"
+      },
+      "family": "4734730273",
+      "split": "validation"
+    },
+    {
+      "review_id": "4927095988",
+      "product_id": "296889036",
+      "text": "빠르게 잘 받았습니다.",
+      "rating": 3,
+      "text_hash": "a2436f1854c9930c9186b5862ca935137ef13fc2cdb2851dd539838bedd14470",
+      "review_group_id": "review:4898730847",
+      "related_review_id": "4898730847",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "배송 긍정",
+      "family": "4927095988",
+      "split": "train"
+    },
+    {
+      "review_id": "4954848006",
+      "product_id": "296889036",
+      "text": "심심할때마다 몇개씩 꺼내먹어요ㅋㅋㅋ",
+      "rating": 5,
+      "text_hash": "8c3e29c29ca05496057d31c751bf767d8e036298245334e1a1f1335b580d9953",
+      "review_group_id": "review:4916099223",
+      "related_review_id": "4916099223",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "긍정",
+      "family": "4954848006",
+      "split": "train"
+    },
+    {
+      "review_id": "4889204601",
+      "product_id": "296889036",
+      "text": "맛있을 거 같아 2번 주문해서 먹었네요\n에프보다는 기름 두르고 팬에 굽는게 더 맛있어요\n잘 먹었습니다\n~",
+      "rating": 4,
+      "text_hash": "9042c2dfbfcce78cffddd7282790a6eb245e4a8b72eb732eacd6398e995875b9",
+      "review_group_id": "review:4889204601",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        0,
+        0
+      ],
+      "review_mask": [
+        false,
+        false,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "unlabeled",
+      "human_answer": "",
+      "family": "4889204601",
+      "split": "unlabeled",
+      "shares_labeled_family": false
+    },
+    {
+      "review_id": "4882411892",
+      "product_id": "296889036",
+      "text": "배송빨라요 \n자극적이지 않고 맛있어요\n만족합니다",
+      "rating": 3,
+      "text_hash": "18de2898d98299bea5f9e6400d807124dea56a75f6dd9ca0026b6792df502a86",
+      "review_group_id": "review:4882411892",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "배송 긍정. 맛 긍정",
+      "family": "4882411892",
+      "split": "test"
+    },
+    {
+      "review_id": "4951648450",
+      "product_id": "296889036",
+      "text": "맘스터치라고해서 주문하고  다음날 또 했는데  맛은 그냥이에요.. 롯데리아 치즈스틱을 기대했어요",
+      "rating": 3,
+      "text_hash": "b535eb02ee5d723e3fc8a642a914c7a1ea22976d8605ec911938a6ebbec1504c",
+      "review_group_id": "review:4951648450",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "부정",
+      "family": "4951648450",
+      "split": "train"
+    },
+    {
+      "review_id": "4904982771",
+      "product_id": "296889036",
+      "text": "맛있어요\n에프에 간단히 돌려먹으니 가성비 짱",
+      "rating": 5,
+      "text_hash": "4a54a18e07a4b4c219b9a73585b7bd27449911e1dada48d7bfed8aa0aef9592b",
+      "review_group_id": "review:4904982771",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        0,
+        0
+      ],
+      "review_mask": [
+        false,
+        false,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "unlabeled",
+      "human_answer": "",
+      "family": "4904982771",
+      "split": "unlabeled",
+      "shares_labeled_family": false
+    },
+    {
+      "review_id": "4943169160",
+      "product_id": "296889036",
+      "text": "가격대비 좋아요!! 진짜 기름에 튀기먄 둘다 더 맛있을것 같긴한데 너무..귀찮고 그래서 걍 에프 돌려먹어요. 개취로 둘중 에프엔 치즈볼이 더 잘 맞는 조리법 같습니당. 치즈스틱은 짭잘쪽이고 치즈볼은 달짝지근한 쪽이예영",
+      "rating": 5,
+      "text_hash": "7882b21b7a2120001065a106554c97d25eba5eaca04e4f7830f14dc1ef55efce",
+      "review_group_id": "review:4943169160",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "가격 긍정.",
+      "family": "4943169160",
+      "split": "train"
+    },
+    {
+      "review_id": "4930000204",
+      "product_id": "296889036",
+      "text": "먹기괜차나요 맛나다이",
+      "rating": 5,
+      "text_hash": "f87f07a4e7f09d55e731694338e568369ae1105a131d718a2917696d7f2c6d3c",
+      "review_group_id": "review:4880247184",
+      "related_review_id": "4880247184",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정",
+      "family": "4930000204",
+      "split": "train"
+    },
+    {
+      "review_id": "4863372261",
+      "product_id": "296889036",
+      "text": "굿.........",
+      "rating": 5,
+      "text_hash": "6dd0a6c01901d3cdcc004f1c89a619df50af7896f52bb977319b5cd7a0b3b478",
+      "review_group_id": "review:4863372261",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "긍정",
+      "family": "4863372261",
+      "split": "test"
+    },
+    {
+      "review_id": "4984939155",
+      "product_id": "296889036",
+      "text": "아이들이 잘 먹어요. 감사합니다.",
+      "rating": 5,
+      "text_hash": "4da29e3a708f6aa0a60e98bd9034e1669f695766066cf1b50405fa0d81a2518f",
+      "review_group_id": "review:4945779402",
+      "related_review_id": "4945779402",
+      "review_targets": [
+        0,
+        0,
+        0
+      ],
+      "review_mask": [
+        false,
+        false,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "unlabeled",
+      "human_answer": "",
+      "family": "4984939155",
+      "split": "unlabeled",
+      "shares_labeled_family": false
+    },
+    {
+      "review_id": "4892394489",
+      "product_id": "296889036",
+      "text": "치즈가 생각보다 달아요",
+      "rating": 3,
+      "text_hash": "08edaf8e5b394b88845434e87d6ff44bafb027ee2a19980e1e997643a9abb9db",
+      "review_group_id": "review:4892394489",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정",
+      "family": "4892394489",
+      "split": "train"
+    },
+    {
+      "review_id": "4937495990",
+      "product_id": "296889036",
+      "text": "온가족이 좋아해서 주문했습니다\n잘 먹고 한달후기로 적어볼게요!\n감사합니다",
+      "rating": 5,
+      "text_hash": "09aa0ec88e5d02c8fce16f320310f78a864438eed951d590960fdd5622d155e0",
+      "review_group_id": "review:4937495990",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        0,
+        0
+      ],
+      "review_mask": [
+        false,
+        false,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "unlabeled",
+      "human_answer": "그냥 좋아한다네.",
+      "family": "4937495990",
+      "split": "unlabeled",
+      "shares_labeled_family": false
+    },
+    {
+      "review_id": "5018969407",
+      "product_id": "296889036",
+      "text": "양도 많고 가성비 굳",
+      "rating": 5,
+      "text_hash": "db558914465d4885adc56beb43200e0c29ba23e4aedcc7f12d397572f9c46eeb",
+      "review_group_id": "review:5018969407",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "가격 긍정",
+      "family": "5018969407",
+      "split": "validation"
+    },
+    {
+      "review_id": "4879445855",
+      "product_id": "296889036",
+      "text": "쿠폰덕에 좀더 싸게 맛있게 먹을 수 있었어요. 감사합니다",
+      "rating": 5,
+      "text_hash": "e7a6d299c86420b1f30fe790d11af082d69d7dc42623a5b3d05ff2d849b3c779",
+      "review_group_id": "review:4879445855",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        0,
+        0
+      ],
+      "review_mask": [
+        false,
+        false,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "unlabeled",
+      "human_answer": "",
+      "family": "4879445855",
+      "split": "unlabeled",
+      "shares_labeled_family": false
+    },
+    {
+      "review_id": "4890067837",
+      "product_id": "296889036",
+      "text": "다른 제품 브랜드보다 맛있어서 추가주문했어요~!",
+      "rating": 5,
+      "text_hash": "8a73a83de89f1e252d95f75e2e96ff378969452fc757a17a86dd30aed33baea2",
+      "review_group_id": "review:4890067837",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정.",
+      "family": "4890067837",
+      "split": "validation"
+    },
+    {
+      "review_id": "5054585574",
+      "product_id": "296889036",
+      "text": "좋아오. 잘 사용하겠습니다.  감사합니다",
+      "rating": 4,
+      "text_hash": "30abb2fd43bae841054da471d426b44fb29fcd30689e31b66f937882c1b3dbd5",
+      "review_group_id": "review:5021529012",
+      "related_review_id": "5021529012",
+      "review_targets": [
+        0,
+        0,
+        0
+      ],
+      "review_mask": [
+        false,
+        false,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "unlabeled",
+      "human_answer": "",
+      "family": "5054585574",
+      "split": "unlabeled",
+      "shares_labeled_family": false
+    },
+    {
+      "review_id": "4771504729",
+      "product_id": "296889036",
+      "text": "맛있어요!!!!!!아이도 잘먹고 너무 좋아요",
+      "rating": 5,
+      "text_hash": "1a640e08a09cc8e679fe55ecb7f7a551798d4a273a72958494754fc940bf8d2b",
+      "review_group_id": "review:4771504729",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정. 아이 긍정.",
+      "family": "4771504729",
+      "split": "train"
+    },
+    {
+      "review_id": "4882183962",
+      "product_id": "296889036",
+      "text": "일반 햄버거집\n스틱과는 다른",
+      "rating": 3,
+      "text_hash": "3a5d538434061ccb4d48072d7a3ae668a5484df7394bd90f6030f22f62de7b39",
+      "review_group_id": "review:4882183962",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "부정",
+      "family": "4882183962",
+      "split": "train"
+    },
+    {
+      "review_id": "4633208257",
+      "product_id": "296889036",
+      "text": "치즈스틱너무맛있어요.",
+      "rating": 5,
+      "text_hash": "74b376c152766a2571525a3ba582f602dcfd37cd2442873412e13f82cbcd65f2",
+      "review_group_id": "review:4633208257",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정",
+      "family": "4633208257",
+      "split": "train"
+    },
+    {
+      "review_id": "4766775682",
+      "product_id": "296889036",
+      "text": "치킨텐더 넘 맛나고 치즈볼도 맛나요\n다만 치즈스틱은 치즈가 너무 묽다고(?)해야하나 쭉 늘어나지는 않아요",
+      "rating": 4,
+      "text_hash": "90641cd67c4af72f735cc3a11017dfc8c05ef7d0b85a621c1efe490cb0716f4b",
+      "review_group_id": "review:4766775682",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        true
+      ],
+      "spans": [
+        {
+          "start": 29,
+          "end": 46,
+          "text": "치즈가 너무 묽다고(?)해야하나",
+          "sentiment": "negative",
+          "source_aspect": "texture"
+        },
+        {
+          "start": 47,
+          "end": 58,
+          "text": "쭉 늘어나지는 않아요",
+          "sentiment": "negative",
+          "source_aspect": "texture"
+        }
+      ],
+      "span_annotation_known": true,
+      "annotation_source": "existing_human_approved_drafts",
+      "human_decision": {
+        "no": 9,
+        "approve_all": true,
+        "note": "치즈스틱 치즈의 질감 불만. 다른 상품과 비교해 부정적"
+      },
+      "family": "4766775682",
+      "split": "train"
+    },
+    {
+      "review_id": "4739646773",
+      "product_id": "296889036",
+      "text": "밖에서 사먹으면 비싼데 실컷먹습니다.",
+      "rating": 5,
+      "text_hash": "ab001db4e0e74b0bb4585a9089c8bac70e68fb9f9a432933de23f150d0856434",
+      "review_group_id": "review:4739646773",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "가격 긍정",
+      "family": "4739646773",
+      "split": "train"
+    },
+    {
+      "review_id": "4738089266",
+      "product_id": "296889036",
+      "text": "날씨가 요즘 많이 더워 녹아서 올까  걱정했는데 \n 꽁꽁 언상태로 배송 받았어요\n치즈스틱도 맛난데 치즈볼이 찐 인거 같아요",
+      "rating": 5,
+      "text_hash": "102b0824190f15650dd7f4cabd929c0ba0bf60395d067cd2811157c546106160",
+      "review_group_id": "review:4738089266",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        true
+      ],
+      "spans": [
+        {
+          "start": 29,
+          "end": 44,
+          "text": "꽁꽁 언상태로 배송 받았어요",
+          "sentiment": "positive",
+          "source_aspect": "quality"
+        },
+        {
+          "start": 45,
+          "end": 54,
+          "text": "치즈스틱도 맛난데",
+          "sentiment": "positive",
+          "source_aspect": "taste"
+        }
+      ],
+      "span_annotation_known": true,
+      "annotation_source": "existing_human_approved_drafts",
+      "human_decision": {
+        "no": 5,
+        "approve_all": true,
+        "note": "치즈스틱은 맛있고, 치즈볼은 더 선호됨"
+      },
+      "family": "4738089266",
+      "split": "train"
+    },
+    {
+      "review_id": "4801585928",
+      "product_id": "296889036",
+      "text": "잘 받았습니다...",
+      "rating": 5,
+      "text_hash": "983e50e4dfa1c0e95a408b5e56d6f0b7b2a60436db2f367e93259807b42a0de0",
+      "review_group_id": "review:4801585928",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        0,
+        0
+      ],
+      "review_mask": [
+        false,
+        false,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "unlabeled",
+      "human_answer": "",
+      "family": "4801585928",
+      "split": "unlabeled",
+      "shares_labeled_family": false
+    },
+    {
+      "review_id": "4932057916",
+      "product_id": "296889036",
+      "text": "포장비닐에 구멍은 났지만 저렴하게샀어요",
+      "rating": 4,
+      "text_hash": "39c923c6d98c8e67a6663dd4870e7878de730b06f4b8e87e9380165fb79c18cd",
+      "review_group_id": "review:4932057916",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "가격 긍정. 포장 부정",
+      "family": "4932057916",
+      "split": "test"
+    },
+    {
+      "review_id": "4910869557",
+      "product_id": "296889036",
+      "text": "에어프라이기보다 후라이팬에 기릉 두르고 해 먹는게 맛있었습니다",
+      "rating": 3,
+      "text_hash": "40ed3549261dd17d58c9ba7a47308f84a4ba85f9d2d63d46bb787d4c91e85d01",
+      "review_group_id": "review:4889825170",
+      "related_review_id": "4889825170",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정",
+      "family": "4910869557",
+      "split": "train"
+    },
+    {
+      "review_id": "4781079975",
+      "product_id": "296889036",
+      "text": "정말절말로 맛리 읍네요 으미",
+      "rating": 2,
+      "text_hash": "3ba63f58a1a992a567f8c04207171e7f3fe423a78b6ece8d032c72dba33b4cb8",
+      "review_group_id": "review:4781079975",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        true
+      ],
+      "spans": [
+        {
+          "start": 0,
+          "end": 15,
+          "text": "정말절말로 맛리 읍네요 으미",
+          "sentiment": "negative",
+          "source_aspect": "taste"
+        }
+      ],
+      "span_annotation_known": true,
+      "annotation_source": "existing_human_approved_drafts",
+      "human_decision": {
+        "no": 11,
+        "approve_all": true,
+        "note": "오타가 있지만 맛없다는 부정 평가"
+      },
+      "family": "4781079975",
+      "split": "train"
+    },
+    {
+      "review_id": "4899091847",
+      "product_id": "296889036",
+      "text": "밋잇어요 짭조름 하고",
+      "rating": 5,
+      "text_hash": "b9ee29a89f0ae3239d521467e14a479d456b5a828bc366a92b147ec0ca5bc5c2",
+      "review_group_id": "review:4899091847",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정",
+      "family": "4899091847",
+      "split": "train"
+    },
+    {
+      "review_id": "4879631637",
+      "product_id": "296889036",
+      "text": "양도 많고 괜찮은데요 에프보단 기름에 튀겨야 맛있을것 같아요!",
+      "rating": 5,
+      "text_hash": "b2afb19b2e9ddc65cd1631c149ec04fdb42f2da580764968a4418152332f6974",
+      "review_group_id": "review:4879631637",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정. 양 긍정. 조리 방법에 대한 설명 추가가 필요.ㄴ",
+      "family": "4879631637",
+      "split": "validation"
+    },
+    {
+      "review_id": "4970279053",
+      "product_id": "296889036",
+      "text": "아직 먹어보지않았지만 맛있을거같아요 ㅎㅎ",
+      "rating": 5,
+      "text_hash": "7fb0058d4b99e3120124a1c768e1fe458ff0b0ad50b321a7c39ea246963a8359",
+      "review_group_id": "review:4970279053",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정",
+      "family": "4970279053",
+      "split": "train"
+    },
+    {
+      "review_id": "4758155310",
+      "product_id": "296889036",
+      "text": "맛있어요. 맘스터치에서는 2개 3000원인데",
+      "rating": 5,
+      "text_hash": "346f71ae7b1fe832f2fcbfcca7e9041d7ca8db612c9f4c35db70776e33906766",
+      "review_group_id": "review:4758155310",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "긍정",
+      "family": "4758155310",
+      "split": "train"
+    },
+    {
+      "review_id": "4763850105",
+      "product_id": "296889036",
+      "text": "무난하게 맛있습니다.",
+      "rating": 5,
+      "text_hash": "8b9594db40da4ae32e1b7b46200101e3f7f05df1033c839930f0e59ebda1dca1",
+      "review_group_id": "review:4763850105",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정",
+      "family": "4763850105",
+      "split": "validation"
+    },
+    {
+      "review_id": "4999532390",
+      "product_id": "296889036",
+      "text": "아이들 간식으로 안성맞춤이네요.\n이제 다 먹어가서, 또 구매할려고 찾아보고 있어요. ^^",
+      "rating": 5,
+      "text_hash": "ab6e9e87242e06a3bbf8e1802ec75434f8de1327920bfb963abab99ac0466caa",
+      "review_group_id": "review:4971022046",
+      "related_review_id": "4971022046",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "긍정",
+      "family": "4999532390",
+      "split": "train"
+    },
+    {
+      "review_id": "4753241128",
+      "product_id": "296889036",
+      "text": "에어프라이기에 해동 후라이팬에 구워줘. 치즈가 쫄깃하지 않아요",
+      "rating": 2,
+      "text_hash": "15858d9cdc054f89e36116beac9e21603dbcad2efb0f90ea7bd1d30d11cb5b05",
+      "review_group_id": "review:4753241128",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "식감 부정",
+      "family": "4753241128",
+      "split": "train"
+    },
+    {
+      "review_id": "4884867174",
+      "product_id": "296889036",
+      "text": "포장도 꼼꼼하고 유통기간도 많이 남아서. 좋아요",
+      "rating": 5,
+      "text_hash": "6cefa9277c193bbc068c4a04e7a1076a2661be13d837dd548aa8acd60b93dddf",
+      "review_group_id": "review:4884867174",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "포장 긍정.",
+      "family": "4884867174",
+      "split": "train"
+    },
+    {
+      "review_id": "4754964734",
+      "product_id": "296889036",
+      "text": "치즈스틱 반은 녹아왓어요ㅠㅠ후 진짜!!ㅠ",
+      "rating": 1,
+      "text_hash": "26924cc29fd751862ff5db6daa99b81fa43c5ad1287ef11c6e67236c161b0dda",
+      "review_group_id": "review:4754964734",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        0,
+        0
+      ],
+      "review_mask": [
+        false,
+        false,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "unlabeled",
+      "human_answer": "",
+      "family": "4754964734",
+      "split": "unlabeled",
+      "shares_labeled_family": false
+    },
+    {
+      "review_id": "4911973223",
+      "product_id": "296889036",
+      "text": "치즈스틱별루에요ㅠ엉엉",
+      "rating": 3,
+      "text_hash": "317c847aaa1c4d612d8536f2337abff3e5682824dbe6f5bff690af16d63ce245",
+      "review_group_id": "review:4883261454",
+      "related_review_id": "4883261454",
+      "review_targets": [
+        0,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "부정",
+      "family": "4911973223",
+      "split": "train"
+    },
+    {
+      "review_id": "4879431137",
+      "product_id": "296889036",
+      "text": "감튀러버라 구매했어요\n얇아서 좋네요",
+      "rating": 5,
+      "text_hash": "4cfc18f26f00aa5f8ca358b0d87f94a4135ec08e71679928dfa6e7bd137da6fa",
+      "review_group_id": "review:4879431137",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "긍정",
+      "family": "4879431137",
+      "split": "test"
+    },
+    {
+      "review_id": "4761090762",
+      "product_id": "296889036",
+      "text": "더운날 녹지 않고 잘배송 왔어요\n비싸게 사먹었는데  착한가격에 잘샀고\n아이들이 너무 잘먹어요",
+      "rating": 5,
+      "text_hash": "4186f59c3f877fbef0d9c11d3f69c2427516033d071c859aa0859780af76498a",
+      "review_group_id": "review:4761090762",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        true
+      ],
+      "spans": [
+        {
+          "start": 0,
+          "end": 17,
+          "text": "더운날 녹지 않고 잘배송 왔어요",
+          "sentiment": "positive",
+          "source_aspect": "quality"
+        },
+        {
+          "start": 29,
+          "end": 38,
+          "text": "착한가격에 잘샀고",
+          "sentiment": "positive",
+          "source_aspect": "price"
+        },
+        {
+          "start": 39,
+          "end": 51,
+          "text": "아이들이 너무 잘먹어요",
+          "sentiment": "positive",
+          "source_aspect": "out_of_scope"
+        }
+      ],
+      "span_annotation_known": true,
+      "annotation_source": "existing_human_approved_drafts",
+      "human_decision": {
+        "no": 6,
+        "approve_all": true,
+        "edit": {
+          "2": {
+            "target_scope": "other_product",
+            "reason_text": "다른 제품은 비싸게 사 먹었음"
+          }
+        },
+        "note": "가격 긍정. 타사 제품을 비싸게 사먹었는데, 이건 싸서 좋았다"
+      },
+      "family": "4761090762",
+      "split": "train"
+    },
+    {
+      "review_id": "4936762801",
+      "product_id": "296889036",
+      "text": "맛있어요~\n패스트푸드점에서 먹는것보다 너무 저렴해서 좋네요~",
+      "rating": 5,
+      "text_hash": "d87c1717a386da405ff457c270e791477ec96559ba2b57a5cc8373aa467c844a",
+      "review_group_id": "review:4936762801",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        0,
+        0
+      ],
+      "review_mask": [
+        false,
+        false,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "unlabeled",
+      "human_answer": "",
+      "family": "4936762801",
+      "split": "unlabeled",
+      "shares_labeled_family": false
+    },
+    {
+      "review_id": "4951006281",
+      "product_id": "296889036",
+      "text": "치즈의 고소한 맛도 잘 안나고 별로에요",
+      "rating": 3,
+      "text_hash": "caa49784b818f2a245d5aa7160af3e6c7c678685b29ad75194bde3fd559f900c",
+      "review_group_id": "review:4951006281",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        0,
+        0
+      ],
+      "review_mask": [
+        false,
+        false,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "unlabeled",
+      "human_answer": "",
+      "family": "4951006281",
+      "split": "unlabeled",
+      "shares_labeled_family": false
+    },
+    {
+      "review_id": "4675366919",
+      "product_id": "296889036",
+      "text": "배송빠르고 깔끔해요",
+      "rating": 5,
+      "text_hash": "1502814c03b0af99f8e5204980296551f3163ea3038db05c9fa50756d79b0265",
+      "review_group_id": "review:4675366919",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "배송 긍정",
+      "family": "4675366919",
+      "split": "train"
+    },
+    {
+      "review_id": "4770644591",
+      "product_id": "296889036",
+      "text": "항상잘먹고있습니다.",
+      "rating": 4,
+      "text_hash": "0f1a414820ff4cdae66ac3c644efbf46af362456a2ffe68097632d8c58878b31",
+      "review_group_id": "review:4770644591",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        true
+      ],
+      "spans": [
+        {
+          "start": 0,
+          "end": 10,
+          "text": "항상잘먹고있습니다.",
+          "sentiment": "positive",
+          "source_aspect": "out_of_scope"
+        }
+      ],
+      "span_annotation_known": true,
+      "annotation_source": "existing_human_approved_drafts",
+      "human_decision": {
+        "no": 10,
+        "approve_all": true
+      },
+      "family": "4770644591",
+      "split": "train"
+    },
+    {
+      "review_id": "4923677409",
+      "product_id": "296889036",
+      "text": "에어프라이어로 먹는데 맛이 아쉬워요. \n뭔가 부족한 느낌 기름에 튀겨야 하나봐여.",
+      "rating": 3,
+      "text_hash": "46befca66445fdc5ed3bed398e5466ab91062d90c6ff14b9b82cdb5287eeefa2",
+      "review_group_id": "review:4886359965",
+      "related_review_id": "4886359965",
+      "review_targets": [
+        0,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 부정",
+      "family": "4923677409",
+      "split": "test"
+    },
+    {
+      "review_id": "4944430416",
+      "product_id": "296889036",
+      "text": "맛있게 잘 먹었습니다. 치즈기 쭉쭉 늘어나진 않아요",
+      "rating": 5,
+      "text_hash": "fd90376cc5d420fb91ff47cd679a018ff96750a63f272ba162a0e3d15ec48d99",
+      "review_group_id": "review:4882561476",
+      "related_review_id": "4882561476",
+      "review_targets": [
+        1,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정, 치즈 안 늘어남 부정",
+      "family": "4944430416",
+      "split": "train"
+    },
+    {
+      "review_id": "4772233544",
+      "product_id": "296889036",
+      "text": "빠른 배송 감사합니다.!",
+      "rating": 5,
+      "text_hash": "7c5d723c5bc5881e47c46a6d5307c7a88fc1c9ad457f73af44aac1bcb9e87468",
+      "review_group_id": "review:4759720046",
+      "related_review_id": "4759720046",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "배송 긍정",
+      "family": "4772233544",
+      "split": "test"
+    },
+    {
+      "review_id": "4732427338",
+      "product_id": "296889036",
+      "text": "아이가 좋아해서 맛있게 잘 먹어요.",
+      "rating": 5,
+      "text_hash": "b4357b53aae4e5aee55e75e51c34f3d71fb821296861950bd1e0be0b898ebf9e",
+      "review_group_id": "review:4718525241",
+      "related_review_id": "4718525241",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "긍정",
+      "family": "4732427338",
+      "split": "train"
+    },
+    {
+      "review_id": "4909518448",
+      "product_id": "296889036",
+      "text": "치즈가 좀 싱거운 느낌은 있지만\n바삭하게 구워 먹으니 맛있었어요",
+      "rating": 3,
+      "text_hash": "b3474765c38fc1927f0d88cf6ba791dbaf7ddfcdcdd409b8ba838d98bdaf493e",
+      "review_group_id": "review:4887571447",
+      "related_review_id": "4887571447",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정",
+      "family": "4909518448",
+      "split": "train"
+    },
+    {
+      "review_id": "4963212593",
+      "product_id": "296889036",
+      "text": "배송빠르고 조리가 편해요",
+      "rating": 5,
+      "text_hash": "f8517eaba489d8cfbe2a9b1266d5b650d7332c385b26ed83212f17226b026d92",
+      "review_group_id": "review:4963212593",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "배송 긍정. 조리 긍정ㄴ",
+      "family": "4963212593",
+      "split": "train"
+    },
+    {
+      "review_id": "4882222831",
+      "product_id": "296889036",
+      "text": "싸게잘사서좋네요 아이간식으로 최고",
+      "rating": 5,
+      "text_hash": "39e1a53044ac0b96dc9d09b97bfb3c7691f886dc5c5d823631f0a18bff6a1e43",
+      "review_group_id": "review:4882222831",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "가격 긍정",
+      "family": "4882222831",
+      "split": "train"
+    },
+    {
+      "review_id": "4938376683",
+      "product_id": "296889036",
+      "text": "흙흙...\n제 기대가 너무 컸나봅니다;;",
+      "rating": 3,
+      "text_hash": "56adf1a24700d40bb47bec85aa7f7f204125d7af4566910fae55987324ff3457",
+      "review_group_id": "review:4938376683",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        0,
+        0
+      ],
+      "review_mask": [
+        false,
+        false,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "unlabeled",
+      "human_answer": "",
+      "family": "4938376683",
+      "split": "unlabeled",
+      "shares_labeled_family": false
+    },
+    {
+      "review_id": "4886401452",
+      "product_id": "296889036",
+      "text": "치즈가 잘 늘어나지는 않네요ㅠㅠ 그래도 먹을만해요^^",
+      "rating": 3,
+      "text_hash": "fc662b80c4f791c9d8e8492ef9c1e06ab268220784d2bdcb486a4fb293fa1c7f",
+      "review_group_id": "review:4886401452",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "치즈 안 늘어남. 부정.",
+      "family": "4886401452",
+      "split": "train"
+    },
+    {
+      "review_id": "4887271932",
+      "product_id": "296889036",
+      "text": "가격을 너무저렴하게 사서 좋아요",
+      "rating": 5,
+      "text_hash": "8473320b8673c368aece4a3e5e36b99a390e93ef02bb5c54f98dfe0d5f36b9d3",
+      "review_group_id": "review:4887271932",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "가격 긍정ㄴ",
+      "family": "4887271932",
+      "split": "test"
+    },
+    {
+      "review_id": "4885554804",
+      "product_id": "296889036",
+      "text": "잘 먹고 있습니다.",
+      "rating": 5,
+      "text_hash": "a17f3def8977f11b7d401ad4873e3c462b5534b7ac636a428ddc3c3008314582",
+      "review_group_id": "review:4862173065",
+      "related_review_id": "4862173065",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정",
+      "family": "4885554804",
+      "split": "train"
+    },
+    {
+      "review_id": "4939350394",
+      "product_id": "296889036",
+      "text": "에어프라이에 구워먹었는데 맛나네요\n먹느라 사진을 못찍어서.. 봉지만...",
+      "rating": 5,
+      "text_hash": "6f5413ecfd8163e7d2fe45b9297ba76ce31da100a1229396e2f34a091024e318",
+      "review_group_id": "review:4939350394",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정",
+      "family": "4939350394",
+      "split": "train"
+    },
+    {
+      "review_id": "4689322419",
+      "product_id": "296889036",
+      "text": "치즈가 금방굳고 잘안늘어나는치즈네요\n그래도 가성비좋고 맛있게 떡볶이 서브로\n집에서 종종 튀겨먹어요~~\n양이많네요",
+      "rating": 4,
+      "text_hash": "57cffa60c13057dcbf936b254c14d5a2f38aac041fc374067888cfb5d0358cfc",
+      "review_group_id": "review:4667107849",
+      "related_review_id": "4667107849",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정. 양 긍정. 가격 긍정.",
+      "family": "4689322419",
+      "split": "train"
+    },
+    {
+      "review_id": "4887794538",
+      "product_id": "296889036",
+      "text": "가성비 좋아요 굿굿",
+      "rating": 5,
+      "text_hash": "698d1597818b124337a4a4e381343273aa9bbf0fbf4ba5a6fd5858a08fea292d",
+      "review_group_id": "review:4887794538",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "가격 긍정",
+      "family": "4887794538",
+      "split": "validation"
+    },
+    {
+      "review_id": "4883889538",
+      "product_id": "296889036",
+      "text": "포장이랑 배송은 정말 잘해주셨습니다.\n\n하지만 맘스터치 치즈스틱을 생각하고 구매하신다면 절대로 주문하지 않는걸 추천드립니다.\n\n우선 치즈스틱에 간이나 고소한 치즈맛은 일절 나지 않고 튀김의 밀가루맛만 납니다.\n\n그리고 본문 설명에는 쫀득한 치즈라고 설명되어있지만 실제로 조리시 크림처럼 물같은 질감이라 상당히 불호였습니다.\n\n 기대하고 2봉지 구매했는데 아쉽네요..",
+      "rating": 1,
+      "text_hash": "c0ed9b8ac82646361921a48befbfb0c2d793d2a0e3a57580d32891b96346d983",
+      "review_group_id": "review:4883889538",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        true
+      ],
+      "spans": [
+        {
+          "start": 0,
+          "end": 20,
+          "text": "포장이랑 배송은 정말 잘해주셨습니다.",
+          "sentiment": "positive",
+          "source_aspect": "packaging"
+        },
+        {
+          "start": 0,
+          "end": 20,
+          "text": "포장이랑 배송은 정말 잘해주셨습니다.",
+          "sentiment": "positive",
+          "source_aspect": "delivery"
+        },
+        {
+          "start": 74,
+          "end": 101,
+          "text": "치즈스틱에 간이나 고소한 치즈맛은 일절 나지 않고",
+          "sentiment": "negative",
+          "source_aspect": "taste"
+        },
+        {
+          "start": 102,
+          "end": 116,
+          "text": "튀김의 밀가루맛만 납니다.",
+          "sentiment": "negative",
+          "source_aspect": "taste"
+        },
+        {
+          "start": 147,
+          "end": 180,
+          "text": "실제로 조리시 크림처럼 물같은 질감이라 상당히 불호였습니다.",
+          "sentiment": "negative",
+          "source_aspect": "texture"
+        },
+        {
+          "start": 122,
+          "end": 180,
+          "text": "본문 설명에는 쫀득한 치즈라고 설명되어있지만 실제로 조리시 크림처럼 물같은 질감이라 상당히 불호였습니다.",
+          "sentiment": "negative",
+          "source_aspect": "description_match"
+        },
+        {
+          "start": 49,
+          "end": 69,
+          "text": "절대로 주문하지 않는걸 추천드립니다.",
+          "sentiment": "negative",
+          "source_aspect": "out_of_scope"
+        }
+      ],
+      "span_annotation_known": true,
+      "annotation_source": "existing_human_approved_drafts",
+      "human_decision": {
+        "no": 15,
+        "approve_all": true
+      },
+      "family": "4883889538",
+      "split": "train"
+    },
+    {
+      "review_id": "4817921769",
+      "product_id": "296889036",
+      "text": "잘쓰고있어요 감사합니다",
+      "rating": 3,
+      "text_hash": "a97e6d4ec10151e8658b650ba176fa7b15f1f0e6548c91f40ee14386028c027d",
+      "review_group_id": "review:4773421538",
+      "related_review_id": "4773421538",
+      "review_targets": [
+        0,
+        0,
+        0
+      ],
+      "review_mask": [
+        false,
+        false,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "unlabeled",
+      "human_answer": "",
+      "family": "4817921769",
+      "split": "unlabeled",
+      "shares_labeled_family": false
+    },
+    {
+      "review_id": "4738585393",
+      "product_id": "296889036",
+      "text": "저렴하게 구입했어요 쟁여놓기 좋아요",
+      "rating": 5,
+      "text_hash": "a87d27fadee6753c3e9852d0bd5df1bc75da7438151db01a73011b302f766e9b",
+      "review_group_id": "review:4738585393",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "가격 긍정",
+      "family": "4738585393",
+      "split": "train"
+    },
+    {
+      "review_id": "4960941738",
+      "product_id": "296889036",
+      "text": "너무 맛이없어요\n시중에 판매하는 제품이랑맛이 완전달라요\n밍밍하네요",
+      "rating": 1,
+      "text_hash": "c41a6282163cd8086ab755e44538ee002db902edc297902085e8595a5e9bb5fc",
+      "review_group_id": "review:4960941738",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "부정.",
+      "family": "4960941738",
+      "split": "train"
+    },
+    {
+      "review_id": "5051488757",
+      "product_id": "296889036",
+      "text": "거의다 먹었네요. 또 주문해야겠어요.",
+      "rating": 5,
+      "text_hash": "d2b88cd2f9545cbbe088ff53506c9aea6852b25fb476cfceb0b8377420e9377d",
+      "review_group_id": "review:5022388468",
+      "related_review_id": "5022388468",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "긍정",
+      "family": "5051488757",
+      "split": "test"
+    },
+    {
+      "review_id": "4645178058",
+      "product_id": "296889036",
+      "text": "하루만에 배송이 와서 좋아요",
+      "rating": 5,
+      "text_hash": "466ea16c5b7982e9300d137f56d21392b9890cd81bfe4af6fe3374d2611bc81a",
+      "review_group_id": "review:4645178058",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "배송 긍정",
+      "family": "4645178058",
+      "split": "validation"
+    },
+    {
+      "review_id": "4846647344",
+      "product_id": "296889036",
+      "text": "아이들이잘먹고있어요~~",
+      "rating": 3,
+      "text_hash": "57888ca8e0c72edd935fd1c235e1490a52db8212aae0b2054d15a3d78c5e34ae",
+      "review_group_id": "review:4846647344",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정",
+      "family": "4846647344",
+      "split": "train"
+    },
+    {
+      "review_id": "4886734695",
+      "product_id": "296889036",
+      "text": "치즈가전혀늘어나지 않아요.치즈스틱이라고 할수없을듯합니다",
+      "rating": 3,
+      "text_hash": "745b7fb7d181eab467cb79a2ce059bcc41c6bd76ca9474eaeffb278f73fb7d46",
+      "review_group_id": "review:4886734695",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "부정",
+      "family": "4886734695",
+      "split": "train"
+    },
+    {
+      "review_id": "4853719449",
+      "product_id": "296889036",
+      "text": "안에 치즈는 적고 튀김옷은 두꺼운 느낌이에요\n캐찹 많이 뿌리는거 아니면 그냥 먹기에는 아쉬워요",
+      "rating": 1,
+      "text_hash": "5efe505013e75aa99c8c724c5203ecbf5d1da1e6e6f190ce68f35e5953f511ab",
+      "review_group_id": "review:4853719449",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        true
+      ],
+      "spans": [
+        {
+          "start": 0,
+          "end": 9,
+          "text": "안에 치즈는 적고",
+          "sentiment": "negative",
+          "source_aspect": "ingredient_composition"
+        },
+        {
+          "start": 10,
+          "end": 24,
+          "text": "튀김옷은 두꺼운 느낌이에요",
+          "sentiment": "negative",
+          "source_aspect": "ingredient_composition"
+        },
+        {
+          "start": 25,
+          "end": 52,
+          "text": "캐찹 많이 뿌리는거 아니면 그냥 먹기에는 아쉬워요",
+          "sentiment": "negative",
+          "source_aspect": "taste"
+        }
+      ],
+      "span_annotation_known": true,
+      "annotation_source": "existing_human_approved_drafts",
+      "human_decision": {
+        "no": 14,
+        "approve_all": true
+      },
+      "family": "4853719449",
+      "split": "validation"
+    },
+    {
+      "review_id": "4794845741",
+      "product_id": "296889036",
+      "text": "이렇게 사서 집에서 해주니 너무 가성비 좋은 간식이에요. 조리도 너무 간편하고 금방 됩니다~",
+      "rating": 4,
+      "text_hash": "5bdbbb3e816621effbf85f28bff310d4406527cbc07e52be1cff30b8f93e2cf4",
+      "review_group_id": "review:4771697593",
+      "related_review_id": "4771697593",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        true
+      ],
+      "spans": [
+        {
+          "start": 15,
+          "end": 31,
+          "text": "너무 가성비 좋은 간식이에요.",
+          "sentiment": "positive",
+          "source_aspect": "price"
+        },
+        {
+          "start": 32,
+          "end": 51,
+          "text": "조리도 너무 간편하고 금방 됩니다~",
+          "sentiment": "positive",
+          "source_aspect": "cooking_convenience"
+        }
+      ],
+      "span_annotation_known": true,
+      "annotation_source": "existing_human_approved_drafts",
+      "human_decision": {
+        "no": 12,
+        "approve_all": true
+      },
+      "family": "4794845741",
+      "split": "test"
+    },
+    {
+      "review_id": "4995314517",
+      "product_id": "296889036",
+      "text": "세일 자주해주세요.\n잘먹고있어요.",
+      "rating": 5,
+      "text_hash": "307fab428183b9480337d97c246d253d6b62c11beede1dc7737239e2feb9ea17",
+      "review_group_id": "review:4932504101",
+      "related_review_id": "4932504101",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "가격 긍정",
+      "family": "4995314517",
+      "split": "train"
+    },
+    {
+      "review_id": "5052323035",
+      "product_id": "296889036",
+      "text": "우리집에선  안 먹네요. 맘스터치라  구매했는데,  치즈는  작고  치즈볼은  겉은  두껍고,  밀가루만  먹는   기분이  드네요.",
+      "rating": 1,
+      "text_hash": "f4538a417f531a685ba6728f0362bb04a7d21f3c700fa5f07c68ccbf5c21bead",
+      "review_group_id": "review:5052323035",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "부정",
+      "family": "5052323035",
+      "split": "test"
+    },
+    {
+      "review_id": "4885016287",
+      "product_id": "296889036",
+      "text": "롯데리아 생각하면 안됨\n치즈? 늘어는 남 근데 걍 콧물같은 흐믈적한 늘어짐임\n맛? 최악임 뭔가 인류 멸망 뒤 우주선에서 인조적으로 창조한 튀김 무언가임 뒷맛 겁나 구리고 역할정도 \n혹시나 해서 저 사진 찍은 뒤 한 번 더 만들어 먹어보고쓰는 리뷰임\n남은 제품 귀찮게 버려야한다는게 진짜 화남\n그리고 맘스터치는 개뿔 맘스티치인데 상표 허락받고 쓰는거임?\n장난함? 사기치냐? 에어프라이는 개뿔 프라이팬에 굽는제품이고\n괘씸함 이딴 제품은 원자재가 아까울지경",
+      "rating": 1,
+      "text_hash": "32738233356e42c47d3387817a7216bc9a311e95472470495e675d2a73a42ecc",
+      "review_group_id": "review:4885016287",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        true
+      ],
+      "spans": [
+        {
+          "start": 28,
+          "end": 42,
+          "text": "콧물같은 흐믈적한 늘어짐임",
+          "sentiment": "negative",
+          "source_aspect": "texture"
+        },
+        {
+          "start": 43,
+          "end": 49,
+          "text": "맛? 최악임",
+          "sentiment": "negative",
+          "source_aspect": "taste"
+        },
+        {
+          "start": 85,
+          "end": 99,
+          "text": "뒷맛 겁나 구리고 역할정도",
+          "sentiment": "negative",
+          "source_aspect": "taste"
+        },
+        {
+          "start": 167,
+          "end": 196,
+          "text": "맘스터치는 개뿔 맘스티치인데 상표 허락받고 쓰는거임?",
+          "sentiment": "negative",
+          "source_aspect": "description_match"
+        },
+        {
+          "start": 208,
+          "end": 230,
+          "text": "에어프라이는 개뿔 프라이팬에 굽는제품이고",
+          "sentiment": "negative",
+          "source_aspect": "description_match"
+        },
+        {
+          "start": 139,
+          "end": 162,
+          "text": "남은 제품 귀찮게 버려야한다는게 진짜 화남",
+          "sentiment": "negative",
+          "source_aspect": "out_of_scope"
+        }
+      ],
+      "span_annotation_known": true,
+      "annotation_source": "existing_human_approved_drafts",
+      "human_decision": {
+        "no": 16,
+        "approve_all": true
+      },
+      "family": "4885016287",
+      "split": "validation"
+    },
+    {
+      "review_id": "4765223184",
+      "product_id": "296889036",
+      "text": "맛없었다는 리뷰를 먼저 접하고 기대없이 먹어서인지 그냥저냥 먹을만했고 치즈가 짭짤했으면 더나을것같아여 엄청 배고플때 먹어야 소진할 수 있을듯..",
+      "rating": 3,
+      "text_hash": "472ba538256cd856ba5acbe9f786933aa2a0ce1968446f67d2aba512f647b9eb",
+      "review_group_id": "review:4765223184",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        1,
+        1
+      ],
+      "review_mask": [
+        true,
+        true,
+        true
+      ],
+      "spans": [
+        {
+          "start": 28,
+          "end": 38,
+          "text": "그냥저냥 먹을만했고",
+          "sentiment": "neutral",
+          "source_aspect": "taste"
+        },
+        {
+          "start": 39,
+          "end": 56,
+          "text": "치즈가 짭짤했으면 더나을것같아여",
+          "sentiment": "negative",
+          "source_aspect": "taste"
+        },
+        {
+          "start": 57,
+          "end": 80,
+          "text": "엄청 배고플때 먹어야 소진할 수 있을듯..",
+          "sentiment": "negative",
+          "source_aspect": "out_of_scope"
+        }
+      ],
+      "span_annotation_known": true,
+      "annotation_source": "existing_human_approved_drafts",
+      "human_decision": {
+        "no": 8,
+        "approve_all": true,
+        "note": "정확함. 전체적으로 부정적인 리뷰"
+      },
+      "family": "4765223184",
+      "split": "train"
+    },
+    {
+      "review_id": "4692874643",
+      "product_id": "296889036",
+      "text": "그냥 냉동 치즈스틱 느낌",
+      "rating": 3,
+      "text_hash": "7f59aef644e5a80c29b7495f89c7c98ddfdf6256f6b18c1e1f42e239298f53d1",
+      "review_group_id": "review:4661663209",
+      "related_review_id": "4661663209",
+      "review_targets": [
+        0,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "부정",
+      "family": "4692874643",
+      "split": "train"
+    },
+    {
+      "review_id": "4741574444",
+      "product_id": "296889036",
+      "text": "빠른배송감사합니다.",
+      "rating": 5,
+      "text_hash": "f7fc48c444080bb9eab6106d8ec032cd5557f9e6256e4e058d2d22426f00668a",
+      "review_group_id": "review:4741574444",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "배송 긍정",
+      "family": "4741574444",
+      "split": "train"
+    },
+    {
+      "review_id": "4958468376",
+      "product_id": "296889036",
+      "text": "잘 먹고 있습니다!",
+      "rating": 5,
+      "text_hash": "04eaf0ccb0e4a45022dbe0b5df7264df0839ab952ad9eeee65d58d36c2a77ea3",
+      "review_group_id": "review:4931641601",
+      "related_review_id": "4931641601",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "긍정",
+      "family": "4958468376",
+      "split": "train"
+    },
+    {
+      "review_id": "4763579632",
+      "product_id": "296889036",
+      "text": "제목(?)엔 에어프라이어 요리라고 써있는데 제품엔 어디에도 에어프라이어 사용법이 없어요;;; q&amp;a 에 보니 기름에 튀켜 먹으라 써있네요. 기름에 튀긴게 맛있긴하죠.. 근데 귀찮아서 잘 안먹게 되네요 맛은 있어요",
+      "rating": 4,
+      "text_hash": "bd8585dd1dd4ea1bc088d0d5ce416f0f27efafb5634637690cd338c398afff0b",
+      "review_group_id": "review:4763579632",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        true
+      ],
+      "spans": [
+        {
+          "start": 0,
+          "end": 51,
+          "text": "제목(?)엔 에어프라이어 요리라고 써있는데 제품엔 어디에도 에어프라이어 사용법이 없어요;;;",
+          "sentiment": "negative",
+          "source_aspect": "description_match"
+        },
+        {
+          "start": 98,
+          "end": 115,
+          "text": "근데 귀찮아서 잘 안먹게 되네요",
+          "sentiment": "negative",
+          "source_aspect": "cooking_convenience"
+        },
+        {
+          "start": 116,
+          "end": 122,
+          "text": "맛은 있어요",
+          "sentiment": "positive",
+          "source_aspect": "taste"
+        }
+      ],
+      "span_annotation_known": true,
+      "annotation_source": "existing_human_approved_drafts",
+      "human_decision": {
+        "no": 7,
+        "approve_all": true,
+        "note": "에어프라이어 조리 방법 추가 안내 필요. 기업이 꼭 봐야 할 실용적 리뷰"
+      },
+      "family": "4763579632",
+      "split": "test"
+    },
+    {
+      "review_id": "4727067203",
+      "product_id": "296889036",
+      "text": "배송 빠르게 잘 받았습니다~\n롯데리아나 코스트코에서 팔던거 생각하면 안되요 ㅎ\n에프보다는 팬에 조리하는게 그나마 더 낫구요~",
+      "rating": 2,
+      "text_hash": "f18db97778ee9b073d8a04394c353291746f76b48dd84052bd8addbd2edb435b",
+      "review_group_id": "review:4727067203",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        true
+      ],
+      "spans": [
+        {
+          "start": 0,
+          "end": 15,
+          "text": "배송 빠르게 잘 받았습니다~",
+          "sentiment": "positive",
+          "source_aspect": "delivery"
+        },
+        {
+          "start": 16,
+          "end": 43,
+          "text": "롯데리아나 코스트코에서 팔던거 생각하면 안되요 ㅎ",
+          "sentiment": "negative",
+          "source_aspect": "out_of_scope"
+        }
+      ],
+      "span_annotation_known": true,
+      "annotation_source": "existing_human_approved_drafts",
+      "human_decision": {
+        "no": 3,
+        "approve_all": true,
+        "edit": {
+          "3": {
+            "statement_type": "fact",
+            "sentiment": "not_applicable",
+            "reason_code": null,
+            "reason_text": "조리 팁(팬 조리가 낫다)"
+          }
+        },
+        "note": "배송은 굿. 타사 제품과는 다르다는 점은 부정. 조리 결과는 딱히 감성이 없음. 그냥 꿀팁 정도"
+      },
+      "family": "4727067203",
+      "split": "train"
+    },
+    {
+      "review_id": "4947086968",
+      "product_id": "296889036",
+      "text": "아이들이 엄청 잘 먹네요~~~맛있어요~",
+      "rating": 5,
+      "text_hash": "ab91f4d4edde3cf3fc9f37e90c86be2f28bd8b293ccd9fb19fc9d7a30135f620",
+      "review_group_id": "review:4947086968",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정",
+      "family": "4947086968",
+      "split": "train"
+    },
+    {
+      "review_id": "4659064894",
+      "product_id": "296889036",
+      "text": "방학기간이라 애들 간식으로 구매했어요",
+      "rating": 5,
+      "text_hash": "7e3099045c7fd13400e3444cdfd8cda52c24bf8906e73153ea52224a440f6a97",
+      "review_group_id": "review:4659064894",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        true
+      ],
+      "spans": [],
+      "span_annotation_known": true,
+      "annotation_source": "existing_human_approved_drafts",
+      "human_decision": {
+        "no": 1,
+        "approve_all": true,
+        "note": "특별한 감성이 없음. 그냥 구매했다는 말"
+      },
+      "family": "4659064894",
+      "split": "train"
+    },
+    {
+      "review_id": "4921668426",
+      "product_id": "296889036",
+      "text": "너무 잘먹고 있습니다 좋네요 다음에도 구매하겠습니다.",
+      "rating": 5,
+      "text_hash": "0eff934e50f7ff94d19b2b464fc877074fd1be43b0ead57344a8c7025b71e39f",
+      "review_group_id": "review:4883074914",
+      "related_review_id": "4883074914",
+      "review_targets": [
+        0,
+        0,
+        0
+      ],
+      "review_mask": [
+        false,
+        false,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "unlabeled",
+      "human_answer": "",
+      "family": "4921668426",
+      "split": "unlabeled",
+      "shares_labeled_family": false
+    },
+    {
+      "review_id": "4936053258",
+      "product_id": "296889036",
+      "text": "아 강정생각하고삿는데 그냥 염지만된치킨",
+      "rating": 3,
+      "text_hash": "95459c76c759abd024659237bb562e14fc9e13d30186a5b6c8e37550e7fda65c",
+      "review_group_id": "review:4936053258",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        0,
+        0
+      ],
+      "review_mask": [
+        false,
+        false,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "unlabeled",
+      "human_answer": "",
+      "family": "4936053258",
+      "split": "unlabeled",
+      "shares_labeled_family": false
+    },
+    {
+      "review_id": "4963105497",
+      "product_id": "296889036",
+      "text": "아이들이 너무 좋아해요 맛있어요~^^",
+      "rating": 5,
+      "text_hash": "365de3f89c5506e8993022f8038bf2179de0ec46d42b15721df5f9897cc42abb",
+      "review_group_id": "review:4963105497",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "긍정",
+      "family": "4963105497",
+      "split": "test"
+    },
+    {
+      "review_id": "4906713147",
+      "product_id": "296889036",
+      "text": "밖에서 사먹는 느낌은 안나요",
+      "rating": 3,
+      "text_hash": "30d34dd8bb1c74c7679153dd668e180cd8c765ad6cc4b4de715e66a510591573",
+      "review_group_id": "review:4883678336",
+      "related_review_id": "4883678336",
+      "review_targets": [
+        0,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 부정",
+      "family": "4906713147",
+      "split": "train"
+    },
+    {
+      "review_id": "4916035163",
+      "product_id": "296889036",
+      "text": "맛있어요 \n후라이팬에 기름을 넉넉히 해서 먹는게 제일 맛있어요",
+      "rating": 4,
+      "text_hash": "c5635a09ab7c77492ae299b3d56b53c42f19de250d7d161c610e20b9a2673b98",
+      "review_group_id": "review:4889201133",
+      "related_review_id": "4889201133",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정. 후라이팬 조리 방법 긍정",
+      "family": "4916035163",
+      "split": "train"
+    },
+    {
+      "review_id": "4931183573",
+      "product_id": "296889036",
+      "text": "롯*리아에서 먹는 치즈스틱이랑은 달라요\n치즈에 고소함은 전혀없고 쭉 늘어나지도 않더라구요 \n재구매는 없을...",
+      "rating": 3,
+      "text_hash": "58039dae89f42ada22805e0cc871eb4eb4031128751f0d829ccc798d08f9ce5f",
+      "review_group_id": "review:4899167130",
+      "related_review_id": "4899167130",
+      "review_targets": [
+        0,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "부정",
+      "family": "4931183573",
+      "split": "train"
+    },
+    {
+      "review_id": "4736107832",
+      "product_id": "296889036",
+      "text": "좋습니다. 많이 파세요.",
+      "rating": 3,
+      "text_hash": "8ed6c0980cac6e41cfa8c9da9fdfbf0ff411d4195f334d67d58bacfbb8bed5e3",
+      "review_group_id": "review:4736107832",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "긍정",
+      "family": "4736107832",
+      "split": "train"
+    },
+    {
+      "review_id": "4906148735",
+      "product_id": "296889036",
+      "text": "아이들이 자취하고 있어서 소분해서 나누어주었는데 맛있게 잘먹었다고 하네요",
+      "rating": 3,
+      "text_hash": "120f47800f964676b6f3ed0916c8772746ca31fdab51794af74f4a97b4460c5b",
+      "review_group_id": "review:4884043135",
+      "related_review_id": "4884043135",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "긍정",
+      "family": "4906148735",
+      "split": "train"
+    },
+    {
+      "review_id": "4901173281",
+      "product_id": "296889036",
+      "text": "타치즈스틱만 먹다가 맘스터치 치즈스틱은 처음이에요 ! \n남편은 요게 더 맛있다구하네요 저도마찬가지 ㅎㅎ",
+      "rating": 5,
+      "text_hash": "2ad87f51c364e4d4d69ed3ea81f8c8f0b2f120eaa516e7c59c3b44897c163e37",
+      "review_group_id": "review:4901173281",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "맛 긍정",
+      "family": "4901173281",
+      "split": "train"
+    },
+    {
+      "review_id": "4673768228",
+      "product_id": "296889036",
+      "text": "치즈가 넉넉하니 좋아요",
+      "rating": 5,
+      "text_hash": "5b07885742bcf6f6c32db6b9c7dfa1f3121190f180266b3cda7a59882115a4ba",
+      "review_group_id": "review:4673768228",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        true
+      ],
+      "spans": [
+        {
+          "start": 0,
+          "end": 12,
+          "text": "치즈가 넉넉하니 좋아요",
+          "sentiment": "positive",
+          "source_aspect": "ingredient_composition"
+        }
+      ],
+      "span_annotation_known": true,
+      "annotation_source": "existing_human_approved_drafts",
+      "human_decision": {
+        "no": 2,
+        "approve_all": true
+      },
+      "family": "4673768228",
+      "split": "validation"
+    },
+    {
+      "review_id": "4886076494",
+      "product_id": "296889036",
+      "text": "넉아서 온 것 빼고는 다 맘에들었음",
+      "rating": 5,
+      "text_hash": "c6a002f0d608a52949442c82a3979146e031cdeaabf961cd9fac806599f9b849",
+      "review_group_id": "review:4886076494",
+      "related_review_id": "",
+      "review_targets": [
+        0,
+        1,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "품질 부정",
+      "family": "4886076494",
+      "split": "train"
+    },
+    {
+      "review_id": "4994448898",
+      "product_id": "296889036",
+      "text": "좋은제품빠른배송 감사합니다 저렴히 구매해서 너무 좋아요 제품도좋고 아주 만족스럽습니다 또 구매할께요",
+      "rating": 5,
+      "text_hash": "b55d584e99ca8009e892e2cd910eed15d0a730db93c340c2fbe8372a7e08ae17",
+      "review_group_id": "review:4994448898",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "배송 긍정. 가격 긍정. 재구매 긍정.",
+      "family": "4994448898",
+      "split": "validation"
+    },
+    {
+      "review_id": "4802187289",
+      "product_id": "296889036",
+      "text": "배송빠릅니다 맛있어요 계속 재구매중입니다",
+      "rating": 5,
+      "text_hash": "95ecf0b9769cb7f3bfc78146bca9d8874585010d2865302093b9db8bd755346a",
+      "review_group_id": "review:4802187289",
+      "related_review_id": "",
+      "review_targets": [
+        1,
+        0,
+        0
+      ],
+      "review_mask": [
+        true,
+        true,
+        false
+      ],
+      "spans": [],
+      "span_annotation_known": false,
+      "annotation_source": "existing_human_markdown_review_level",
+      "human_answer": "배송 긍정 맛 긍정",
+      "family": "4802187289",
+      "split": "train"
+    }
+  ],
+  "counts": {
+    "train": {
+      "reviews": 59,
+      "span_annotated_reviews": 10,
+      "spans": 26,
+      "positive": 42,
+      "negative": 20,
+      "neutral": 1
+    },
+    "validation": {
+      "reviews": 13,
+      "span_annotated_reviews": 4,
+      "spans": 12,
+      "positive": 11,
+      "negative": 2,
+      "neutral": 0
+    },
+    "test": {
+      "reviews": 13,
+      "span_annotated_reviews": 2,
+      "spans": 5,
+      "positive": 11,
+      "negative": 4,
+      "neutral": 0
+    },
+    "unlabeled": {
+      "reviews": 15,
+      "span_annotated_reviews": 0,
+      "spans": 0,
+      "positive": 0,
+      "negative": 0,
+      "neutral": 0
+    }
+  },
+  "input_unit": "whole_raw_review",
+  "generated_labels": false,
+  "knn": false,
+  "clause_splitting": false,
+  "source_files": {
+    "04_AI분석/labeling_workspace/human_review/eval_296889036_100/sample.json": "c0ddd0c6c7f1424bd77acd031d5c5faa74b357eb79078c3021e008a436473281",
+    "04_AI분석/labeling_workspace/human_review/eval_296889036_100/검수_100건.md": "1e3d1d84bc5df64f0442e138aef17b2499bd2feaea8f6e2dd0f4e1dbb8240a2f",
+    "04_AI분석/labeling_workspace/human_review/checklist_decisions/2026-10-18_reviews_01-16.json": "a8bdbf70c95c829fa8e003de63eb8a9b38460f9d573ce17dc1f6937e2668b476",
+    "04_AI분석/pilot_products/296889036/data/opinion_review_v1/review_bundle.json": "2a7190c526b86c3a86e5d1c1b0bb78c7b378ed1ca2d1200c438ed190786bbba2",
+    "04_AI분석/pilot_products/296889036/outputs/assistant_readthrough/opinions.jsonl": "7572aa4011bf8eeef2a72817bb8ef18a64ee49b901c65ec5c7d74254a685c070"
+  },
+  "source_population": "02_상품정리/processed/canonical_products/reviews_normal_canonical.parquet",
+  "annotation_notes": [
+    "Markdown responses are existing human review-level judgments, not exact spans; unlisted polarity absence follows the recorded response and may be incomplete.",
+    "Freeform responses without an explicit polarity and blank responses are unlabeled.",
+    "Span supervision reuses only the 16 explicitly human-approved drafts, applies human edits and excludes other-product/fact opinions.",
+    "Old aspect categories are kept as provenance only; the learned outputs are sentiment presence and opinion evidence boundaries.",
+    "Former evaluation-set examples used here for training are no longer independent evaluation examples for this model.",
+    "No new target-condition-opinion relationship labels are generated. This experiment does not train relationship extraction."
+  ]
+}

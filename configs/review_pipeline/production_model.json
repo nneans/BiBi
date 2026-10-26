@@ -1,0 +1,8 @@
+{
+  "active_version": null,
+  "artifact_dir": null,
+  "validated": false,
+  "activated_at": null,
+  "history": [],
+  "note": "No model is active until one passes the human-gold production gate."
+}

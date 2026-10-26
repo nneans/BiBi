@@ -1,0 +1,391 @@
+{
+ "version": "bibi-review-taxonomy-v2-draft",
+ "frozen": false,
+ "status": "draft; candidate aspects need human-reviewed cases before becoming model outputs",
+ "derived_from": "bibi-opinion-taxonomy-draft-v1",
+ "compatibility": "aspect codes identical to bibi-opinion-taxonomy-draft-v1; human bundles of v1 map 1:1",
+ "base_aspects": [
+  "taste",
+  "freshness",
+  "quality",
+  "delivery",
+  "packaging",
+  "price",
+  "quantity"
+ ],
+ "aspects": [
+  {
+   "code": "taste",
+   "name": "맛·냄새",
+   "status": "existing",
+   "definition": "먹거나 냄새 맡을 때의 풍미·간·이취 평가",
+   "include": "맛있음, 밀가루 맛, 치즈 풍미, 짠맛·싱거움",
+   "exclude": "늘어남·질김·바삭함 같은 물성은 texture 후보; 냄새로 변질을 추정하지 않음",
+   "confused_with": [
+    "texture",
+    "freshness"
+   ],
+   "examples": [
+    {
+     "review_id": "4731268928",
+     "text": "고소한치즈맛이아니라실망이네요"
+    }
+   ],
+   "model_output": true
+  },
+  {
+   "code": "freshness",
+   "name": "신선도",
+   "status": "existing",
+   "definition": "명시적인 신선함·변질·부패 평가",
+   "include": "신선하다, 상했다 등 직접 표현",
+   "exclude": "녹았다는 사실만으로 부패로 판정하지 않음",
+   "confused_with": [
+    "taste",
+    "quality",
+    "packaging"
+   ],
+   "examples": [],
+   "note": "현재 250표본에서 신선·상함·변질 직접 키워드 예문이 검색되지 않음. 적합성·분류 성능 미확인. 비린내·이상한 냄새를 신선도 문제로 명시한 평가도 포함(냄새만으로 부패 추정 금지)",
+   "model_output": true
+  },
+  {
+   "code": "quality",
+   "name": "제품 상태·하자",
+   "status": "existing",
+   "definition": "제품 자체의 손상·해동 상태·하자 평가",
+   "include": "내용물 파손, 녹은 상태에 대한 평가",
+   "exclude": "포장재 손상은 packaging; 식감과 조리 결과는 별도 후보로 검토",
+   "confused_with": [
+    "packaging",
+    "texture",
+    "cooking_result"
+   ],
+   "examples": [
+    {
+     "review_id": "4748326331",
+     "text": "상품은 어느정도 녹아있었네요"
+    }
+   ],
+   "model_output": true
+  },
+  {
+   "code": "delivery",
+   "name": "배송",
+   "status": "existing",
+   "definition": "도착 속도·지연·배송 경험의 평가",
+   "include": "빠르다, 늦다, 배송에 만족",
+   "exclude": "단순 수령 사실을 자동 긍정으로 만들지 않음; 보냉 원인을 추정해 중복 부여하지 않음",
+   "confused_with": [
+    "packaging",
+    "quality"
+   ],
+   "examples": [
+    {
+     "review_id": "4885033119",
+     "text": "빠른 배송에 만족도 최상입니다"
+    }
+   ],
+   "model_output": true
+  },
+  {
+   "code": "packaging",
+   "name": "포장",
+   "status": "existing",
+   "definition": "봉지·상자·밀봉·누수·보냉 구성 평가",
+   "include": "꼼꼼한 포장, 아이스팩·드라이아이스 구성 불만",
+   "exclude": "음식 자체 상태는 quality; 배송 지연은 delivery",
+   "confused_with": [
+    "quality",
+    "delivery"
+   ],
+   "examples": [
+    {
+     "review_id": "4748326331",
+     "text": "포장에좀더 신경쓰셨으면.."
+    }
+   ],
+   "model_output": true
+  },
+  {
+   "code": "price",
+   "name": "가격·가성비",
+   "status": "existing",
+   "definition": "가격 수준과 가격 대비 가치 평가",
+   "include": "저렴함, 돈 아까움, 가격 대비 만족",
+   "exclude": "할인 구매 사실·가격 숫자만으로 평가를 추정하지 않음",
+   "confused_with": [
+    "quantity"
+   ],
+   "examples": [
+    {
+     "review_id": "4890912569",
+     "text": "싸게 산 거에 만족하고"
+    }
+   ],
+   "model_output": true
+  },
+  {
+   "code": "quantity",
+   "name": "총량·크기",
+   "status": "existing",
+   "definition": "상품 전체의 양·무게·개수·크기·두께 평가",
+   "include": "전체 양이 많다, 크기가 작다",
+   "exclude": "1kg 구매는 사실일 수 있음; 치즈/튀김옷 비율은 ingredient_composition 후보와 경계 검토",
+   "confused_with": [
+    "ingredient_composition",
+    "price"
+   ],
+   "examples": [
+    {
+     "review_id": "4890912569",
+     "text": "치즈스틱 사이즈는 여자 어른 손가락 굵기 정도네요"
+    }
+   ],
+   "note": "이 예문의 크기 설명이 평가인지 단순 묘사인지는 사람이 문맥으로 판단.",
+   "model_output": true
+  },
+  {
+   "code": "texture",
+   "name": "식감·물성",
+   "status": "candidate",
+   "definition": "입안의 촉감과 늘어남·질김·바삭함 등 물성 평가",
+   "include": "치즈가 안 늘어남, 쫀득함, 흐물거림, 딱딱함",
+   "exclude": "풍미는 taste, 재료 비율은 ingredient_composition; 조리 실패 자체는 cooking_result",
+   "confused_with": [
+    "taste",
+    "quality",
+    "cooking_result"
+   ],
+   "examples": [
+    {
+     "review_id": "4914483688",
+     "text": "치즈가 아예 안늘어나요"
+    }
+   ],
+   "model_output": false
+  },
+  {
+   "code": "ingredient_composition",
+   "name": "재료 구성·비율",
+   "status": "candidate",
+   "definition": "특정 재료 함량이나 내용물과 외피의 구성 비율 평가",
+   "include": "치즈가 적다, 튀김옷 비중이 크다",
+   "exclude": "상품 전체 크기·무게는 quantity; 성분 숫자만 언급하면 fact 가능",
+   "confused_with": [
+    "quantity",
+    "taste",
+    "quality"
+   ],
+   "examples": [
+    {
+     "review_id": "4853719449",
+     "text": "안에 치즈는 적고 튀김옷은 두꺼운 느낌이에요"
+    }
+   ],
+   "model_output": false
+  },
+  {
+   "code": "cooking_convenience",
+   "name": "조리 편의",
+   "status": "candidate",
+   "definition": "조리에 필요한 수고·시간·도구의 편리함 평가",
+   "include": "번거로움, 기름 사용 부담, 간편함",
+   "exclude": "온도·시간 설명만 있으면 fact; 맛 평가만 있으면 taste",
+   "confused_with": [
+    "cooking_result",
+    "description_match"
+   ],
+   "examples": [
+    {
+     "review_id": "4792191458",
+     "text": "기름도 아깝고 번거롭기도 해서"
+    }
+   ],
+   "model_output": false
+  },
+  {
+   "code": "cooking_result",
+   "name": "조리 결과·적합성",
+   "status": "candidate",
+   "definition": "조리 방법에 따른 완성·실패·적합성에 대한 평가",
+   "include": "특정 방법으로 조리가 되지 않음, 익힘 실패",
+   "exclude": "바삭함·풍미만 직접 평가하면 texture/taste; 방법·온도 정보만이면 fact",
+   "confused_with": [
+    "texture",
+    "taste",
+    "cooking_convenience",
+    "description_match"
+   ],
+   "examples": [
+    {
+     "review_id": "4905384952",
+     "text": "제대로 된 조리가 불가능 합니다."
+    }
+   ],
+   "model_output": false
+  },
+  {
+   "code": "description_match",
+   "name": "설명과 실제의 일치",
+   "status": "candidate",
+   "definition": "표기·안내·기대된 제공 내용과 실제의 차이에 대한 고객 평가",
+   "include": "상품명에는 에어프라이어인데 제품 안내에는 없음",
+   "exclude": "단순 타사 비교나 맛 취향 차이만으로 설명 불일치를 추정하지 않음. 고객 주장과 검증된 사실을 구분",
+   "confused_with": [
+    "cooking_result",
+    "quality"
+   ],
+   "examples": [
+    {
+     "review_id": "4763579632",
+     "text": "제목(?)엔 에어프라이어 요리라고 써있는데 제품엔 어디에도 에어프라이어 사용법이 없어요;;;"
+    }
+   ],
+   "model_output": false
+  }
+ ],
+ "reason_candidates": [
+  {
+   "code": "cheese_flavor",
+   "name": "치즈 풍미",
+   "aspect": "taste"
+  },
+  {
+   "code": "flour_flavor",
+   "name": "밀가루 맛",
+   "aspect": "taste"
+  },
+  {
+   "code": "saltiness",
+   "name": "간·짠맛 정도",
+   "aspect": "taste"
+  },
+  {
+   "code": "stretchability",
+   "name": "치즈 늘어남",
+   "aspect": "texture"
+  },
+  {
+   "code": "softness_firmness",
+   "name": "묽음·단단함",
+   "aspect": "texture"
+  },
+  {
+   "code": "crispness",
+   "name": "바삭함",
+   "aspect": "texture"
+  },
+  {
+   "code": "cheese_ratio",
+   "name": "치즈 함량",
+   "aspect": "ingredient_composition"
+  },
+  {
+   "code": "coating_ratio",
+   "name": "튀김옷 비율",
+   "aspect": "ingredient_composition"
+  },
+  {
+   "code": "whole_size",
+   "name": "상품 크기",
+   "aspect": "quantity"
+  },
+  {
+   "code": "total_amount",
+   "name": "전체 양",
+   "aspect": "quantity"
+  },
+  {
+   "code": "thawing",
+   "name": "해동 상태",
+   "aspect": "quality"
+  },
+  {
+   "code": "insulation",
+   "name": "보냉 구성",
+   "aspect": "packaging"
+  },
+  {
+   "code": "delivery_speed",
+   "name": "도착 속도",
+   "aspect": "delivery"
+  },
+  {
+   "code": "value",
+   "name": "가격 대비 가치",
+   "aspect": "price"
+  },
+  {
+   "code": "cooking_effort",
+   "name": "조리 수고",
+   "aspect": "cooking_convenience"
+  },
+  {
+   "code": "airfryer_result",
+   "name": "에어프라이어 조리 결과",
+   "aspect": "cooking_result"
+  },
+  {
+   "code": "cooking_method_description",
+   "name": "조리 방식 안내 일치",
+   "aspect": "description_match"
+  },
+  {
+   "code": "odor",
+   "name": "냄새·비린내",
+   "aspect": "taste"
+  },
+  {
+   "code": "bones",
+   "name": "가시·뼈",
+   "aspect": "quality"
+  },
+  {
+   "code": "breakage",
+   "name": "부서짐·자투리",
+   "aspect": "quality"
+  },
+  {
+   "code": "foreign_matter",
+   "name": "이물질",
+   "aspect": "quality"
+  },
+  {
+   "code": "thickness",
+   "name": "두께·절단",
+   "aspect": "quantity"
+  },
+  {
+   "code": "water_on_thaw",
+   "name": "해동 시 수분",
+   "aspect": "quality"
+  },
+  {
+   "code": "leak_damage",
+   "name": "포장 파손·누수",
+   "aspect": "packaging"
+  },
+  {
+   "code": "shipping_fee",
+   "name": "배송비",
+   "aspect": "price"
+  },
+  {
+   "code": "delivery_schedule",
+   "name": "도착 일정 준수",
+   "aspect": "delivery"
+  },
+  {
+   "code": "expiry_date",
+   "name": "유통기한·제조일",
+   "aspect": "freshness"
+  }
+ ],
+ "reason_status": "polarity-independent candidates; unverified codes are never aggregated automatically",
+ "model_output_rule": "labels = [aspect:positive, aspect:negative] for aspects with model_output=true, in listed order",
+ "out_of_scope_codes": [
+  "taxonomy_out_of_scope",
+  "review_required"
+ ]
+}

@@ -1,0 +1,10 @@
+{
+  "independent_source_crosstab_equals_all_539_exported_rating_distributions": true,
+  "all_539_product_mean_ratings_match_direct_source_groupby": true,
+  "all_observed_product_month_counts_and_means_match_direct_source_groupby": true,
+  "season_counts_match_independent_date_filters": true,
+  "partial_october_flag_and_13_day_denominator_verified": true,
+  "all_9_pngs_visually_inspected_and_validated": true,
+  "long_label_spacing_corrected_and_reinspected": true,
+  "source_hash_unchanged": true
+}
