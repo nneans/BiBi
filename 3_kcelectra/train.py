@@ -1,8 +1,12 @@
-"""Three-epoch food-review domain adaptation using native ELECTRA RTD.
+"""Post-training of KcELECTRA on our reviews: three epochs of native ELECTRA RTD (replaced-token detection).
 
 The original public generator is unavailable. A native-vocabulary small MLM is
 bootstrapped for one training-corpus pass with the discriminator entirely frozen,
 then both networks train with generator CE + 50 * discriminator token BCE.
+Input: train/validation/test.jsonl from prepare_data.py (train.jsonl is not kept in the repo; prepare_data.py rebuilds
+it byte for byte). The epoch with the lowest token BCE on the fixed validation corruptions is exported as
+frozen-encoder/ (2026-10-23 run: epoch 3, see results.json); every later step loads that folder.
+Run from this folder: python train.py (resumable: a crash restarts from the last 1,000-step snapshot).
 """
 import os
 os.environ['TOKENIZERS_PARALLELISM'] = 'false'
@@ -11,7 +15,6 @@ os.environ['RAYON_NUM_THREADS'] = '1'
 from collections import defaultdict
 import hashlib
 import json
-import math
 from pathlib import Path
 import random
 import shutil
@@ -25,7 +28,7 @@ from safetensors.torch import save_file
 from sklearn.metrics import roc_auc_score, average_precision_score
 from transformers import AutoModelForPreTraining, AutoTokenizer
 
-from stage1_core import NativeGenerator, select_mask, corrupt_tokens, replaced_token_loss
+from rtd_core import NativeGenerator, select_mask, corrupt_tokens, replaced_token_loss
 from prepare_data import BASE, SEED, sha
 
 OUT = Path(__file__).resolve().parent

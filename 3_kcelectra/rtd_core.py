@@ -1,4 +1,9 @@
-"""Isolation, native ELECTRA corruption, and frozen encoder utilities."""
+"""Building blocks of the post-training (train.py, prepare_data.py): data isolation and native ELECTRA RTD.
+
+review_families / canonical_text_rows / diverse_sample keep a review family, and one text, in one split only;
+select_mask / corrupt_tokens / replaced_token_loss / NativeGenerator follow google-research/electra (15% of
+content tokens, a small generator sharing the token table, loss on the discriminator's token decisions).
+"""
 from collections import defaultdict, deque
 import hashlib
 import copy
@@ -127,72 +132,3 @@ class NativeGenerator(nn.Module):
     def forward(self, input_ids, attention_mask, chosen):
         hidden = self.model(input_ids=input_ids, attention_mask=attention_mask).last_hidden_state
         return F.linear(self.prediction(hidden[chosen]), self.model.embeddings.word_embeddings.weight, self.bias)
-
-
-# Chosen by long_review_windows.py: 75% of the 510-token content capacity (see long-review-windows.json).
-LONG_REVIEW_OVERLAP = 382
-
-
-def window_plan(length, max_length=512, overlap=LONG_REVIEW_OVERLAP):
-    """Overlapping content windows for a [CLS] ... [SEP] review longer than the encoder limit.
-
-    Returns content-index spans (start, end) and, for each content token, the window that
-    gives it the widest context on its shorter side. Reviews within the limit stay one window.
-    """
-    content = length - 2
-    capacity = max_length - 2
-    if content < 1:
-        raise ValueError('Review needs at least one content token')
-    if not 0 <= overlap < capacity:
-        raise ValueError('Overlap must be smaller than the window content capacity')
-    if content <= capacity:
-        return [(0, content)], [0] * content
-    step = capacity - overlap
-    starts = list(range(0, content - capacity, step)) + [content - capacity]
-    spans = [(s, s + capacity) for s in starts]
-    owner = []
-    for i in range(content):
-        best, room = None, -1
-        for w, (s, e) in enumerate(spans):
-            if s <= i < e and min(i - s, e - 1 - i) > room:
-                best, room = w, min(i - s, e - 1 - i)
-        owner.append(best)
-    return spans, owner
-
-
-class FrozenEncoder(nn.Module):
-    """Keep the encoder weights and dropout fixed while downstream heads train."""
-    def __init__(self, encoder):
-        super().__init__()
-        self.encoder = encoder
-        self.encoder.requires_grad_(False)
-        self.encoder.eval()
-
-    def train(self, mode=True):
-        super().train(mode)
-        self.encoder.eval()
-        return self
-
-    def forward(self, **inputs):
-        with torch.no_grad():
-            return self.encoder(**inputs).last_hidden_state
-
-    def encode_review(self, input_ids, max_length=512, overlap=LONG_REVIEW_OVERLAP, window_batch=8):
-        """Token states for one complete review of any length: (len(input_ids), hidden).
-
-        Within the limit this is the plain single-pass forward. Above it, every content token
-        takes its state from its widest-context window; [CLS] comes from the first window and
-        [SEP] from the last, so heads should pool content tokens rather than rely on [CLS].
-        """
-        ids = torch.as_tensor(input_ids, dtype=torch.long, device=next(self.parameters()).device)
-        spans, owner = window_plan(len(ids), max_length, overlap)
-        if len(spans) == 1:
-            return self(input_ids=ids[None], attention_mask=torch.ones_like(ids)[None])[0]
-        content = ids[1:-1]
-        windows = torch.stack([torch.cat([ids[:1], content[s:e], ids[-1:]]) for s, e in spans])
-        states = torch.cat([self(input_ids=chunk, attention_mask=torch.ones_like(chunk))
-                            for chunk in windows.split(window_batch)])
-        owner = torch.as_tensor(owner, device=ids.device)
-        starts = torch.as_tensor([s for s, _ in spans], device=ids.device)
-        positions = torch.arange(len(content), device=ids.device) - starts[owner] + 1
-        return torch.cat([states[0, :1], states[owner, positions], states[-1, -1:]])

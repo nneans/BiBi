@@ -1,10 +1,10 @@
-"""Data isolation, corruption truth, and genuinely frozen Stage 2 features."""
+"""Data isolation and corruption truth of the post-training (rtd_core.py)."""
 import pytest
 import torch
 from transformers import ElectraConfig, ElectraForPreTraining
 
-from stage1_core import (review_families, canonical_text_rows, diverse_sample, select_mask, corrupt_tokens,
-                         replaced_token_loss, NativeGenerator, FrozenEncoder, window_plan)
+from rtd_core import (review_families, canonical_text_rows, diverse_sample, select_mask, corrupt_tokens,
+                      replaced_token_loss, NativeGenerator)
 
 
 def test_followup_links_form_one_family_but_identical_text_does_not_chain():
@@ -95,62 +95,3 @@ def test_generator_uses_discriminator_vocabulary_and_shares_only_token_table():
     assert logits.shape == (1, 24)
     torch.nn.functional.cross_entropy(logits, torch.tensor([7])).backward()
     assert discriminator.electra.embeddings.word_embeddings.weight.grad.abs().sum() > 0
-
-
-def test_frozen_encoder_remains_deterministic_when_outer_heads_enter_train_mode():
-    frozen = FrozenEncoder(tiny_discriminator().electra)
-    frozen.train()
-    assert not frozen.encoder.training
-    assert not any(p.requires_grad for p in frozen.parameters())
-    ids = torch.tensor([[2, 7, 8, 3]])
-    a = frozen(input_ids=ids, attention_mask=torch.ones_like(ids))
-    b = frozen(input_ids=ids, attention_mask=torch.ones_like(ids))
-    torch.testing.assert_close(a, b, atol=0, rtol=0)
-    assert not a.requires_grad
-
-
-@pytest.mark.parametrize('length', [3, 8, 9, 30, 2502])
-def test_window_plan_covers_every_content_token_once_within_limit(length):
-    spans, owner = window_plan(length, max_length=8 if length < 100 else 512,
-                               overlap=3 if length < 100 else 384)
-    capacity = (8 if length < 100 else 512) - 2
-    assert all(e - s <= capacity for s, e in spans)
-    assert spans[0][0] == 0 and spans[-1][1] == length - 2
-    assert len(owner) == length - 2
-    assert all(spans[w][0] <= i < spans[w][1] for i, w in enumerate(owner))
-
-
-def test_window_owner_maximizes_context_on_the_shorter_side():
-    spans, owner = window_plan(20, max_length=8, overlap=4)
-    for i, w in enumerate(owner):
-        room = min(i - spans[w][0], spans[w][1] - 1 - i)
-        assert room == max(min(i - s, e - 1 - i) for s, e in spans if s <= i < e)
-
-
-def test_window_plan_rejects_invalid_settings():
-    with pytest.raises(ValueError):
-        window_plan(2)
-    with pytest.raises(ValueError):
-        window_plan(30, max_length=8, overlap=6)
-
-
-def test_encode_review_within_limit_is_the_plain_forward():
-    frozen = FrozenEncoder(tiny_discriminator().electra)
-    ids = [2, 7, 8, 9, 3]
-    expected = frozen(input_ids=torch.tensor([ids]), attention_mask=torch.ones(1, 5, dtype=torch.long))[0]
-    torch.testing.assert_close(frozen.encode_review(ids, max_length=16, overlap=4), expected, atol=0, rtol=0)
-
-
-def test_encode_review_handles_reviews_beyond_position_limit_without_dropping_tokens():
-    frozen = FrozenEncoder(tiny_discriminator().electra)
-    ids = [2] + [4 + i % 19 for i in range(40)] + [3]
-    with pytest.raises(Exception):
-        frozen(input_ids=torch.tensor([ids]), attention_mask=torch.ones(1, len(ids), dtype=torch.long))
-    states = frozen.encode_review(ids, max_length=16, overlap=6, window_batch=2)
-    assert states.shape == (len(ids), 8)
-    spans, owner = window_plan(len(ids), 16, 6)
-    s, e = spans[owner[20]]
-    window = torch.tensor([[2] + ids[1:-1][s:e] + [3]])
-    alone = frozen(input_ids=window, attention_mask=torch.ones_like(window))[0]
-    torch.testing.assert_close(states[21], alone[20 - s + 1], atol=0, rtol=0)
-    assert not states.requires_grad

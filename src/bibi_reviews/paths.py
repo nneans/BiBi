@@ -1,7 +1,7 @@
 """Project folder layout (2026-10-23). Every script takes its locations from here, so a rename touches one file.
 
 1_ingest         CSV -> 리뷰 DB(원본 장부)  2_preprocessing DB -> 분석용 리뷰 파일
-3_사후학습   식품 리뷰 적응 KcELECTRA      4_정답데이터   정답 300건 · 같은 뜻 판정
+3_kcelectra      KcELECTRA 사후학습(식품 리뷰 적응)  4_정답데이터   정답 300건 · 같은 뜻 판정
 5_감성분류   Kiwi 단위 + 감성 분류기        5_속성분류     속성 사전 + 속성 분류기 (감성과 나란히)
 6_이유분석   KURE + BERTopic, 상품별 결과   7_보고         집계 · 그림 · 대시보드 · 현황
 """
@@ -31,7 +31,8 @@ ANALYSIS_TEXT = PROCESSED / 'analysis_text.parquet'  # review_id -> analysis_tex
 ARCHIVE = ROOT / 'archive'
 PRODUCT_CATEGORIES = ARCHIVE / 'preprocessing' / 'category-draft' / 'product-categories.json'  # draft 상품군
 
-BACKBONE = ROOT / '3_사후학습'
+# step 3: KcELECTRA post-trained on our reviews; frozen-encoder/ is what every later step loads
+BACKBONE = ROOT / '3_kcelectra'
 BACKBONE_ENCODER = BACKBONE / 'frozen-encoder'
 BASE_KCELECTRA = (Path.home() / '.cache/huggingface/hub/models--beomi--KcELECTRA-base-v2022/snapshots/'
                   '568fe985a10c013c8f605e3c80a199413bbe9d00')

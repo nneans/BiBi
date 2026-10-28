@@ -27,7 +27,7 @@ sys.path.insert(0, str(UNITS))
 from kiwi_units import units, GOLD  # noqa: E402
 
 # Backbone to fine-tune; override with UNIT_ENCODER=<model dir> and UNIT_TAG=<name> to compare backbones.
-ENCODER = Path(os.environ.get('UNIT_ENCODER', BACKBONE_ENCODER))  # Stage 1 v3 epoch 1 (2026-10-23)
+ENCODER = Path(os.environ.get('UNIT_ENCODER', BACKBONE_ENCODER))  # post-trained KcELECTRA, the epoch-3 export of 2026-10-23 (3_kcelectra/results.json)
 TAG = os.environ.get('UNIT_TAG', '')
 VARIANTS = os.environ.get('UNIT_VARIANTS', 'a,b').split(',')
 LABELS = ['POS', 'NEG', 'NONE']

@@ -9,7 +9,8 @@ __pycache__/
 *.log
 *.tmp
 6_이유분석/results-*/tries.json
-3_사후학습/resume/
+3_kcelectra/resume/
+3_kcelectra/train.jsonl
 1_ingest/db/uploads/
 *.sqlite3
 

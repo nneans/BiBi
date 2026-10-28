@@ -13,12 +13,13 @@ os.environ['TOKENIZERS_PARALLELISM'] = 'false'
 from collections import Counter
 import hashlib
 import json
+import sys
 from pathlib import Path
 
 import pyarrow.parquet as pq
 from transformers import AutoTokenizer
 
-from stage1_core import review_families, canonical_text_rows, diverse_sample
+from rtd_core import review_families, canonical_text_rows, diverse_sample
 from bibi_reviews.paths import BASE_KCELECTRA, CANONICAL_REVIEWS, GOLD as GOLD_PATH
 
 OUT = Path(__file__).resolve().parent
@@ -32,7 +33,8 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def main():
+def main(out=OUT):
+    """out: where the splits and sampling-report.json go (default: this folder; the prior-100 list is read from here)."""
     source = CANONICAL_REVIEWS
     fields = ['review_id', 'product_id', 'review_text', 'text_hash', 'review_group_id', 'related_review_id']
     rows = pq.read_table(source, columns=fields).to_pylist()
@@ -85,7 +87,7 @@ def main():
     excluded['heldout_family_partner_not_used'] = sum(len(candidates[s]) for s in HELDOUT) - len(recycled) - sum(HELDOUT.values())
     counts, split_families = {}, {}
     for split, part in selected.items():
-        path = OUT / f'{split}.jsonl'
+        path = out / f'{split}.jsonl'
         content_tokens = unknown = 0
         with path.open('w', encoding='utf-8', newline='\n') as f:
             for row in part:
@@ -113,9 +115,9 @@ def main():
                           'eligible review (train partition + held-out partitions minus held-out families)',
               'family_rule': 'review_group_id + related_review_id only; identical text deduplicated, never chained',
               'tokenizer_path': str(BASE), 'vocab_sha256': sha(BASE / 'vocab.txt'), 'counts': counts}
-    (OUT / 'sampling-report.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    (out / 'sampling-report.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({s: {k: v for k, v in c.items() if k != 'file_sha256'} for s, c in counts.items()}), flush=True)
 
 
 if __name__ == '__main__':
-    main()
+    main(Path(sys.argv[1]) if len(sys.argv) > 1 else OUT)

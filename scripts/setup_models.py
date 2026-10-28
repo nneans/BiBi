@@ -8,7 +8,7 @@ from huggingface_hub import snapshot_download
 
 MODELS = [
     ('nlpai-lab/KURE-v1', '8b418a58414668e75532ed045c22d9ca018ae2b2'),            # sentence embeddings (grouping)
-    ('beomi/KcELECTRA-base-v2022', '568fe985a10c013c8f605e3c80a199413bbe9d00'),   # base of the post-training (3_사후학습)
+    ('beomi/KcELECTRA-base-v2022', '568fe985a10c013c8f605e3c80a199413bbe9d00'),   # base of the post-training (3_kcelectra)
 ]
 
 if __name__ == '__main__':
