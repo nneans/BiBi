@@ -12,7 +12,7 @@ from pathlib import Path
 import pandas as pd
 from .review_pipeline.common import plain_row
 from sqlalchemy import (create_engine, event, MetaData, Table, Column, String, Text,
-                        Integer, Boolean, Float, ForeignKey, select, func, update, delete)
+                        Integer, ForeignKey, select, func, update, delete)
 
 
 def now():
@@ -262,17 +262,12 @@ class ReviewStore:
 
 
 def main():
-    parser=argparse.ArgumentParser()
-    parser.add_argument('command',choices=['import','summary'])
+    # CSVs enter the DB only through 1_ingest/ingest.py (it also keeps the file and lists it) or the web upload
+    parser=argparse.ArgumentParser(description='Summary of the review DB. New CSVs: python 1_ingest/ingest.py add <csv>')
+    parser.add_argument('command',choices=['summary'])
     parser.add_argument('--db',default=None,help='DB URL; default is configs/review_pipeline/pipeline.json')
-    parser.add_argument('--csv',type=Path)
     args=parser.parse_args()
-    store=ReviewStore(args.db)
-    if args.command=='import':
-        if not args.csv:parser.error('--csv required')
-        result=store.import_csv(args.csv)
-    else:result=store.summary()
-    print(json.dumps(result,ensure_ascii=False,indent=2))
+    print(json.dumps(ReviewStore(args.db).summary(),ensure_ascii=False,indent=2))
 
 
 if __name__=='__main__':main()

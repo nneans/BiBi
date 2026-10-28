@@ -6,8 +6,7 @@
 | --- | --- |
 | `리뷰데이터(2025.01.01~2026.10.13).csv` | 원본 649,524행(정상 642,172 · 블라인드 7,352 · 539상품), Git LFS |
 | `deliveries.json` | 받은 CSV 목록(받은 순서, 파일 해시, 행 수, 리뷰 기간). 새 CSV는 `python 1_ingest/ingest.py add <새.csv>`로 넣으면 DB에 반영된 뒤 여기에 복사되고 기록됨 |
-| `audit/data-audit.md` | 컬럼 의미·건수·결측 등 데이터 진단 설명 |
-| `audit/profile/` | 데이터 진단 결과 |
+| `audit/data-audit.md` | 컬럼 의미·건수·결측 등 데이터 진단 설명 (2026-10-13 기준) |
 | `audit/data_quality/` | 품질 점검: 길이 분포, 중복 텍스트, 별점과 부정 표현의 관계 |
 
 - `audit/data_quality/` 다시 만들기: `python -m bibi_reviews.review_pipeline.data_quality` (DB 읽기 전용)

@@ -5,6 +5,7 @@
 ```powershell
 powershell -File scripts/postgres_server.ps1 start   # DB 서버 켜기 (PC를 켤 때마다)
 python 1_ingest/ingest.py add <새.csv>               # 새 CSV: 검사 → DB 반영 → raw/에 보관 → 목록 기록 → 2_preprocessing 다시 만들기
+python 1_ingest/check_db.py                          # DB가 받은 CSV와 정확히 같은지 확인 → verification/db-vs-raw.json
 ```
 
 ## 새 리뷰를 넣을 때
@@ -25,7 +26,7 @@ python 1_ingest/ingest.py add <새.csv>               # 새 CSV: 검사 → DB �
 - 형식이 다르면(컬럼, 별점, 날짜, 리뷰글번호 중복) DB를 건드리기 전에 멈춥니다.
 - 같은 파일을 두 번 넣으면 거부합니다(파일 해시).
 - 받은 CSV는 `raw/`에 그대로 보관하고 `raw/deliveries.json`에 파일 이름·해시·행 수·리뷰 기간·DB 반영 건수(신규·수정·변화 없음·옛 버전·블라인드)를 남깁니다.
-- 2026-10-28 확인: DB의 리뷰 649,524건이 원본 CSV와 모든 컬럼(행 해시 포함)까지 같습니다.
+- 2026-10-28 확인(`check_db.py`): DB의 리뷰 649,524건이 받은 CSV와 모든 컬럼(행 해시 포함)까지 같습니다. CSV는 `ingest.py`나 웹 업로드로만 DB에 들어갑니다(예전 `python -m bibi_reviews.backbone import` 명령은 목록 기록을 건너뛰어서 없앴습니다).
 
 ## 리뷰 DB: PostgreSQL 17
 
@@ -59,10 +60,11 @@ powershell -File scripts/postgres_server.ps1 stop     # 끄기
 | 경로 | 내용 |
 | --- | --- |
 | `ingest.py` | 새 CSV 넣기 (`add`) |
+| `check_db.py` | DB 검증: 받은 CSV 전부를 같은 반영 코드로 임시 DB에 넣은 결과와 실제 DB를 컬럼마다 비교, 끝나지 않은 업로드 작업 표시 |
 | [raw/](raw/README.md) | 받은 CSV들(수정 금지), `deliveries.json`, `audit/`(원본을 처음 점검한 기록) |
 | `db/backups/` | PostgreSQL 백업 |
 | `db/uploads/` | 대시보드 웹 업로드로 들어온 CSV (자동 생성, 저장소에 올리지 않음) |
-| `verification/` | DB 적재·이전 검증 기록 (2026-10-16 최초 적재, 2026-10-18 PostgreSQL 이전) |
+| `verification/db-vs-raw.json` | `check_db.py`의 최근 결과 (예전 2026-10-16·10-18 적재 기록은 만든 코드가 없어 로컬 `archive/ingest/`로 옮김) |
 
 - DB가 없는 사람도 분석할 수 있습니다: 2_preprocessing의 결과 파일이 저장소에 있고, `python 2_preprocessing/preprocess.py --from-raw`는 raw/의 CSV를 같은 반영 코드로 임시 SQLite DB에 넣어 다시 만듭니다.
 - 아직 연결하지 않은 것: 대시보드 웹 업로드(`api.py`)는 DB 반영까지만 하고 `deliveries.json` 기록과 2_preprocessing은 부르지 않습니다. 대시보드를 새 흐름에 붙일 때 같이 연결합니다.
