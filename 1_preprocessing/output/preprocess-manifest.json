@@ -1,8 +1,21 @@
 {
- "input": "1_preprocessing/raw/리뷰데이터(2025.01.01~2026.10.13).csv",
- "input_sha256": "d4886402d8fd44ed932f24cef964c9131f2621fb52487dc4cfe7db2a9a28a232",
+ "deliveries": [
+  {
+   "file": "리뷰데이터(2025.01.01~2026.10.13).csv",
+   "sha256": "d4886402d8fd44ed932f24cef964c9131f2621fb52487dc4cfe7db2a9a28a232",
+   "rows": 649524,
+   "added": "2026-10-13 (first data)",
+   "reviews_from": "2025-01-01T00:02:53+09:00",
+   "reviews_to": "2026-10-13T16:49:47+09:00",
+   "merge": {
+    "rows": 649524,
+    "new": 649524
+   }
+  }
+ ],
  "counts": {
   "raw_rows": 649524,
+  "distinct_reviews": 649524,
   "blind_reviews": 7352,
   "normal_reviews": 642172,
   "products": 539,
@@ -15,7 +28,11 @@
   "empty_analysis_text": 101,
   "product_ids_with_several_names": 246
  },
+ "changes_from_latest_delivery": {
+  "products": 0
+ },
  "rules": {
+  "merge": "one row per review_id; newer 최종수정일/리뷰등록일 wins; same time, other content -> later delivery; a review missing from a CSV is not deleted, a blinded one leaves",
   "checks": "backbone.ReviewStore.prepare (same as the DB import)",
   "review_text": "backbone.normalize_text (DB text and text_hash)",
   "review_group_id": "'review:' + (related_review_id or review_id)",

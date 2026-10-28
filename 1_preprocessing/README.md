@@ -1,26 +1,48 @@
 # 1단계 · 전처리 (1_preprocessing)
 
-네이버 스마트스토어에서 받은 리뷰 원본 CSV 하나에서, 뒤 단계가 읽는 파일을 **명령 하나로** 만듭니다. 원본은 고치지 않습니다.
+네이버 스마트스토어에서 받은 리뷰 CSV들(처음 받은 것 + 나중에 받는 것)에서, 뒤 단계가 읽는 파일을 **명령 하나로** 만듭니다. 원본은 고치지 않습니다.
 
 ```powershell
-python 1_preprocessing/preprocess.py                            # 원본 CSV → output/ (같은 CSV면 다시 만들어 비교만 하고 그대로 둠)
-python 1_preprocessing/preprocess.py --csv <새.csv> --replace   # 새 CSV로 결과를 바꿀 때
-python 1_preprocessing/check_clean.py                           # 분석용 텍스트 정리 규칙 점검 → output/checks/
+python 1_preprocessing/preprocess.py add <새.csv>   # 새로 받은 CSV: 형식 검사 → raw/에 그대로 복사 → 목록에 기록 → 전체 다시 만들기
+python 1_preprocessing/preprocess.py               # 받은 CSV 전부로 다시 만들기 (새 CSV가 없으면 같은 파일이 나와야 함, 비교만 하고 그대로 둠)
+python 1_preprocessing/check_clean.py              # 분석용 텍스트 정리 규칙 점검 → output/checks/
 ```
+
+## 새 리뷰를 넣을 때
+
+기업이 새 리뷰 CSV를 주면 `add`로 넣기만 하면 됩니다. 새 기간만 담긴 CSV든, 처음부터 다시 뽑은 전체 CSV든 같은 방법입니다.
+
+- **중복은 날짜가 아니라 리뷰글번호로 막습니다.** 같은 날에도 리뷰가 여럿이고, 옛 리뷰가 나중에 수정·블라인드될 수 있어서입니다. 받은 CSV를 받은 순서대로 합치며, 리뷰글번호마다 한 줄만 남깁니다(DB 증분 반영 `backbone.ReviewStore`와 같은 규칙).
+
+| 같은 리뷰글번호가 다시 오면 | 처리 |
+| --- | --- |
+| 내용이 똑같음 (겹치는 기간) | 건너뜀 |
+| 최종수정일(없으면 등록일)이 더 최근 | 새 버전으로 교체 (수정된 리뷰) |
+| 더 오래된 버전 | 무시 |
+| 시각은 같은데 내용이 다름 | 나중에 받은 CSV를 따름 (manifest에 건수 기록) |
+| 블라인드로 바뀜 | 분석에서 빠짐 |
+| 새 CSV에 없음 | **지우지 않음** (새 기간 CSV에는 옛 리뷰가 없는 게 당연함) |
+
+- 같은 파일을 두 번 넣으면 거부합니다(파일 해시). raw/의 CSV가 넣은 뒤에 바뀌어도 멈춥니다.
+- 받은 파일 목록은 `raw/deliveries.json`(파일 이름, 해시, 행 수, 리뷰 기간, 넣은 날)에 남습니다.
+- `output/changes.parquet`: 가장 최근에 받은 CSV로 새로 들어오거나(new), 수정되거나(updated), 빠진(removed) 리뷰 목록입니다. 뒤 단계는 여기 나온 상품만 다시 분석하면 됩니다.
+- 새 CSV 없이 다시 만들었는데 결과가 달라지면(코드의 규칙이 바뀐 경우) 멈춥니다. 바뀐 결과를 받아들이려면 `--replace`를 붙입니다.
+- 새 CSV도 같은 형식(스마트스토어 리뷰 내려받기, 같은 컬럼)이어야 합니다. 형식이 다르면 `add`가 복사 전에 멈춥니다.
 
 ## 폴더
 
 | 경로 | 내용 |
 | --- | --- |
-| `preprocess.py` | 전처리 전체 (아래 흐름 ①~⑤) |
+| `preprocess.py` | 전처리 전체 (아래 흐름 ⓪~⑥), 새 CSV 넣기(`add`) |
 | `check_clean.py` | 분석용 텍스트 정리 규칙 점검: 규칙별 해당 건수·예시, 줄바꿈 판정 표본, 정답 300리뷰 단위 점수 |
-| [raw/](raw/README.md) | 원본 CSV(수정 금지)와 `audit/`(처음 점검한 기록: 데이터 진단, 품질 점검) |
+| [raw/](raw/README.md) | 받은 원본 CSV들(수정 금지), `deliveries.json`(받은 순서와 해시), `audit/`(처음 점검한 기록) |
 | `output/` | `preprocess.py`가 만드는 파일 (아래 표), `checks/`(`check_clean.py` 결과) |
 
 ## 흐름
 
 ```
-원본 CSV 649,524행
+받은 CSV들 (지금은 1개: 649,524행)
+ ⓪ 합치기         리뷰글번호마다 최신 버전 하나 (위 표)
  ① 읽기·검사      DB 반영과 같은 규칙(backbone.ReviewStore.prepare): 필수 컬럼, 리뷰글번호 중복 없음, 별점 1~5,
                   날짜는 한국 시간, 본문 normalize_text(HTML 기호 되돌리기·NFC·공백 정리), text_hash
  ② 정상 리뷰      블라인드 7,352건 제외 → 642,172건 · 상품 539개
@@ -29,7 +51,8 @@ python 1_preprocessing/check_clean.py                           # 분석용 텍�
  ③ 상품 이름      product_id마다 가장 많이 쓰인 이름 하나(동률이면 이름순). 상품은 product_id로만 구분하고 합치지 않음
                   → output/canonical_products/
  ④ 분석용 텍스트  text_clean v2(아래 표) + purchase_id(한 고객의 한 구매) → output/analysis_text.parquet
- ⑤ 기록           입력 해시, 단계별 건수, 규칙, 출력 해시 → output/preprocess-manifest.json
+ ⑤ 바뀐 리뷰       가장 최근 CSV로 새로/수정/빠진 리뷰 → output/changes.parquet
+ ⑥ 기록           받은 CSV와 해시, 합치기 건수, 단계별 건수, 규칙, 출력 해시 → output/preprocess-manifest.json
 ```
 
 ## 출력 (`output/`)
@@ -41,9 +64,10 @@ python 1_preprocessing/check_clean.py                           # 분석용 텍�
 | `canonical_products/product_name_mapping.csv` | product_id → 대표 이름, 이름 수, 리뷰 수 (분석할 상품 목록) | 이유 분석, 보고서 |
 | `canonical_products/product_name_aliases.csv` | product_id × 예전 이름 → 리뷰 수 | 상품 이름만 쓴 단위 걸러내기 |
 | `analysis_text.parquet` | review_id → `analysis_text`(v2), `purchase_id` | 이유 분석(단위 나누기, 구매 기준 집계) |
-| `preprocess-manifest.json` | 입력 해시, 건수, 규칙, 출력 해시 | 재현 확인 |
+| `changes.parquet` | review_id, product_id, change(new / updated / removed): 가장 최근 CSV로 바뀐 리뷰 | 바뀐 상품만 다시 분석 |
+| `preprocess-manifest.json` | 받은 CSV와 해시, 합치기 건수, 단계별 건수, 규칙, 출력 해시 | 재현 확인 |
 
-2026-10-28 원본 CSV에서 다시 만들어 그 전의 파일 4개와 내용이 완전히 같음을 확인했습니다(그 전에는 ①②를 만든 코드가 저장소에 없었음). 규칙은 `tests/test_preprocess.py`가 지킵니다.
+2026-10-28 원본 CSV에서 다시 만들어 그 전의 파일 4개와 내용이 완전히 같음을 확인했습니다(그 전에는 ①②를 만든 코드가 저장소에 없었음). 규칙은 `tests/test_preprocess.py`가 지킵니다(겹치는 기간, 수정, 나중 블라인드, 옛 버전, 새 리뷰, 같은 파일 두 번).
 
 ## 두 가지 텍스트
 

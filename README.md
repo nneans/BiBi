@@ -6,7 +6,7 @@
 
 | 단계 | 폴더 | 하는 일 |
 | --- | --- | --- |
-| 1 | [1_preprocessing](1_preprocessing/README.md) | 원본 CSV(수정 금지) → 명령 하나(`preprocess.py`)로 정상 리뷰, 상품 ID별 대표 이름, 분석용 텍스트(줄바꿈·반복 문자 정리), 구매 번호(원 리뷰 + 한달사용 후기 = 한 구매) |
+| 1 | [1_preprocessing](1_preprocessing/README.md) | 받은 원본 CSV들(수정 금지, 새 CSV는 `add`로 추가) → 명령 하나(`preprocess.py`)로 정상 리뷰, 상품 ID별 대표 이름, 분석용 텍스트(줄바꿈·반복 문자 정리), 구매 번호(원 리뷰 + 한달사용 후기 = 한 구매) |
 | 2 | [2_DB](2_DB/README.md) | PostgreSQL 리뷰 DB, 새 CSV의 신규·수정분만 반영, 백업 |
 | 3 | [3_사후학습](3_사후학습/README.md) | KcELECTRA를 우리 리뷰 49.5만 건으로 추가 학습(식품 리뷰 적응), 1에폭 결과 `frozen-encoder/` 사용 |
 | 4 | [4_정답데이터](4_정답데이터/README.md) | 사람이 확정한 정답 300리뷰·666의견, 추가 단위 정답 800개, 같은 뜻 판정 148쌍 |
@@ -43,7 +43,7 @@ pip install -r requirements.txt
 pip install -e .                                # src/bibi_reviews 패키지
 
 python scripts/setup_models.py                  # 외부 모델 2개(KURE-v1, KcELECTRA 원본)를 고정 버전으로 받기
-python -m pytest tests 3_사후학습/test_stage1_core.py    # 68 passed, 2 skipped 이면 준비 완료
+python -m pytest tests 3_사후학습/test_stage1_core.py    # 69 passed, 2 skipped 이면 준비 완료
 ```
 
 - 필요 환경: Python 3.11, NVIDIA GPU(CUDA). 분석 PC는 Windows 11 + RTX 4080 SUPER입니다.
@@ -65,11 +65,12 @@ python -m pytest tests 3_사후학습/test_stage1_core.py    # 68 passed, 2 skip
 
 ```powershell
 pip install -e .                                                 # src/bibi_reviews 패키지 설치
-python 1_preprocessing/preprocess.py                              # 원본 CSV → 전처리 결과 (같은 CSV면 비교만)
+python 1_preprocessing/preprocess.py add <새.csv>                # 새로 받은 리뷰 CSV 넣기 (리뷰글번호로 중복 제거, 최신 버전 유지)
+python 1_preprocessing/preprocess.py                              # 받은 CSV 전부로 전처리 다시 만들기 (새 CSV가 없으면 비교만)
 powershell -File scripts/postgres_server.ps1 start                # PC를 켠 뒤 DB 서버 켜기
 bash 6_이유분석/run_all.sh                                        # 30개 상품 분석 (products.json)
 python 6_이유분석/summarize_all.py v3                             # 요약·인사이트 보고서
-python -m pytest tests 3_사후학습/test_stage1_core.py             # 68 passed, 2 skipped (2026-10-28)
+python -m pytest tests 3_사후학습/test_stage1_core.py             # 69 passed, 2 skipped (2026-10-28)
 ```
 
 **분석 PC 주의:** 분석 PC의 i9-14900KF는 성능 코어가 불안정해서(2026-10-25 확인) `bibi_reviews`를 불러오면 효율 코어에만 고정됩니다([cpu.py](src/bibi_reviews/cpu.py)). i9-13900/14900이 아닌 PC에서는 자동으로 꺼지고, `BIBI_ALL_CORES=1`로 끌 수도 있습니다.
