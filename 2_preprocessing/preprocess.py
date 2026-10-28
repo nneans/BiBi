@@ -1,54 +1,43 @@
-"""Preprocessing, final form: every review CSV the store has delivered -> every file the later steps read.
+"""Step 2: the review DB (the ledger, 1_ingest) -> every file the later steps read.
 
-New reviews come as new CSVs (a new period, or a fresh full export that overlaps the old ones). Each is added once
-with `add`, kept unchanged in raw/ and listed in raw/deliveries.json; every run rebuilds from all of them:
+  python 2_preprocessing/preprocess.py              read the configured DB (PostgreSQL; BIBI_DATABASE_URL overrides)
+  python 2_preprocessing/preprocess.py --from-raw   no DB: import every CSV of 1_ingest/raw/deliveries.json, in order,
+                                                    into a temporary SQLite DB with the same import code, then read it
 
-  0. merge          deliveries in the order they were added, one row per 리뷰글번호 (the key, not the date: one
-                    day holds many reviews, and an old review can be edited or blinded later). A newer version wins
-                    (최종수정일, else 리뷰등록일), an identical row is skipped, an older one is ignored, the same time
-                    with other content -> the later delivery (the DB import, backbone.ReviewStore, uses the same
-                    rules). A review missing from a new CSV is not deleted (a new-period CSV holds no old reviews);
-                    only a review shown as 블라인드 leaves the analysis.
-  1. read + check   each CSV with the rules of the DB import (ReviewStore.prepare): required columns, unique review
-                    IDs, ratings 1..5, dates in Asia/Seoul, normalize_text, text_hash
-  2. normal reviews blind reviews dropped; review_group_id = 'review:' + (관련리뷰글번호 or 리뷰글번호), so an
+Which version of a review counts, duplicates, edits and blinding are decided once, by the DB import
+(backbone.ReviewStore; see 1_ingest/ingest.py). This step only reads the result:
+  1. normal reviews blind reviews dropped; review_group_id = 'review:' + (관련리뷰글번호 or 리뷰글번호), so an
                     original review and its 한달사용 follow-up share it; rows ordered by product, time, review
                     -> output/reviews_normal.parquet
-  3. product names  one display name per product_id (the most frequent; canonicalize_products.canonicalize); the
-                    product_id stays the key and products are never merged
-                    -> output/canonical_products/
-  4. analysis text  text_clean.clean_review (v2: line breaks kept, repeats shortened, invisible characters and
+  2. product names  one display name per product_id (the most frequent; canonicalize_products.canonicalize; the DB's
+                    products table follows the same rule and is checked against it); the product_id stays the key
+                    and products are never merged -> output/canonical_products/
+  3. analysis text  text_clean.clean_review (v2: line breaks kept, repeats shortened, invisible characters and
                     filler removed; emoji and spelling kept) and purchase_id = one customer's purchase: the
                     review_group_id, or the first copy's purchase for a long text (COPY_MIN_CHARS+) pasted again
-                    into the same product
-                    -> output/analysis_text.parquet
-  5. changes        reviews new / updated / removed (blinded) by the latest delivery, so later steps can redo only
-                    the products that changed -> output/changes.parquet (kept as it is by a rebuild with no new CSV)
-  6. manifest       deliveries and their hashes, merge counts, counts of every step, rules, output hashes
+                    into the same product -> output/analysis_text.parquet
+  4. changes        reviews new / updated / removed (blinded) since the last time the DB changed, so later steps
+                    can redo only those products -> output/changes.parquet
+  5. manifest       source and its fingerprint, deliveries, counts of every step, rules, output hashes
                     -> output/preprocess-manifest.json
-Raw CSVs are never changed. Rebuilding with no new delivery must give the same files; if it does not (a rule in
-the code changed), the run stops unless --replace is given.
-Usage: python 1_preprocessing/preprocess.py                 rebuild from raw/deliveries.json and compare
-       python 1_preprocessing/preprocess.py add <new.csv>   check, copy into raw/, list it, rebuild
+If the DB has not changed since the last build, the rebuilt files must be the same; if they are not (a rule in the
+code changed), the run stops unless --replace is given.
 """
 import argparse
 import hashlib
 import json
-import shutil
 import sys
 import tempfile
-from collections import Counter
-from datetime import date
 from pathlib import Path
 
 import pandas as pd
+from sqlalchemy import select
 
 from bibi_reviews.backbone import ReviewStore
 from bibi_reviews.canonicalize_products import canonicalize
-from bibi_reviews.paths import PREPROCESS, PROCESSED, RAW
+from bibi_reviews.paths import DELIVERIES, PREPROCESS, PROCESSED, RAW
 from bibi_reviews.text_clean import CLEAN_VERSION, clean_review
 
-DELIVERIES = RAW / 'deliveries.json'
 COPY_MIN_CHARS = 40  # a pasted text this long is one customer's, not a coincidence ('맛있어요' is not)
 NORMAL_COLUMNS = ['review_id', 'product_id', 'product_name', 'review_type', 'rating', 'created_at', 'source_updated_at',
                   'review_text_raw', 'review_text', 'related_review_id', 'review_group_id', 'text_hash', 'display_status']
@@ -65,35 +54,25 @@ def sha256(path):
     return digest.hexdigest()
 
 
-def read_raw(csv_path):
-    raw = pd.read_csv(csv_path, encoding='utf-8-sig', dtype=str, keep_default_na=False)
-    return raw, pd.DataFrame(ReviewStore.prepare(raw))
+def deliveries():
+    return json.loads(DELIVERIES.read_text(encoding='utf-8')) if DELIVERIES.exists() else []
 
 
-def merge(csv_paths):
-    """One record per review_id over every delivery, in order (see 0. above); counts per delivery."""
-    current, per_file, raw_rows = {}, [], 0
-    for path in csv_paths:
-        raw, records = read_raw(path)
-        raw_rows += len(raw)
-        c = Counter()
-        for r in records.to_dict('records'):
-            old = current.get(r['review_id'])
-            if old is None:
-                c['new'] += 1
-            elif old['row_hash'] == r['row_hash']:
-                c['unchanged'] += 1
-                continue
-            elif r['effective_at'] < old['effective_at']:
-                c['older_ignored'] += 1
-                continue
-            else:
-                c['updated'] += 1
-                c['same_time_other_content'] += r['effective_at'] == old['effective_at']
-                c['now_blind'] += r['display_status'] == '블라인드' and old['display_status'] != '블라인드'
-            current[r['review_id']] = r
-        per_file.append({'rows': len(raw), **{k: int(v) for k, v in c.items()}})
-    return pd.DataFrame(list(current.values())), per_file, raw_rows
+def read_store(store):
+    """Every review of the DB (blind ones too) and its products table."""
+    with store.engine.connect() as c:
+        reviews = pd.read_sql_query(select(store.review), c)
+        products = pd.read_sql_query(select(store.product), c)
+    reviews['related_review_id'] = reviews.related_review_id.fillna('')
+    return reviews, products
+
+
+def fingerprint(reviews):
+    """Changes whenever any review of the DB changes (its row_hash covers every stored field)."""
+    digest = hashlib.sha256()
+    for line in sorted(reviews.review_id + ':' + reviews.row_hash):
+        digest.update(line.encode() + b'\n')
+    return digest.hexdigest()
 
 
 def normal_reviews(records):
@@ -135,9 +114,8 @@ def changes(previous, normal):
     return m.loc[m.change != 'unchanged', ['review_id', 'product_id', 'change']].sort_values(['product_id', 'review_id']).reset_index(drop=True)
 
 
-def build(csv_paths, out):
-    records, per_file, raw_rows = merge(csv_paths)
-    normal = normal_reviews(records)
+def build(reviews, products, out):
+    normal = normal_reviews(reviews)
     canonical, mapping, aliases = canonicalize(normal)
     text = analysis_text(canonical)
     (out / 'canonical_products').mkdir(parents=True, exist_ok=True)
@@ -146,10 +124,11 @@ def build(csv_paths, out):
         frame.to_parquet(out / name, index=False)
     mapping.to_csv(out / 'canonical_products/product_name_mapping.csv', index=False, encoding='utf-8-sig')
     aliases.to_csv(out / 'canonical_products/product_name_aliases.csv', index=False, encoding='utf-8-sig')
+    db_name = products.set_index('product_id').product_name
+    name_mismatch = mapping[mapping.canonical_product_name != mapping.product_id.map(db_name)].product_id.tolist()
     month = normal.review_type == '한달사용'
     counts = {
-        'raw_rows': raw_rows, 'distinct_reviews': len(records),
-        'blind_reviews': int((records.display_status == '블라인드').sum()),
+        'db_reviews': len(reviews), 'blind_reviews': int((reviews.display_status == '블라인드').sum()),
         'normal_reviews': len(normal), 'products': int(normal.product_id.nunique()),
         'month_followups': int(month.sum()),
         'month_followups_whose_original_is_in_data': int(normal[month].related_review_id.isin(set(normal.review_id)).sum()),
@@ -158,8 +137,9 @@ def build(csv_paths, out):
         'analysis_text_differs_from_review_text': int((text.analysis_text != canonical.review_text).sum()),
         'empty_analysis_text': int((text.analysis_text == '').sum()),
         'product_ids_with_several_names': int(mapping.original_name_count.gt(1).sum()),
+        'product_names_differing_from_db': len(name_mismatch),
     }
-    return counts, per_file, normal, mapping
+    return counts, normal, mapping
 
 
 def same(a, b):
@@ -173,62 +153,50 @@ def same(a, b):
     return a.read_bytes() == b.read_bytes()
 
 
-def deliveries():
-    return json.loads(DELIVERIES.read_text(encoding='utf-8')) if DELIVERIES.exists() else []
-
-
-def add(csv_path):
-    """Check a new CSV, copy it into raw/ unchanged and list it. The same file twice is refused."""
-    listed, digest = deliveries(), sha256(csv_path)
-    if any(d['sha256'] == digest for d in listed):
-        sys.exit(f'already added: {csv_path.name}')
-    if (RAW / csv_path.name).exists():
-        sys.exit(f'raw/ already has a file named {csv_path.name}; rename the new CSV')
-    raw, records = read_raw(csv_path)  # stops here if the format is wrong
-    shutil.copy2(csv_path, RAW / csv_path.name)
-    assert sha256(RAW / csv_path.name) == digest
-    created = pd.to_datetime(records.created_at, utc=True).dt.tz_convert('Asia/Seoul')
-    listed.append({'file': csv_path.name, 'sha256': digest, 'rows': len(raw), 'added': date.today().isoformat(),
-                   'reviews_from': created.min().isoformat(), 'reviews_to': created.max().isoformat()})
-    DELIVERIES.write_text(json.dumps(listed, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
-    print(f'added {csv_path.name}: {len(raw):,} rows, {listed[-1]["reviews_from"][:10]} ~ {listed[-1]["reviews_to"][:10]}')
-
-
-def rebuild(replace=False):
-    listed = deliveries()
-    if not listed:
-        sys.exit('raw/deliveries.json lists no CSV; add one: preprocess.py add <csv>')
-    for d in listed:
+def from_raw(folder):
+    """A temporary SQLite review DB holding every delivery, imported in order with the same code as the real DB."""
+    store = ReviewStore(f"sqlite:///{(Path(folder) / 'reviews.sqlite3').as_posix()}")
+    for d in deliveries():
         if sha256(RAW / d['file']) != d['sha256']:
             sys.exit(f"raw/{d['file']} differs from the one that was added; raw CSVs are never changed")
+        store.import_csv(RAW / d['file'])
+    return store
+
+
+def rebuild(replace=False, store=None, use_raw=False):
     manifest_path = PROCESSED / 'preprocess-manifest.json'
     previous = json.loads(manifest_path.read_text(encoding='utf-8')) if manifest_path.exists() else {}
-    new_delivery = [d['sha256'] for d in previous.get('deliveries', [])] != [d['sha256'] for d in listed]
     with tempfile.TemporaryDirectory(dir=PREPROCESS) as tmp:
         tmp = Path(tmp)
-        counts, per_file, normal, mapping = build([RAW / d['file'] for d in listed], tmp)
+        if use_raw:
+            store, source = from_raw(tmp), 'raw CSVs of 1_ingest/raw/deliveries.json, imported into a temporary SQLite DB'
+        else:
+            store, source = store or ReviewStore(), 'review DB'
+        reviews, products = read_store(store)
+        store.engine.dispose()
+        key = fingerprint(reviews)
+        db_changed = key != previous.get('source_fingerprint')
+        counts, normal, mapping = build(reviews, products, tmp)
         status = {name: 'new' if not (PROCESSED / name).exists() else 'unchanged' if same(tmp / name, PROCESSED / name)
                   else 'differs' for name in OUTPUTS}
         differs = [n for n, s in status.items() if s == 'differs']
-        if differs and not new_delivery and not replace:
-            sys.exit(f'no new CSV, yet the outputs differ (a rule in the code changed?); --replace to accept: {differs}')
+        if differs and not db_changed and not replace:
+            sys.exit(f'the DB has not changed, yet the outputs differ (a rule in the code changed?); --replace to accept: {differs}')
         diff = changes(PROCESSED / 'reviews_normal.parquet', normal)
         for name, s in status.items():
             if s != 'unchanged':
                 (PROCESSED / name).parent.mkdir(parents=True, exist_ok=True)
                 (tmp / name).replace(PROCESSED / name)
-    if new_delivery or replace or 'changes_from_latest_delivery' not in previous:
+    if db_changed or replace or 'changes_from_latest_db_change' not in previous:
         diff.to_parquet(PROCESSED / 'changes.parquet', index=False)
         latest = {**{k: int(v) for k, v in diff.change.value_counts().items()}, 'products': int(diff.product_id.nunique())}
     else:
-        latest = previous['changes_from_latest_delivery']
+        latest = previous['changes_from_latest_db_change']
     manifest = {
-        'deliveries': [{**d, 'merge': m} for d, m in zip(listed, per_file)],
-        'counts': counts,
-        'changes_from_latest_delivery': latest,
-        'rules': {'merge': 'one row per review_id; newer 최종수정일/리뷰등록일 wins; same time, other content -> later '
-                           'delivery; a review missing from a CSV is not deleted, a blinded one leaves',
-                  'checks': 'backbone.ReviewStore.prepare (same as the DB import)',
+        'source': source, 'source_fingerprint': key, 'deliveries': deliveries(), 'counts': counts,
+        'changes_from_latest_db_change': latest,
+        'rules': {'versions': 'decided by the DB import (backbone.ReviewStore): one row per review_id, newer '
+                              '최종수정일/리뷰등록일 wins, a review missing from a CSV is not deleted, a blinded one leaves',
                   'review_text': 'backbone.normalize_text (DB text and text_hash)',
                   'review_group_id': "'review:' + (related_review_id or review_id)",
                   'order': 'product_id, created_at, review_id',
@@ -242,21 +210,16 @@ def rebuild(replace=False):
             ['product_id', 'canonical_product_name']].to_dict('records'),
     }
     manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
-    print(json.dumps({'counts': counts, 'changes_from_latest_delivery': latest, 'outputs': status},
+    print(json.dumps({'source': source, 'counts': counts, 'changes_from_latest_db_change': latest, 'outputs': status},
                      ensure_ascii=False, indent=1))
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument('command', nargs='?', choices=['add'], help='add <csv>: register a new delivery, then rebuild')
-    parser.add_argument('csv', nargs='?', type=Path)
-    parser.add_argument('--replace', action='store_true', help='accept outputs that differ with no new CSV (rule change)')
+    parser.add_argument('--from-raw', action='store_true', help='no DB: rebuild from the raw CSVs via a temporary SQLite DB')
+    parser.add_argument('--replace', action='store_true', help='accept outputs that differ with an unchanged DB (rule change)')
     args = parser.parse_args()
-    if args.command == 'add':
-        if not args.csv:
-            parser.error('add needs the path of the new CSV')
-        add(args.csv)
-    rebuild(args.replace)
+    rebuild(args.replace, use_raw=args.from_raw)
 
 
 if __name__ == '__main__':

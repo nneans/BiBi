@@ -2,7 +2,7 @@
 
 backbone.normalize_text stays as it is: it is the DB text, its hash finds new/edited reviews, the 300 gold
 reviews' offsets and the post-training data are on it. clean_review works from the raw review and gives the same
-text plus, measured on the 642,172 normal reviews (1_preprocessing/check_clean.py):
+text plus, measured on the 642,172 normal reviews (2_preprocessing/check_clean.py):
   - line breaks kept (15% of reviews have them): a break after a sentence end is a unit boundary, a break inside
     a sentence ('떼어내느라\\n고생했어요') is a wrapped line; kiwi_units decides which (is_line_end)
   - invisible characters removed (zero-width space/joiner, BOM, soft hyphen ...); emoji variation selectors stay

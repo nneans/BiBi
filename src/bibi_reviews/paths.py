@@ -1,6 +1,6 @@
 """Project folder layout (2026-10-23). Every script takes its locations from here, so a rename touches one file.
 
-1_preprocessing  원본 CSV -> 정리된 리뷰   2_DB          PostgreSQL 백업 · 증분 반영
+1_ingest         CSV -> 리뷰 DB(원본 장부)  2_preprocessing DB -> 분석용 리뷰 파일
 3_사후학습   식품 리뷰 적응 KcELECTRA      4_정답데이터   정답 300건 · 같은 뜻 판정
 5_감성분류   Kiwi 단위 + 감성 분류기        5_속성분류     속성 사전 + 속성 분류기 (감성과 나란히)
 6_이유분석   KURE + BERTopic, 상품별 결과   7_보고         집계 · 그림 · 대시보드 · 현황
@@ -9,11 +9,17 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 
-PREPROCESS = ROOT / '1_preprocessing'
-RAW = PREPROCESS / 'raw'
-RAW_CSV = RAW / '리뷰데이터(2025.01.01~2026.10.13).csv'
+# step 1: every delivered CSV (raw/, listed in raw/deliveries.json) goes into the review DB, the ledger
+INGEST = ROOT / '1_ingest'
+RAW = INGEST / 'raw'
+DELIVERIES = RAW / 'deliveries.json'
+RAW_CSV = RAW / '리뷰데이터(2025.01.01~2026.10.13).csv'  # the first delivery
 RAW_AUDIT = RAW / 'audit'
-# outputs of 1_preprocessing/preprocess.py (raw CSV -> these, in one run)
+DB = INGEST
+DB_FILES = DB / 'db'  # PostgreSQL backups, web uploads
+
+# step 2: the DB's reviews -> analysis files (2_preprocessing/preprocess.py)
+PREPROCESS = ROOT / '2_preprocessing'
 PROCESSED = PREPROCESS / 'output'
 REVIEWS_NORMAL = PROCESSED / 'reviews_normal.parquet'
 CANONICAL_DIR = PROCESSED / 'canonical_products'
@@ -23,10 +29,7 @@ ANALYSIS_TEXT = PROCESSED / 'analysis_text.parquet'  # review_id -> analysis_tex
 
 # not official: drafts and old records (archive/README.md)
 ARCHIVE = ROOT / 'archive'
-PRODUCT_CATEGORIES = ARCHIVE / '1_preprocessing' / 'category-draft' / 'product-categories.json'  # draft 상품군
-
-DB = ROOT / '2_DB'
-DB_FILES = DB / 'db'
+PRODUCT_CATEGORIES = ARCHIVE / 'preprocessing' / 'category-draft' / 'product-categories.json'  # draft 상품군
 
 BACKBONE = ROOT / '3_사후학습'
 BACKBONE_ENCODER = BACKBONE / 'frozen-encoder'

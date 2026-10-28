@@ -1,21 +1,27 @@
 {
+ "source": "review DB",
+ "source_fingerprint": "b007cc2a8d5759d60cfbbf40f29d6cfcfdc683a02b36130c0c2887e72e060744",
  "deliveries": [
   {
    "file": "리뷰데이터(2025.01.01~2026.10.13).csv",
    "sha256": "d4886402d8fd44ed932f24cef964c9131f2621fb52487dc4cfe7db2a9a28a232",
    "rows": 649524,
-   "added": "2026-10-13 (first data)",
+   "added": "2026-10-16 (first data, imported into the DB that day)",
    "reviews_from": "2025-01-01T00:02:53+09:00",
    "reviews_to": "2026-10-13T16:49:47+09:00",
-   "merge": {
+   "db_import": {
     "rows": 649524,
-    "new": 649524
+    "new": 649524,
+    "updated": 0,
+    "unchanged": 0,
+    "stale": 0,
+    "same_timestamp_conflicts": 0,
+    "blind_rows": 7352
    }
   }
  ],
  "counts": {
-  "raw_rows": 649524,
-  "distinct_reviews": 649524,
+  "db_reviews": 649524,
   "blind_reviews": 7352,
   "normal_reviews": 642172,
   "products": 539,
@@ -26,14 +32,14 @@
   "reviews_folded_as_copies": 2773,
   "analysis_text_differs_from_review_text": 123838,
   "empty_analysis_text": 101,
-  "product_ids_with_several_names": 246
+  "product_ids_with_several_names": 246,
+  "product_names_differing_from_db": 0
  },
- "changes_from_latest_delivery": {
+ "changes_from_latest_db_change": {
   "products": 0
  },
  "rules": {
-  "merge": "one row per review_id; newer 최종수정일/리뷰등록일 wins; same time, other content -> later delivery; a review missing from a CSV is not deleted, a blinded one leaves",
-  "checks": "backbone.ReviewStore.prepare (same as the DB import)",
+  "versions": "decided by the DB import (backbone.ReviewStore): one row per review_id, newer 최종수정일/리뷰등록일 wins, a review missing from a CSV is not deleted, a blinded one leaves",
   "review_text": "backbone.normalize_text (DB text and text_hash)",
   "review_group_id": "'review:' + (related_review_id or review_id)",
   "order": "product_id, created_at, review_id",

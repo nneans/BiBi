@@ -14,7 +14,7 @@ switch ($Command) {
   'status' { & "$Bin\pg_ctl.exe" -D $Data status; & "$Bin\pg_isready.exe" -h 127.0.0.1 -p 5432 }
   'backup' {
     $root = Split-Path -Parent $PSScriptRoot
-    $dir = Join-Path $root '2_DB\db\backups'
+    $dir = Join-Path $root '1_ingest\db\backups'
     New-Item -ItemType Directory -Force $dir | Out-Null
     $file = Join-Path $dir ("bibi_reviews_{0}.dump" -f (Get-Date -Format 'yyyyMMdd-HHmmss'))
     & "$Bin\pg_dump.exe" -h 127.0.0.1 -p 5432 -U bibi -d bibi_reviews -Fc -f $file

@@ -4,10 +4,20 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
+from bibi_reviews.backbone import ReviewStore
+
 ROOT = Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location('preprocess', ROOT / '1_preprocessing' / 'preprocess.py')
-P = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(P)
+
+
+def load(name, path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+I = load('ingest', ROOT / '1_ingest' / 'ingest.py')
+P = load('preprocess', ROOT / '2_preprocessing' / 'preprocess.py')
 
 PASTED = '배송도 아주 빠르게 잘왔구 가격도 상품도 다좋네요 진짜 ~~~~~잘먹었습니다 또 살게요'
 COLUMNS = ['리뷰글번호', '상품번호', '상품명', '리뷰구분', '관련리뷰글번호', '전시상태', '리뷰등록일', '최종수정일', '리뷰상세내용']
@@ -36,20 +46,23 @@ def write_csv(path, rows):
 
 
 @pytest.fixture
-def folders(tmp_path, monkeypatch):
+def setup(tmp_path, monkeypatch):
     raw, out = tmp_path / 'raw', tmp_path / 'output'
     raw.mkdir()
-    monkeypatch.setattr(P, 'RAW', raw)
-    monkeypatch.setattr(P, 'DELIVERIES', raw / 'deliveries.json')
+    for module in (I, P):
+        monkeypatch.setattr(module, 'RAW', raw)
+        monkeypatch.setattr(module, 'DELIVERIES', raw / 'deliveries.json')
     monkeypatch.setattr(P, 'PROCESSED', out)
     monkeypatch.setattr(P, 'PREPROCESS', tmp_path)
-    return tmp_path, out
+    store = ReviewStore(f"sqlite:///{(tmp_path / 'reviews.sqlite3').as_posix()}")
+    yield tmp_path, out, store
+    store.engine.dispose()
 
 
-def test_preprocess_rules(folders):
-    tmp, out = folders
-    P.add(write_csv(tmp / 'first.csv', FIRST))
-    P.rebuild()
+def test_preprocess_rules(setup):
+    tmp, out, store = setup
+    I.add(write_csv(tmp / 'first.csv', FIRST), store)
+    P.rebuild(store=store)
     normal = pd.read_parquet(out / 'reviews_normal.parquet')
     text = pd.read_parquet(out / 'analysis_text.parquet').set_index('review_id')
     assert normal.columns.tolist() == P.NORMAL_COLUMNS
@@ -65,19 +78,23 @@ def test_preprocess_rules(folders):
     assert names.set_index('product_id').canonical_product_name['p1'] == '새우 A'  # most frequent name
 
 
-def test_new_delivery_merges_by_review_id(folders):
-    tmp, out = folders
-    P.add(write_csv(tmp / 'first.csv', FIRST))
-    P.rebuild()
-    P.add(write_csv(tmp / 'second.csv', SECOND))
-    P.rebuild()
+def test_new_delivery_merges_by_review_id(setup):
+    tmp, out, store = setup
+    I.add(write_csv(tmp / 'first.csv', FIRST), store)
+    P.rebuild(store=store)
+    I.add(write_csv(tmp / 'second.csv', SECOND), store)
+    P.rebuild(store=store)
     normal = pd.read_parquet(out / 'reviews_normal.parquet').set_index('review_id')
     assert sorted(normal.index) == ['1', '2', '4', '6', '7']           # 3 blinded later leaves, 7 is new
     assert normal.loc['2', 'review_text'] == '수정했어요 별로예요'          # newer edit wins
     assert normal.loc['4', 'review_text'].startswith('배송도')           # older version ignored
     change = pd.read_parquet(out / 'changes.parquet').set_index('review_id').change.to_dict()
     assert change == {'2': 'updated', '3': 'removed', '7': 'new'}
+    assert I.deliveries()[1]['db_import'] == {'rows': 5, 'new': 1, 'updated': 2, 'unchanged': 1, 'stale': 1,
+                                              'same_timestamp_conflicts': 0, 'blind_rows': 1}
     with pytest.raises(SystemExit):                                     # the same CSV twice
-        P.add(tmp / 'second.csv')
-    P.rebuild()                                                          # no new CSV: same files, changes kept
+        I.add(tmp / 'second.csv', store)
+    P.rebuild(store=store)                                               # DB unchanged: same files, changes kept
     assert pd.read_parquet(out / 'changes.parquet').set_index('review_id').change.to_dict() == change
+    P.rebuild(use_raw=True)                                              # no DB: the raw CSVs give the same files
+    assert sorted(pd.read_parquet(out / 'reviews_normal.parquet').review_id) == ['1', '2', '4', '6', '7']

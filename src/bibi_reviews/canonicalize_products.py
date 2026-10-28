@@ -1,6 +1,6 @@
 """One display name per product ID (the most frequent one; ties by name), without changing review records.
 
-Used by 1_preprocessing/preprocess.py, which writes and checks the outputs. The product_id stays the key: names may be
+Used by 2_preprocessing/preprocess.py, which writes and checks the outputs. The product_id stays the key: names may be
 shared by several IDs and products are never merged.
 """
 
