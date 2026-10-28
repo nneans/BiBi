@@ -11,3 +11,6 @@ __pycache__/
 6_이유분석/results-*/tries.json
 3_사후학습/resume/
 2_DB/db/uploads/
+
+# Drafts and old records kept locally, never pushed (archive/README.md)
+archive/

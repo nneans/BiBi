@@ -1,6 +1,6 @@
 """16:9 flowchart of raw-data preprocessing (01 원본 -> 02 상품정리 -> 03 증분 반영), for slides.
 
-Numbers come from 1_전처리/결과/processed/canonical_products/manifest.json;
+Numbers come from 1_preprocessing/output/preprocess-manifest.json (1_preprocessing/preprocess.py);
 column rules from src/bibi_reviews/backbone.py (ReviewStore.prepare, normalize_text).
 """
 from pathlib import Path

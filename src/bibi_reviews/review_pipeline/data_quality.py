@@ -100,7 +100,7 @@ def profile(frame,jobs,cache):
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--config',default=str(ROOT/'configs/review_pipeline/pipeline.json'))
-    p.add_argument('--output',default=str(paths.RAW/'data_quality'))
+    p.add_argument('--output',default=str(paths.RAW_AUDIT/'data_quality'))
     args=p.parse_args()
     config=load_config(args.config)
     frame,jobs,cache=load_reviews(config)

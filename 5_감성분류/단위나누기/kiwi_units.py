@@ -7,6 +7,7 @@ Scored on the gold text (normalize_text output, where gold offsets live):
   split  - gold opinion whose best unit covers < 50% of it
 """
 import json
+import re
 from pathlib import Path
 
 from kiwipiepy import Kiwi
@@ -36,25 +37,52 @@ def is_clause_end(toks, i, endings):
             and not (nxt and (nxt.tag.startswith('J') or nxt.tag == 'VCP')))
 
 
+# Line breaks (kept by text_clean.clean_review): Kiwi reads them as spaces, so '괜츈해요\n많이 파세요' stayed one
+# unit. A break ends a sentence when the line ends in a sentence ending or in punctuation/emoticon/emoji; a break
+# after a connective, adverb or noun ('떼어내느라\n고생했어요', '제일\n큰대자') is a wrapped line. Trailing '~~'
+# and a playful final consonant ('맛있어용') are looked through.
+LINE_END_TAGS = {'EF', 'SF', 'SE', 'SW', 'W_EMOJI'}
+LINE_SKIP_TAGS = {'SO', 'Z_CODA'}
+
+
+def is_line_end(kiwi, line):
+    for tok in reversed(kiwi.tokenize(line)):
+        if tok.tag not in LINE_SKIP_TAGS:
+            return tok.tag in LINE_END_TAGS
+    return False
+
+
+def blocks(kiwi, text):
+    """(start, end) pieces of text between line breaks that end a sentence; text without breaks is one piece."""
+    out, start, line = [], 0, 0
+    for m in re.finditer('\n', text):
+        if is_line_end(kiwi, text[line:m.start()]):
+            out.append((start, m.start()))
+            start = m.end()
+        line = m.end()
+    return out + [(start, len(text))]
+
+
 def units(kiwi, text, clauses, endings=None):
     endings = endings or CLAUSE_EC
     spans = []
-    for sent in kiwi.split_into_sents(text):
-        cuts = [sent.start]
-        if clauses:
-            toks = kiwi.tokenize(sent.text)
-            for i, tok in enumerate(toks):
-                end = sent.start + tok.start + tok.len
-                if is_clause_end(toks, i, endings) and end < sent.end:
-                    cuts.append(end)
-        cuts.append(sent.end)
-        for s, e in zip(cuts, cuts[1:]):
-            while s < e and text[s].isspace():
-                s += 1
-            while e > s and text[e - 1].isspace():
-                e -= 1
-            if e > s:
-                spans.append((s, e))
+    for base, block_end in blocks(kiwi, text):
+        for sent in kiwi.split_into_sents(text[base:block_end]):
+            cuts = [base + sent.start]
+            if clauses:
+                toks = kiwi.tokenize(sent.text)
+                for i, tok in enumerate(toks):
+                    end = base + sent.start + tok.start + tok.len
+                    if is_clause_end(toks, i, endings) and end < base + sent.end:
+                        cuts.append(end)
+            cuts.append(base + sent.end)
+            for s, e in zip(cuts, cuts[1:]):
+                while s < e and text[s].isspace():
+                    s += 1
+                while e > s and text[e - 1].isspace():
+                    e -= 1
+                if e > s:
+                    spans.append((s, e))
     return join_dangling(kiwi, text, spans) if clauses else spans
 
 

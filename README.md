@@ -6,7 +6,7 @@
 
 | 단계 | 폴더 | 하는 일 |
 | --- | --- | --- |
-| 1 | [1_전처리](1_전처리/README.md) | 원본 CSV(수정 금지) → 정상 리뷰만, 상품 ID별 대표 이름, HTML 기호 정리 |
+| 1 | [1_preprocessing](1_preprocessing/README.md) | 원본 CSV(수정 금지) → 명령 하나(`preprocess.py`)로 정상 리뷰, 상품 ID별 대표 이름, 분석용 텍스트(줄바꿈·반복 문자 정리), 구매 번호(원 리뷰 + 한달사용 후기 = 한 구매) |
 | 2 | [2_DB](2_DB/README.md) | PostgreSQL 리뷰 DB, 새 CSV의 신규·수정분만 반영, 백업 |
 | 3 | [3_사후학습](3_사후학습/README.md) | KcELECTRA를 우리 리뷰 49.5만 건으로 추가 학습(식품 리뷰 적응), 1에폭 결과 `frozen-encoder/` 사용 |
 | 4 | [4_정답데이터](4_정답데이터/README.md) | 사람이 확정한 정답 300리뷰·666의견, 추가 단위 정답 800개, 같은 뜻 판정 148쌍 |
@@ -43,17 +43,17 @@ pip install -r requirements.txt
 pip install -e .                                # src/bibi_reviews 패키지
 
 python scripts/setup_models.py                  # 외부 모델 2개(KURE-v1, KcELECTRA 원본)를 고정 버전으로 받기
-python -m pytest tests 3_사후학습/test_stage1_core.py    # 54 passed, 2 skipped 이면 준비 완료
+python -m pytest tests 3_사후학습/test_stage1_core.py    # 68 passed, 2 skipped 이면 준비 완료
 ```
 
 - 필요 환경: Python 3.11, NVIDIA GPU(CUDA). 분석 PC는 Windows 11 + RTX 4080 SUPER입니다.
 - 바로 볼 것: [리뷰 한 건 따라가기 노트북](7_보고/노트북/리뷰_한_건_따라가기.ipynb), [상품별 구체적 불만·칭찬](6_이유분석/results-v3/insights.md)
-- DB(PostgreSQL)는 대시보드 서버와 증분 반영에만 씁니다. 분석(6단계)은 `1_전처리/결과/processed/`의 parquet을 바로 읽어서 DB 없이도 돌아갑니다. DB가 필요하면 [2_DB](2_DB/README.md)의 백업 파일로 복원하세요.
+- DB(PostgreSQL)는 대시보드 서버와 증분 반영에만 씁니다. 분석(6단계)은 `1_preprocessing/output/`의 parquet을 바로 읽어서 DB 없이도 돌아갑니다. DB가 필요하면 [2_DB](2_DB/README.md)의 백업 파일로 복원하세요.
 
 | 저장소에 들어 있는 큰 파일 (LFS) | 위치 | 크기 |
 | --- | --- | ---: |
-| 원본 리뷰 CSV (64.9만 행) | `1_전처리/원본/` | 225MB |
-| 정리된 리뷰 parquet 2개 | `1_전처리/결과/processed/` | 161MB |
+| 원본 리뷰 CSV (64.9만 행) | `1_preprocessing/raw/` | 225MB |
+| 정리된 리뷰 parquet 3개 | `1_preprocessing/output/` | 192MB |
 | DB 백업 | `2_DB/db/backups/` | 93MB |
 | 사후학습 KcELECTRA 인코더 | `3_사후학습/frozen-encoder/` | 509MB |
 | 단위 감성 분류기 v3 | `6_이유분석/models/unit-sentiment-v3/` | 511MB |
@@ -65,10 +65,11 @@ python -m pytest tests 3_사후학습/test_stage1_core.py    # 54 passed, 2 skip
 
 ```powershell
 pip install -e .                                                 # src/bibi_reviews 패키지 설치
+python 1_preprocessing/preprocess.py                              # 원본 CSV → 전처리 결과 (같은 CSV면 비교만)
 powershell -File scripts/postgres_server.ps1 start                # PC를 켠 뒤 DB 서버 켜기
 bash 6_이유분석/run_all.sh                                        # 30개 상품 분석 (products.json)
 python 6_이유분석/summarize_all.py v3                             # 요약·인사이트 보고서
-python -m pytest tests 3_사후학습/test_stage1_core.py             # 54 passed, 2 skipped (2026-10-25)
+python -m pytest tests 3_사후학습/test_stage1_core.py             # 68 passed, 2 skipped (2026-10-28)
 ```
 
 **분석 PC 주의:** 분석 PC의 i9-14900KF는 성능 코어가 불안정해서(2026-10-25 확인) `bibi_reviews`를 불러오면 효율 코어에만 고정됩니다([cpu.py](src/bibi_reviews/cpu.py)). i9-13900/14900이 아닌 PC에서는 자동으로 꺼지고, `BIBI_ALL_CORES=1`로 끌 수도 있습니다.

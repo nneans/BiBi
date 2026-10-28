@@ -1,0 +1,90 @@
+{
+ "input": "1_preprocessing/raw/리뷰데이터(2025.01.01~2026.10.13).csv",
+ "input_sha256": "d4886402d8fd44ed932f24cef964c9131f2621fb52487dc4cfe7db2a9a28a232",
+ "counts": {
+  "raw_rows": 649524,
+  "blind_reviews": 7352,
+  "normal_reviews": 642172,
+  "products": 539,
+  "month_followups": 231475,
+  "month_followups_whose_original_is_in_data": 181685,
+  "review_groups": 460487,
+  "purchases": 458990,
+  "reviews_folded_as_copies": 2773,
+  "analysis_text_differs_from_review_text": 123838,
+  "empty_analysis_text": 101,
+  "product_ids_with_several_names": 246
+ },
+ "rules": {
+  "checks": "backbone.ReviewStore.prepare (same as the DB import)",
+  "review_text": "backbone.normalize_text (DB text and text_hash)",
+  "review_group_id": "'review:' + (related_review_id or review_id)",
+  "order": "product_id, created_at, review_id",
+  "product_name": "most frequent name per product_id, ties by name (canonicalize_products)",
+  "analysis_text": "text_clean.clean_review v2",
+  "purchase_id": "review_group_id; a text of 40+ characters pasted again into the same product takes the first copy's purchase"
+ },
+ "outputs": {
+  "reviews_normal.parquet": {
+   "status": "unchanged",
+   "sha256": "9cf9456bc50ab80d14779dab41ee796aa12963d052d410cceb24a6c673430c7b"
+  },
+  "canonical_products/reviews_normal_canonical.parquet": {
+   "status": "unchanged",
+   "sha256": "0509f0429f8f7813f1c6ca41b9540a6e85d8dec7afe0441c8b2b628fe010aa99"
+  },
+  "canonical_products/product_name_mapping.csv": {
+   "status": "unchanged",
+   "sha256": "770f619251ce4f5aafbe722babdd7df6a289f02b650acd3e7d74d9ea56dc8580"
+  },
+  "canonical_products/product_name_aliases.csv": {
+   "status": "unchanged",
+   "sha256": "2693c28899ef20d66e14b2db4750e995b68d6d30dd82dd5ac36b0dff2732eb01"
+  },
+  "analysis_text.parquet": {
+   "status": "unchanged",
+   "sha256": "0eb7c68381cf192fa93dfe1651c99312aac016317a139880c73489c7ec19307e"
+  }
+ },
+ "tie_product_ids": [
+  "10197108784",
+  "11463510975",
+  "11559459997",
+  "11834807293",
+  "5792750415"
+ ],
+ "product_ids_sharing_a_name": [
+  {
+   "product_id": "11734228971",
+   "canonical_product_name": "한성기업 런천미트 200g 24개"
+  },
+  {
+   "product_id": "12792105227",
+   "canonical_product_name": "닭정육 뼈없는 순살 닭다리살 2kg"
+  },
+  {
+   "product_id": "12844622136",
+   "canonical_product_name": "한성기업 런천미트 200g 24개"
+  },
+  {
+   "product_id": "12968736347",
+   "canonical_product_name": "해농 앵강마켓 김부각 40g 김자반볶음 김가루 곱창김 고급 선물세트"
+  },
+  {
+   "product_id": "13154007953",
+   "canonical_product_name": "해농 앵강마켓 김부각 40g 김자반볶음 김가루 곱창김 고급 선물세트"
+  },
+  {
+   "product_id": "13513276044",
+   "canonical_product_name": "닭정육 뼈없는 순살 닭다리살 2kg"
+  },
+  {
+   "product_id": "13741836406",
+   "canonical_product_name": "국내산 새우 1kg 제철 활새우 흰다리새우"
+  },
+  {
+   "product_id": "6999226700",
+   "canonical_product_name": "국내산 새우 1kg 제철 활새우 흰다리새우"
+  }
+ ]
+}
